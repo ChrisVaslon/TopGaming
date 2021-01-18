@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 janv. 2021, 13:46:06
+    Author     : thula
+*/
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  background-color: #055c58;
+}
+
+.site-footer{
+    background-color: #343A40;
+    padding: 25px;
+
+
+}
+
+.site-footer h1{
+    font-size: 20px;
+    color: #6c757d;
+    
+}
+
+.site-footer .icons{
+    font-size: 25px;
+    color: #6c757d; 
+    
+}
+
+.site-footer p{
+    color: #6c757d; 
+    text-align: center;
+    padding: 0;
+}
+
+.site-footer .icons a{
+   color:inherit;
+}
+
+
+#carouselExampleControls{
+    margin-top: 100px;
+}
+

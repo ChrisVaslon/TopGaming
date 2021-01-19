@@ -24,7 +24,7 @@
     </head> 
     <body>
 
-        <c:import url="WEB-INF/menu/menu.jsp" />
+        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
 
         <div class="input-group w-50 m-auto pt-5">
             <input type="search" placeholder="Recherche" aria-describedby="button-addon5" class="form-control">
@@ -142,7 +142,7 @@
 
 
         <!-- Site footer -->
-        <c:import url="WEB-INF/footer/footer.jsp" />
+        <c:import url="WEB-INF/menus/menus-footer.jsp" />
         
         
         

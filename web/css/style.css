@@ -12,24 +12,24 @@ and open the template in the editor.
     padding: 0;
     box-sizing: border-box;
 }
- 
+
 body {
-    
+    color: white;
     background-color: #055c58;
 }
 .bg-dark{
     background-color: #000000 !important;
 }
 
-  .swiper-container {
-    
-      height: 100%;
-    }
+.swiper-container {
 
- .swiper-wrapper {     
+    height: 100%;
+}
+
+.swiper-wrapper {     
     width: 500px !important;
     height: 500px !important;   
-    
+
 }
 
 footer{

@@ -5,95 +5,76 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ 
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
+            />
+        <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+        
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <title>Accueil</title>
-    </head>
+    </head> 
     <body>
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <!-- Links -->
-            <ul class="navbar-nav">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
-                </li>
-                <!-- Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Categorie
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Aventure</a>
-                        <a class="dropdown-item" href="#">Rpg</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nous Contacter</a>
-                </li>
-
-
-            </ul>
-
-            <ul class="navbar-nav ml-auto" >
-                <li class="nav-item">
-
-                    <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Panier</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Inscription</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Connexion</a>
-                </li>
-            </ul>
-
-        </nav>
-
+        <c:import url="WEB-INF/menu/menu.jsp" />
 
         <div class="input-group w-50 m-auto pt-5">
             <input type="search" placeholder="Recherche" aria-describedby="button-addon5" class="form-control">
             <div class="input-group-append">
-                <button id="button-addon5" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                <button id="button-addon5" type="submit" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
             </div>
         </div>
 
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-50 m-auto" src="images/amongus.jpg" alt="First slide">
+
+ 
+        <div  class="swiper-container container my-5">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide div-slide">
+                    <img class="d-block h-100 w-100  " src="images/amongus.jpg" alt="First slide">
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-50 m-auto" src="images/mine.jpg" alt="Second slide">
+                <div class="swiper-slide">
+                    <img class="d-block h-100 w-100  " src="images/mine.jpg" alt="Second slide">
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-50 m-auto" src="images/acval.jpg" alt="Third slide">
+                <div class="swiper-slide">
+                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
                 </div>
+                 <div class="swiper-slide">
+                    <img class="d-block h-100 w-100  " src="images/mine.jpg" alt="Second slide">
+                </div>
+                <div class="swiper-slide">
+                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                </div>
+                 <div class="swiper-slide">
+                    <img class="d-block h-100 w-100 " src="images/amongus.jpg" alt="First slide">
+                </div>
+                <div class="swiper-slide">
+                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                </div>
+                <div class="swiper-slide">
+                    <img class="d-block h-100 w-100 " src="images/acval.jpg" alt="Third slide">
+                </div>
+
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only" >Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+           
+        </div>       
 
         <div class="container ">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 my-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="images/amongus.jpg" alt="Card image cap">
+                        <img class="img-fluid img-thumbnail" src="images/images.jpeg" alt="Card image cap"/>
                         <div class="card-body">
                             <h5 class="card-title">Among us</h5>
                             <p class="card-text">3.99€</p>
@@ -103,7 +84,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 my-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="images/mine.jpg" alt="Card image cap">
+                        <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Minecraft</h5>
                             <p class="card-text">16.99€</p>
@@ -113,7 +94,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 my-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="images/acval.jpg" alt="Card image cap">
+                        <img class=" img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Assassin's reed valhalla</h5>
                             <p class="card-text">59.99€</p>
@@ -121,10 +102,10 @@
                         </div>
                     </div>   
                 </div>
-           
+
                 <div class="col-12 col-sm-6 col-md-4 my-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="images/amongus.jpg" alt="Card image cap">
+                        <img class="img-fluid img-thumbnail" src="images/amongus.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Among us</h5>
                             <p class="card-text">3.99€</p>
@@ -134,7 +115,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 my-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="images/mine.jpg" alt="Card image cap">
+                        <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Minecraft</h5>
                             <p class="card-text">16.99€</p>
@@ -144,7 +125,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 my-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="images/acval.jpg" alt="Card image cap">
+                        <img class="img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Assassin's reed valhalla</h5>
                             <p class="card-text">59.99€</p>
@@ -158,21 +139,20 @@
 
 
 
-        
+
 
         <!-- Site footer -->
-        <footer class="site-footer">
-            <h1>Suivez-nous sur les réseaux sociaux</h1>
-            <div class="icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <p>Copyright @2021-projet_CDA</p>
-        </footer>
+        <c:import url="WEB-INF/footer/footer.jsp" />
+        
+        
+        
+        
+        
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="js/swipper.js" type="text/javascript"></script>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     </body>
 </html>

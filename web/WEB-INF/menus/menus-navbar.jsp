@@ -1,5 +1,5 @@
 <%-- 
-    Document   : menu
+    Document   : navbar
     Created on : 18 janv. 2021, 17:29:47
     Author     : Ousseynou 
 --%>
@@ -24,8 +24,8 @@
                     Catégories Jeux
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Page 1-1</a>
-                    <a class="dropdown-item" href="#">Page 1-2</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Course</a>
                     <a class="dropdown-item" href="#">Page 1-3</a>
                     <div class="dropdown-divider"></div>                     
                 </div>

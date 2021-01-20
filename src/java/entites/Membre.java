@@ -27,8 +27,8 @@ public class Membre {
     private int points;
     
     // en attendant la creation de la class grade
-    Grade id;
-    Role id;
+    private Grade id;
+    private Role id;
 
     public int getId() {
         return id;

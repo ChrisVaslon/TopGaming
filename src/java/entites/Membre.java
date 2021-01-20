@@ -27,8 +27,7 @@ public class Membre {
     private int points;
     
     // en attendant la creation de la class grade
-    private Grade grade;
-    private Role role;
+
 
     public int getId() {
         return id;
@@ -138,16 +137,14 @@ public class Membre {
         return grade;
     }
 
-    public void setGrade(Grade grade) {
-        this.grade = grade;
+
     }
 
     public Role getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+
     }
 
     public Membre() {

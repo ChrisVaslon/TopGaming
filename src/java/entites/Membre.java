@@ -28,8 +28,6 @@ public class Membre {
     
     // en attendant la creation de la class grade
 
-    Grade grade;
-    Role role;
 
     public int getId() {
         return id;
@@ -139,16 +137,14 @@ public class Membre {
         return grade;
     }
 
-    public void setId(Grade grade) {
-        this.id = id;
+
     }
 
     public Role getRole() {
         return role;
     }
 
-    public void setRole(Role id) {
-        this.role = id;
+
     }
 
     public Membre() {
@@ -187,6 +183,8 @@ public class Membre {
         this.grade = grade;
         this.role = role;
     }
+
+
 
     @Override
     public String toString() {

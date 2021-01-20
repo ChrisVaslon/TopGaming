@@ -37,8 +37,6 @@
             </div>
         </div>
 
-
- 
         <div  class="swiper-container container my-5">
             <div class="swiper-wrapper">
                 <div class="swiper-slide div-slide">

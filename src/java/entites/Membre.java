@@ -27,8 +27,8 @@ public class Membre {
     private int points;
     
     // en attendant la creation de la class grade
-    Grade id;
-    Role id;
+    Grade grade;
+    Role role;
 
     public int getId() {
         return id;
@@ -134,20 +134,20 @@ public class Membre {
         this.points = points;
     }
 
-    public Grade getId() {
-        return id;
+    public Grade getGrade() {
+        return grade;
     }
 
-    public void setId(Grade id) {
+    public void setId(Grade grade) {
         this.id = id;
     }
 
-    public Role getId() {
-        return id;
+    public Role getRole() {
+        return role;
     }
 
-    public void setId(Role id) {
-        this.id = id;
+    public void setRole(Role id) {
+        this.role = id;
     }
 
     public Membre() {
@@ -169,7 +169,7 @@ public class Membre {
         this.points = points;
     }
 
-    public Membre(int id, String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel, int points, Grade id, Role id) {
+    public Membre(int id, String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel, int points, Grade grade, Role role) {
         this.id = id;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -183,8 +183,8 @@ public class Membre {
         this.cp = cp;
         this.tel = tel;
         this.points = points;
-        this.id = id;
-        this.id = id;
+        this.grade = grade;
+        this.role = role;
     }
 
     @Override

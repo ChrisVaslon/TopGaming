@@ -4,7 +4,7 @@ package entites;
 auteur : thulaksan
 date de creation : 19/01/2021
  */
-public class Ligne_De_Commande {
+public class Ligne_Commande {
     private int id;
     private float prixHT;
     private float TVA;
@@ -13,10 +13,10 @@ public class Ligne_De_Commande {
     Jeux jeux;
     Commande command;
 
-    public Ligne_De_Commande() {
+    public Ligne_Commande() {
     }
 
-    public Ligne_De_Commande(int id, float prixHT, float TVA, int quantites, Jeux jeux, Commande command) {
+    public Ligne_Commande(int id, float prixHT, float TVA, int quantites, Jeux jeux, Commande command) {
         this.id = id;
         this.prixHT = prixHT;
         this.TVA = TVA;

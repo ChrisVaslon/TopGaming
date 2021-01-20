@@ -10,8 +10,8 @@ public class Commande {
     private int id;
     private Date date;
     
-    Membre membre;
-    Adresse addresse;
+   private Membre membre;
+   private Adresse addresse;
 
     public Commande() {
     }

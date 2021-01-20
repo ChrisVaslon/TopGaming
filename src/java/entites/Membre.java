@@ -27,6 +27,7 @@ public class Membre {
     private int points;
     
     // en attendant la creation de la class grade
+
     Grade grade;
     Role role;
 

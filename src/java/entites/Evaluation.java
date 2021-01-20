@@ -18,7 +18,8 @@ public class Evaluation {
     
     private Jeu jeu;
     private Membre membre;
-    private Points_action points;
+    private Points_Action points;
+
 
     public Evaluation() {
     }
@@ -29,7 +30,8 @@ public class Evaluation {
         this.date = date;
     }
 
-    public Evaluation(int id, int valeur, Date date, Jeu jeu, Membre membre, Points_action points) {
+
+    public Evaluation(int id, int valeur, Date date, Jeu jeu, Membre membre, Points_Action points) {
         this.id = id;
         this.valeur = valeur;
         this.date = date;
@@ -78,11 +80,13 @@ public class Evaluation {
         this.membre = membre;
     }
 
-    public Points_action getPoints() {
+
+    public Points_Action getPoints() {
         return points;
     }
 
-    public void setPoints(Points_action points) {
+    public void setPoints(Points_Action points) {
+
         this.points = points;
     }
 

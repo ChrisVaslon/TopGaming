@@ -6,17 +6,17 @@ import java.util.Date;
 auteur : thulaksan
 date de creation : 19/01/2021
  */
-public class Command {
+public class Commande {
     private int id;
     private Date date;
     
     Membre membre;
     Adresse addresse;
 
-    public Command() {
+    public Commande() {
     }
 
-    public Command(int id, Date date, Membre membre, Adresse addresse) {
+    public Commande(int id, Date date, Membre membre, Adresse addresse) {
         this.id = id;
         this.date = date;
         this.membre = membre;

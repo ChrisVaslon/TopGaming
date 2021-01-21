@@ -18,7 +18,7 @@ public class Evaluation {
     
     private Jeu jeu;
     private Membre membre;
-    private Points_Action points;
+    private Points_Action pointsAction;
 
 
     public Evaluation() {
@@ -37,7 +37,7 @@ public class Evaluation {
         this.date = date;
         this.jeu = jeu;
         this.membre = membre;
-        this.points = points;
+        this.pointsAction = points;
     }
 
     public int getId() {
@@ -82,12 +82,12 @@ public class Evaluation {
 
 
     public Points_Action getPoints() {
-        return points;
+        return pointsAction;
     }
 
     public void setPoints(Points_Action points) {
 
-        this.points = points;
+        this.pointsAction = points;
     }
 
     @Override

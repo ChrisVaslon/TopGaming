@@ -16,6 +16,12 @@ public class Commande {
     public Commande() {
     }
 
+    public Commande(int id, Date date) {
+        this.id = id;
+        this.date = date;
+    }
+    
+
     public Commande(int id, Date date, Membre membre, Adresse addresse) {
         this.id = id;
         this.date = date;
@@ -57,8 +63,12 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Command{" + "id=" + id + ", date=" + date + ", membre=" + membre + ", addresse=" + addresse + '}';
+        return "Commande{" + "id=" + id + ", date=" + date + ", membre=" + membre + '}';
     }
+
+    
+
+    
     
     
 }

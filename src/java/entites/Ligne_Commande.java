@@ -7,7 +7,7 @@ date de creation : 19/01/2021
 public class Ligne_Commande {
     private int id;
     private float prixHT;
-    private float TVA;
+    private float tva;
     private int quantite;
     
     private Jeu jeu;
@@ -19,7 +19,7 @@ public class Ligne_Commande {
     public Ligne_Commande(int id, float prixHT, float TVA, int quantite, Jeu jeu, Commande commande) {
         this.id = id;
         this.prixHT = prixHT;
-        this.TVA = TVA;
+        this.tva = TVA;
         this.quantite = quantite;
         this.jeu = jeu;
         this.commande = commande;
@@ -42,11 +42,11 @@ public class Ligne_Commande {
     }
 
     public float getTVA() {
-        return TVA;
+        return tva;
     }
 
     public void setTVA(float TVA) {
-        this.TVA = TVA;
+        this.tva = TVA;
     }
 
     public int getQuantite() {
@@ -75,7 +75,7 @@ public class Ligne_Commande {
 
     @Override
     public String toString() {
-        return "Ligne_Commande{" + "id=" + id + ", prixHT=" + prixHT + ", TVA=" + TVA + ", quantite=" + quantite + ", jeu=" + jeu + ", commande=" + commande + '}';
+        return "Ligne_Commande{" + "id=" + id + ", prixHT=" + prixHT + ", TVA=" + tva + ", quantite=" + quantite + ", jeu=" + jeu + ", commande=" + commande + '}';
     }
     
 }

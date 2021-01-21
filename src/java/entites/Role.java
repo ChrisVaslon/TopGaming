@@ -7,14 +7,14 @@ package entites;
 
 public class Role {
     private int id;
-    private String role_name;
+    private String nom;
 
     public Role() {
     }
 
-    public Role(int id, String role_name) {
+    public Role(int id, String nom) {
         this.id = id;
-        this.role_name = role_name;
+        this.nom = nom;
     }
 
     public int getId() {
@@ -25,18 +25,19 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     @Override
     public String toString() {
-        return "Role{" + "id=" + id + ", role_name=" + role_name + '}';
+        return "Role{" + "id=" + id + ", nom=" + nom + '}';
     }
+
     
     
     

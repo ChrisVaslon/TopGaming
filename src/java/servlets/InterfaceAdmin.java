@@ -1,4 +1,8 @@
- 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlets;
 
 import java.io.IOException;
@@ -11,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Ousseynou
+ * @author thula
  */
-@WebServlet(name = "detailsCatalogueServlet", urlPatterns = {"/details"})
-public class detailsCatalogueServlet extends HttpServlet {
+@WebServlet(name = "InterfaceAdmin", urlPatterns = {"/interface-admin"})
+public class InterfaceAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,13 +32,10 @@ public class detailsCatalogueServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.setCharacterEncoding("UTF-8");
-         
-         String urlJSP = "/WEB-INF/details_catalogue.jsp";
-    
-         
-         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-    
+        request.setCharacterEncoding("UTF-8");
+        String urlJSP = "/WEB-INF/interface_admin.jsp";
+
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

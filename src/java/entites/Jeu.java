@@ -1,7 +1,7 @@
 
 package entites;
 
-import java.util.List;
+// import java.util.List;
 
 /*
 Auteur: Djouela
@@ -13,7 +13,7 @@ public class Jeu {
     private String nom;
     private float prixHT;
     private String description;
-    private String imgage; // nom de la photo
+    private String image; // nom de la photo
     
     private TVA tva;
     private Categorie categorie;
@@ -25,20 +25,20 @@ public class Jeu {
     public Jeu() {
     }
 
-    public Jeu(int id, String nom, float prixHT, String description, String imgage) {
+    public Jeu(int id, String nom, float prixHT, String description, String image) {
         this.id = id;
         this.nom = nom;
         this.prixHT = prixHT;
         this.description = description;
-        this.imgage = imgage;
+        this.image = image;
     }
 
-    public Jeu(int id, String nom, float prixHT, String description, String imgage, TVA tva, Categorie categorie) {
+    public Jeu(int id, String nom, float prixHT, String description, String image, TVA tva, Categorie categorie) {
         this.id = id;
         this.nom = nom;
         this.prixHT = prixHT;
         this.description = description;
-        this.imgage = imgage;
+        this.image = image;
         this.tva = tva;
         this.categorie = categorie;
     }
@@ -75,12 +75,12 @@ public class Jeu {
         this.description = description;
     }
 
-    public String getImgage() {
-        return imgage;
+    public String getImage() {
+        return image;
     }
 
-    public void setImgage(String imgage) {
-        this.imgage = imgage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public TVA getTva() {

@@ -13,8 +13,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-
-      
         <link
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -26,12 +24,12 @@
     </head> 
     <body>
 
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
+  <c:import url="/menu-main" />
 
         <div class="input-group w-50 m-auto pt-5">
             <input type="search" placeholder="Recherche" aria-describedby="button-addon5" class="form-control">
             <div class="input-group-append">
-                <button id="button-addon5" type="submit" class="btn btn-primary">
+                <button id="button-addon5" type="submit" class="btn btn-dark">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
@@ -39,33 +37,33 @@
             </div>
         </div>
 
-        <div  class="swiper-container container my-5">
+        <div class="swiper-container container my-5" >
             <div class="swiper-wrapper">
                 <div class="swiper-slide div-slide">
-                    <img class="d-block h-100 w-100  " src="images/amongus.jpg" alt="First slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/amongus.jpg" alt="First slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/mine.jpg" alt="Second slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/mine.jpg" alt="Second slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/mine.jpg" alt="Second slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/mine.jpg" alt="Second slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100 " src="images/amongus.jpg" alt="First slide">
+                    <img class="d-block h-100 w-100 " src="images/slide-accueil/amongus.jpg" alt="First slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100 " src="images/acval.jpg" alt="Third slide">
-                </div>
+                    <img class="d-block h-100 w-100 " src="images/slide-accueil/acval.jpg" alt="Third slide">
 
+                </div>
             </div>
 
         </div>       
@@ -78,7 +76,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Among us</h5>
                             <p class="card-text">3.99€</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
+                            <a href="#" class="btn btn-dark">Acheter</a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +86,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Minecraft</h5>
                             <p class="card-text">16.99€</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
+                            <a href="#" class="btn btn-dark">Acheter</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +96,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Assassin's reed valhalla</h5>
                             <p class="card-text">59.99€</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
+                            <a href="#" class="btn btn-dark">Acheter</a>
                         </div>
                     </div>   
                 </div>
@@ -109,7 +107,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Among us</h5>
                             <p class="card-text">3.99€</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
+                            <a href="#" class="btn btn-dark">Acheter</a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +117,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Minecraft</h5>
                             <p class="card-text">16.99€</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
+                            <a href="#" class="btn btn-dark">Acheter</a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +127,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Assassin's reed valhalla</h5>
                             <p class="card-text">59.99€</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
+                            <a href="#" class="btn btn-dark">Acheter</a>
                         </div>
                     </div>   
                 </div>

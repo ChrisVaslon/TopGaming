@@ -13,7 +13,7 @@ public class Commentaire {
     private Date date;
     private Date modifDate;
     
-    private Points_Action pointsAction;
+    private PointsAction pointsAction;
     private Jeu jeu;
     private Membre membre;
 
@@ -27,7 +27,7 @@ public class Commentaire {
         this.modifDate = modifDate;
     }
 
-    public Commentaire(int id, String valeur, Date date, Date modifDate, Points_Action pointsAction, Jeu jeu, Membre membre) {
+    public Commentaire(int id, String valeur, Date date, Date modifDate, PointsAction pointsAction, Jeu jeu, Membre membre) {
         this.id = id;
         this.valeur = valeur;
         this.date = date;
@@ -36,7 +36,6 @@ public class Commentaire {
         this.jeu = jeu;
         this.membre = membre;
     }
-    
 
     public int getId() {
         return id;
@@ -70,11 +69,11 @@ public class Commentaire {
         this.modifDate = modifDate;
     }
 
-    public Points_Action getPointsAction() {
+    public PointsAction getPointsAction() {
         return pointsAction;
     }
 
-    public void setPointsAction(Points_Action pointsAction) {
+    public void setPointsAction(PointsAction pointsAction) {
         this.pointsAction = pointsAction;
     }
 
@@ -99,6 +98,7 @@ public class Commentaire {
         return "Commentaire{" + "id=" + id + ", valeur=" + valeur + ", date=" + date + ", modifDate=" + modifDate + ", jeu=" + jeu + ", membre=" + membre + '}';
     }
 
+  
     
 
     

@@ -18,7 +18,7 @@ public class Evaluation {
     
     private Jeu jeu;
     private Membre membre;
-    private Points_Action pointsAction;
+    private PointsAction pointsAction;
 
 
     public Evaluation() {
@@ -30,14 +30,13 @@ public class Evaluation {
         this.date = date;
     }
 
-
-    public Evaluation(int id, int valeur, Date date, Jeu jeu, Membre membre, Points_Action points) {
+    public Evaluation(int id, int valeur, Date date, Jeu jeu, Membre membre, PointsAction pointsAction) {
         this.id = id;
         this.valeur = valeur;
         this.date = date;
         this.jeu = jeu;
         this.membre = membre;
-        this.pointsAction = points;
+        this.pointsAction = pointsAction;
     }
 
     public int getId() {
@@ -80,20 +79,21 @@ public class Evaluation {
         this.membre = membre;
     }
 
-
-    public Points_Action getPoints() {
+    public PointsAction getPointsAction() {
         return pointsAction;
     }
 
-    public void setPoints(Points_Action points) {
-
-        this.pointsAction = points;
+    public void setPointsAction(PointsAction pointsAction) {
+        this.pointsAction = pointsAction;
     }
 
     @Override
     public String toString() {
-        return "Evaluation{" + "id=" + id + ", valeur=" + valeur + '}';
+        return "Evaluation{" + "id=" + id + ", valeur=" + valeur + ", date=" + date + ", jeu=" + jeu + ", membre=" + membre + '}';
     }
+
+
+   
     
     
     

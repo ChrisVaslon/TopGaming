@@ -14,6 +14,10 @@ var mySwiper = new Swiper('.swiper-container', {
         rotate: 30,
         slideShadows: false
     },
+    autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+    },
     breakpoints: {
         // when window width is >= 320px
         320: {
@@ -33,7 +37,6 @@ var mySwiper = new Swiper('.swiper-container', {
             spaceBetween: 10,
             slidesPerColumn: 1
         }
-
     }
 
 });

@@ -9,6 +9,6 @@ package entites;
  *
  * @author thula
  */
-public class Points_action {
+public class Points_Action {
     
 }

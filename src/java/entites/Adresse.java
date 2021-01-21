@@ -17,7 +17,7 @@ public class Adresse {
     private String cp;
     private String ville;
    
-    Membre membre;
+    private Membre membre;
 
     public Adresse() {
     }

@@ -11,6 +11,7 @@ public class Grade {
     private String nom;
     private int min;
     private int max;
+    
 
     public Grade() {
     }

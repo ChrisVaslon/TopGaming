@@ -24,7 +24,7 @@
     </head> 
     <body>
 
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
+  <c:import url="/menu-main" />
 
         <div class="input-group w-50 m-auto pt-5">
             <input type="search" placeholder="Recherche" aria-describedby="button-addon5" class="form-control">
@@ -40,28 +40,29 @@
         <div class="swiper-container container my-5" >
             <div class="swiper-wrapper">
                 <div class="swiper-slide div-slide">
-                    <img class="d-block h-100 w-100  " src="images/amongus.jpg" alt="First slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/amongus.jpg" alt="First slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/mine.jpg" alt="Second slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/mine.jpg" alt="Second slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/apex.jpg" alt="Second slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/mine.jpg" alt="Second slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100 " src="images/amongus.jpg" alt="First slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/mine.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100 " src="images/slide-accueil/amongus.jpg" alt="First slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/acval.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
                 </div>
                 <div class="swiper-slide">
-                    <img class="d-block h-100 w-100 " src="images/apex.jpg" alt="Third slide">
+                    <img class="d-block h-100 w-100 " src="images/slide-accueil/acval.jpg" alt="Third slide">
+
                 </div>
             </div>
 

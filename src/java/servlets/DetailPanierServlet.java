@@ -1,4 +1,7 @@
- 
+ /*
+ * date : 21:/01/2021
+ * @author Ousseynou
+ */
 package servlets;
 
 import java.io.IOException;
@@ -8,13 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import traitements.GestionPanier;
 
-/**
- *
- * @author Ousseynou
- */
-@WebServlet(name = "detailsCatalogueServlet", urlPatterns = {"/details"})
-public class detailsCatalogueServlet extends HttpServlet {
+
+@WebServlet(name = "DetailPanierServlet", urlPatterns = {"/detail-panier"})
+public class DetailPanierServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,13 +30,22 @@ public class detailsCatalogueServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.setCharacterEncoding("UTF-8");
-         
-         String urlJSP = "/WEB-INF/details_catalogue.jsp";
-    
-         
-         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-    
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        
+        String urlJSP = "/WEB-INF/detail-panier.jsp";
+        
+        if (session.getAttribute("gestionPanier") == null) {
+            
+            session.setAttribute("gestionPanier", new GestionPanier());
+        }
+        
+        GestionPanier gestionPanier
+                = (GestionPanier) session.getAttribute("gestionPanier");
+        
+        request.setAttribute("lignes", gestionPanier.getAllLignesPanier());
+        
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

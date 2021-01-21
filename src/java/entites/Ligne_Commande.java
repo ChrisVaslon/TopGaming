@@ -16,6 +16,14 @@ public class Ligne_Commande {
     public Ligne_Commande() {
     }
 
+     public Ligne_Commande(Jeu jeu) {
+        this.jeu = jeu;
+        this.quantite = 1 ;
+        this.prixHT = jeu.getPrixHT();
+        this.tva = jeu.getTva().getMontant();
+    }
+    
+    
     public Ligne_Commande(int id, float prixHT, float TVA, int quantite, Jeu jeu, Commande commande) {
         this.id = id;
         this.prixHT = prixHT;
@@ -23,6 +31,10 @@ public class Ligne_Commande {
         this.quantite = quantite;
         this.jeu = jeu;
         this.commande = commande;
+    }
+
+    public Ligne_Commande(Ligne_Commande jeu) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {

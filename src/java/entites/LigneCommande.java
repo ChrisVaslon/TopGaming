@@ -4,7 +4,7 @@ package entites;
 auteur : thulaksan
 date de creation : 19/01/2021
  */
-public class Ligne_Commande {
+public class LigneCommande {
     private int id;
     private float prixHT;
     private float tva;
@@ -13,10 +13,10 @@ public class Ligne_Commande {
     private Jeu jeu;
     private Commande commande;
 
-    public Ligne_Commande() {
+    public LigneCommande() {
     }
 
-     public Ligne_Commande(Jeu jeu) {
+     public LigneCommande(Jeu jeu) {
         this.jeu = jeu;
         this.quantite = 1 ;
         this.prixHT = jeu.getPrixHT();
@@ -24,7 +24,7 @@ public class Ligne_Commande {
     }
     
     
-    public Ligne_Commande(int id, float prixHT, float TVA, int quantite, Jeu jeu, Commande commande) {
+    public LigneCommande(int id, float prixHT, float TVA, int quantite, Jeu jeu, Commande commande) {
         this.id = id;
         this.prixHT = prixHT;
         this.tva = TVA;
@@ -33,7 +33,7 @@ public class Ligne_Commande {
         this.commande = commande;
     }
 
-    public Ligne_Commande(Ligne_Commande jeu) {
+    public LigneCommande(LigneCommande jeu) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -25,8 +25,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Aventure</a>
+                          <a class="dropdown-item" href="#">Sport</a>
                         <a class="dropdown-item" href="#">Course</a>
-                        <a class="dropdown-item" href="#">Page 1-3</a>
+                       
                         <div class="dropdown-divider"></div>                     
                     </div>
                 </li>

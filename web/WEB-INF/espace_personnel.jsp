@@ -38,7 +38,7 @@
                     <div class="bg-white shadow rounded overflow-hidden">
                         <div class="px-4 pt-0 pb-4 cover">
                             <div class="media align-items-end profile-head">
-                                <div class="profile mr-3"><img src="images/mob.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                                <div class="profile mr-3"><img src="images/espace-perso/mob.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
                                     <a href="interface-admin" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
                                 </div>
                                 <div class="media-body mb-5 text-white">
@@ -89,7 +89,7 @@
                                     <div class="mask" style="background-color: rgba(57, 192, 237, 0.2)"></div>
                                 </div>
                                 <div class="col-lg-6 pl-lg-1 bg-image hover-overlay hover-zoom hover-shadow ripple">
-                                    <a href="#!"><img src="images/apex.jpg" alt="" class="img-fluid rounded shadow-sm"></a>
+                                    <a href="#!"><img src="images/espace-perso/apex.jpg" alt="" class="img-fluid rounded shadow-sm"></a>
                                     <div class="mask" style="background-color: rgba(57, 192, 237, 0.2)"></div>
                                 </div>
                             </div>

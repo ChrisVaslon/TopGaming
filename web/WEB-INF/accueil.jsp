@@ -18,13 +18,14 @@
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
             />
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+           <link href="css/categorie.css" rel="stylesheet" type="text/css"/>
 
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+       <!-- <link href="css/style.css" rel="stylesheet" type="text/css"/> -->
         <title>Accueil</title>
     </head> 
     <body>
 
-  <c:import url="/menu-main" />
+        <c:import url="/menu-main" />
 
         <div class="input-group w-50 m-auto pt-5">
             <input type="search" placeholder="Recherche" aria-describedby="button-addon5" class="form-control">
@@ -68,74 +69,75 @@
 
         </div>       
 
-        <div class="container ">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 my-3">
-                    <div class="card h-100">
-                        <img class="img-fluid img-thumbnail" src="images/images.jpeg" alt="Card image cap"/>
-                        <div class="card-body">
-                            <h5 class="card-title">Among us</h5>
-                            <p class="card-text">3.99€</p>
-                            <a href="#" class="btn btn-dark">Acheter</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 my-3">
-                    <div class="card h-100">
-                        <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Minecraft</h5>
-                            <p class="card-text">16.99€</p>
-                            <a href="#" class="btn btn-dark">Acheter</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 my-3">
-                    <div class="card h-100">
-                        <img class=" img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Assassin's reed valhalla</h5>
-                            <p class="card-text">59.99€</p>
-                            <a href="#" class="btn btn-dark">Acheter</a>
-                        </div>
-                    </div>   
-                </div>
+        <!--
+              <div class="container ">
+                  <div class="row">
+                      <div class="col-12 col-sm-6 col-md-4 my-3">
+                          <div class="card h-100">
+                              <img class="img-fluid img-thumbnail" src="images/images.jpeg" alt="Card image cap"/>
+                              <div class="card-body">
+                                  <h5 class="card-title">Among us</h5>
+                                  <p class="card-text">3.99€</p>
+                                  <a href="#" class="btn btn-dark">Acheter</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-4 my-3">
+                          <div class="card h-100">
+                              <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
+                              <div class="card-body">
+                                  <h5 class="card-title">Minecraft</h5>
+                                  <p class="card-text">16.99€</p>
+                                  <a href="#" class="btn btn-dark">Acheter</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-4 my-3">
+                          <div class="card h-100">
+                              <img class=" img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
+                              <div class="card-body">
+                                  <h5 class="card-title">Assassin's reed valhalla</h5>
+                                  <p class="card-text">59.99€</p>
+                                  <a href="#" class="btn btn-dark">Acheter</a>
+                              </div>
+                          </div>   
+                      </div>
+      
+                      <div class="col-12 col-sm-6 col-md-4 my-3">
+                          <div class="card h-100">
+                              <img class="img-fluid img-thumbnail" src="images/amongus.jpg" alt="Card image cap">
+                              <div class="card-body">
+                                  <h5 class="card-title">Among us</h5>
+                                  <p class="card-text">3.99€</p>
+                                  <a href="#" class="btn btn-dark">Acheter</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-4 my-3">
+                          <div class="card h-100">
+                              <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
+                              <div class="card-body">
+                                  <h5 class="card-title">Minecraft</h5>
+                                  <p class="card-text">16.99€</p>
+                                  <a href="#" class="btn btn-dark">Acheter</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-4 my-3">
+                          <div class="card h-100">
+                              <img class="img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
+                              <div class="card-body">
+                                  <h5 class="card-title">Assassin's reed valhalla</h5>
+                                  <p class="card-text">59.99€</p>
+                                  <a href="#" class="btn btn-dark">Acheter</a>
+                              </div>
+                          </div>   
+                      </div>
+                  </div>  
+              </div> 
+        -->
 
-                <div class="col-12 col-sm-6 col-md-4 my-3">
-                    <div class="card h-100">
-                        <img class="img-fluid img-thumbnail" src="images/amongus.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Among us</h5>
-                            <p class="card-text">3.99€</p>
-                            <a href="#" class="btn btn-dark">Acheter</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 my-3">
-                    <div class="card h-100">
-                        <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Minecraft</h5>
-                            <p class="card-text">16.99€</p>
-                            <a href="#" class="btn btn-dark">Acheter</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 my-3">
-                    <div class="card h-100">
-                        <img class="img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Assassin's reed valhalla</h5>
-                            <p class="card-text">59.99€</p>
-                            <a href="#" class="btn btn-dark">Acheter</a>
-                        </div>
-                    </div>   
-                </div>
-            </div>  
-        </div> 
-
-
-
+       
 
 
 

@@ -7,20 +7,20 @@ Date de création: 20/01/2021
 import java.util.List;
 
 
-public class Categorie {
+public class Categories {
     private int id;
     private List<String> genre;
     private List<Jeu> jeux;
 
-    public Categorie() {
+    public Categories() {
     }
 
-    public Categorie(int id, List<String> genre) {
+    public Categories(int id, List<String> genre) {
         this.id = id;
         this.genre = genre;
     }
 
-    public Categorie(int id, List<String> genre, List<Jeu> jeux) {
+    public Categories(int id, List<String> genre, List<Jeu> jeux) {
         this.id = id;
         this.genre = genre;
         this.jeux = jeux;

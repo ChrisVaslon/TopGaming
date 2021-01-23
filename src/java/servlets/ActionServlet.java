@@ -1,24 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Auteur: Djouela
+Date de création: 23/01/2021
  */
 package servlets;
 
+import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import traitements.GestionJeu;
 
-/**
- *
- * @author thula
- */
-@WebServlet(name = "EspacePersonnel", urlPatterns = {"/espace-personnel"})
-public class EspacePersonnel extends HttpServlet {
+
+@WebServlet(name = "ActionServlet", urlPatterns = {"/vers-action"})
+public class ActionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,9 +34,32 @@ public class EspacePersonnel extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String urlJSP = "/WEB-INF/espace-personnel.jsp";
+         HttpSession session = request.getSession();
+       
+       String urlJSP = "/WEB-INF/categorie/action.jsp";
+       
+       
+       if(getServletContext().getAttribute("gestionJeu") == null){ 
+                
+                getServletContext().setAttribute("gestionJeu", new GestionJeu()); 
+            }
+       
+       GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+        try{
+        List<Jeu> categorie1 = gestionJeu.selectAllJeuxByGenre("Action");
+
+
         
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+          request.setAttribute("categories", categorie1);
+        
+        } catch(SQLException ex){
+            
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
+        }
+       
+       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -19,11 +19,11 @@ public class MaConnexionBDD {
 
     public MaConnexionBDD() {
         user = "root";
-        mdp = "Gappy2012";
+        mdp = "root";
         url = "jdbc:mysql://localhost:3306/top_gaming?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); //chargement de la classe du driver
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MaConnexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -37,7 +37,6 @@ public class MaConnexionBDD {
         this.user = user;
         this.mdp = mdp;
         this.url = url;
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         } catch (ClassNotFoundException ex) {
@@ -73,11 +72,9 @@ public class MaConnexionBDD {
         this.url = url;
     }
     
-    
     public Connection getConnection() throws SQLException{
-        Connection cnn = DriverManager.getConnection(user, mdp, url);
+        Connection cnn = DriverManager.getConnection(url, user, mdp);
         return cnn;
-        
     }
 
 }

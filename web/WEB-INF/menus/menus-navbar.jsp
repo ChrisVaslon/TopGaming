@@ -24,9 +24,9 @@
                         Catégories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Aventure</a>
-                          <a class="dropdown-item" href="#">Sport</a>
+                        <a class="dropdown-item" href="vers-action">Action</a>
+                        <a class="dropdown-item" href="vers-aventure">Aventure</a>
+                          <a class="dropdown-item" href="vers-sport">Sport</a>
                         <a class="dropdown-item" href="#">Course</a>
                        
                         <div class="dropdown-divider"></div>                     

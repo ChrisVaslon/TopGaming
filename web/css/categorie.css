@@ -1,0 +1,22 @@
+
+
+/* 
+    Created on : 22 janv. 2021, 15:55:12
+    Author     : Djouela
+*/
+
+body {
+    background: #654ea3;
+    background-color: #055c58;
+    min-height: 100vh;
+    color: black;
+}
+
+h1{
+    color: white;
+}
+
+footer{
+    background-color: black; 
+    
+}

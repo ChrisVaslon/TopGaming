@@ -53,15 +53,6 @@ public class InscriptionSiteServlet extends HttpServlet {
         String prenom = request.getParameter("Prenom");
         //prenom = prenom.trim();
         
-        String dateNaissance = request.getParameter("DateNaissance");
-        Date dateNaissance2 = null;
-        try {
-            dateNaissance2 = new SimpleDateFormat("dd/MM/yyyy").parse(dateNaissance);
-        } catch (ParseException ex) {
-            Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        
         String mail = request.getParameter("Mail");
         //mail = mail.trim();
         String mdp = request.getParameter("pwd");
@@ -74,17 +65,32 @@ public class InscriptionSiteServlet extends HttpServlet {
 
         String cp = request.getParameter("Cp");
         //cp = cp.trim();
-
+       
         int tel = Integer.parseInt(request.getParameter("Tel"));
 
-
+        String dateNaissance = request.getParameter("dateNaissance");
+        Date dateNaissance2 = null;
+        try {
+            dateNaissance2 = new SimpleDateFormat("yyyy-MM-dd").parse(dateNaissance);
+        } catch (ParseException ex) {
+            Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("-------------");
+        System.out.println(request.getParameter("dateNaissance"));
+        System.out.println(request.getParameter("dateNaissance2"));
+                
         if (getServletContext().getAttribute("gestionMembre") == null) {
             getServletContext().setAttribute("gestionMembre", new GestionMembre()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
         }
         GestionMembre gtMembre = (GestionMembre) getServletContext().getAttribute("gestionMembre");
        
         try {
-            gtMembre.creerNouveauMembre(pseudo, nom, prenom, dateNaissance2, mail, mdp, rue, ville, cp, tel);
+            Date date = new Date();
+            System.out.println("------ TEST 1 ------");
+              System.out.println(date);
+            gtMembre.creerNouveauMembre(pseudo, nom, prenom, new Date(), dateNaissance2, mail, mdp, rue, ville, cp, tel);
+            System.out.println(date);
             
         } catch (SQLException ex) {
             Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);

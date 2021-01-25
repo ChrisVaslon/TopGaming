@@ -16,10 +16,12 @@ public class GestionMembre {
        membreDao = new MembreDao();
     }
 
-    public void creerNouveauMembre(String pseudo, String nom, String prenom, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel) throws SQLException {
+    public void creerNouveauMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel) throws SQLException {
 
        
-    membreDao.InsertClient(pseudo, nom, prenom, dateNaissance, mail, mdp, rue, ville, cp, tel);
+        System.out.println("1");
+    membreDao.InsertMembre(pseudo, nom, prenom, dateCreationProfil, dateNaissance, mail, mdp, rue, ville, cp, tel);
+    System.out.println("2");
 
     }
 }

@@ -33,7 +33,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="vers-contact">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">

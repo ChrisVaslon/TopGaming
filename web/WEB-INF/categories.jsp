@@ -37,9 +37,9 @@
 
                 <c:forEach items="${requestScope.categories}" var="jeu">
                     <div class="card mb-4" style="min-width:18rem; max-width:18rem;">
-                        <a href='vers-jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
+                        <a href='jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
                         <div class="card-body">
-                            <h1 class="h3"><a href='vers-jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
+                            <h1 class="h3"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
                             <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
 
@@ -50,7 +50,7 @@
 
 
                             <p class="prixttc">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> £</p> 
-                            <a href='vers-panier?operation=ajouter&ean=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                            <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
 
                         </div>
                     </div>

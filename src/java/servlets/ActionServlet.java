@@ -5,8 +5,7 @@ Date de création: 23/01/2021
 package servlets;
 
 import entites.Jeu;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.IOException; 
 import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;

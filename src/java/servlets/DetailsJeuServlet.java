@@ -1,20 +1,26 @@
- 
 package servlets;
 
+import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import traitements.GestionJeu;
 
 /**
  *
  * @author Ousseynou
  */
 @WebServlet(name = "detailsCatalogueServlet", urlPatterns = {"/details"})
-public class DetailsCatalogueServlet extends HttpServlet {
+public class DetailsJeuServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,13 +34,24 @@ public class DetailsCatalogueServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.setCharacterEncoding("UTF-8");
-         
-         String urlJSP = "/WEB-INF/details_catalogue.jsp";
-    
-         
-         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-    
+        request.setCharacterEncoding("UTF-8");
+
+        String urlJSP = "/WEB-INF/details-jeu.jsp";
+
+        if (getServletContext().getAttribute("gestionJeu") == null) {
+            getServletContext().setAttribute("gestionJeu", new GestionJeu());
+        }
+        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+
+        try {
+            List<Jeu> jeu = gestionJeu.selectAllJeux();
+            request.setAttribute("jeu", jeu);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailsJeuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : panier
-    Created on : 19 janv. 2021, 19:20:51
-    Author     : Ousseynou
+    Document   : interface_admin
+    Created on : 21 janv. 2021, 15:25:31
+    Author     : thula
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,7 +17,7 @@
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
             />
-        <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="css/espace.css" rel="stylesheet" type="text/css"/>
 
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <title>Détails Catalogue</title>
@@ -27,13 +27,30 @@
         <c:import url="WEB-INF/menus/menus-navbar.jsp" />
         <div class="container">
 
-        <h1>Votre Panier !</h1>
-    
-        
-        
+            <div class="row py-5 px-4">
+                <div class="col-md-4 mx-auto">
+                    <!-- Profile widget -->
+                    <div class="bg-white shadow rounded overflow-hidden">
+
+
+                        <div class="px-4 py-3">
+                            
+                            <div class="p-4 rounded shadow-sm bg-light">
+                                <p class="font-italic mb-0 ">
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="py-4 px-4">
+             
               
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <c:import url="WEB-INF/menus/menus-footer.jsp" />
-    
+
     </body>
 </html>
+

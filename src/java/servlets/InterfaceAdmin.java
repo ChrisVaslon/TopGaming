@@ -1,6 +1,7 @@
-/**
- *
- * @author Ousseynou
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package servlets;
 
@@ -12,9 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet(name = "PanierServlet", urlPatterns = {"/panier"})
-public class PanierServlet extends HttpServlet {
+/**
+ *
+ * @author thula
+ */
+@WebServlet(name = "InterfaceAdmin", urlPatterns = {"/interface-admin"})
+public class InterfaceAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,9 +33,8 @@ public class PanierServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String urlJSP = "/WEB-INF/panier.jsp";
-        
-        
+        String urlJSP = "/WEB-INF/interface_admin.jsp";
+
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 

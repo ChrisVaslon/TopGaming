@@ -19,7 +19,7 @@ public class MaConnexionBDD {
 
     public MaConnexionBDD() {
         user = "root";
-        mdp = "root";
+        mdp = "Gappy2012";
         url = "jdbc:mysql://localhost:3306/top_gaming?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
 
 

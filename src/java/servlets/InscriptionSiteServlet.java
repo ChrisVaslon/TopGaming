@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import outils.CustomedException;
 import traitements.GestionMembre;
 
 /**
@@ -52,7 +53,7 @@ public class InscriptionSiteServlet extends HttpServlet {
         //nom = nom.trim();
         String prenom = request.getParameter("Prenom");
         //prenom = prenom.trim();
-        
+
         String mail = request.getParameter("Mail");
         //mail = mail.trim();
         String mdp = request.getParameter("pwd");
@@ -65,8 +66,16 @@ public class InscriptionSiteServlet extends HttpServlet {
 
         String cp = request.getParameter("Cp");
         //cp = cp.trim();
-       
-        int tel = Integer.parseInt(request.getParameter("Tel"));
+
+        int tel =0;
+        try {
+            tel = Integer.parseInt(request.getParameter("Tel"));
+        } catch (NumberFormatException e) {
+            System.out.println("Erreur tel console");
+            e.printStackTrace();
+            
+            urlJSP = "/WEB-INF/inscription.jsp";
+        }
 
         String dateNaissance = request.getParameter("dateNaissance");
         Date dateNaissance2 = null;
@@ -75,30 +84,50 @@ public class InscriptionSiteServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        System.out.println("-------------");
-        System.out.println(request.getParameter("dateNaissance"));
-        System.out.println(request.getParameter("dateNaissance2"));
-                
+
         if (getServletContext().getAttribute("gestionMembre") == null) {
             getServletContext().setAttribute("gestionMembre", new GestionMembre()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
         }
         GestionMembre gtMembre = (GestionMembre) getServletContext().getAttribute("gestionMembre");
-       
+
         try {
             Date date = new Date();
             System.out.println("------ TEST 1 ------");
-              System.out.println(date);
+            System.out.println(date);
             gtMembre.creerNouveauMembre(pseudo, nom, prenom, new Date(), dateNaissance2, mail, mdp, rue, ville, cp, tel);
             System.out.println(date);
-            
+        } catch (CustomedException ex) {
+            //message erreur
+            HashMap<String, String> erreurs = ex.getErreurs();
+            String message = ex.getMessage();
+            request.setAttribute("errMail", erreurs.get("errMail"));
+            request.setAttribute("errPseudo", erreurs.get("errPseudo"));
+            request.setAttribute("errTel", erreurs.get("errTel"));
+            request.setAttribute("msg", message);
+
+            request.setAttribute("Pseudo", pseudo);
+            request.setAttribute("Nom", nom);
+            request.setAttribute("Prenom", prenom);
+            request.setAttribute("dateNaissance2", dateNaissance2);
+            request.setAttribute("Mail", mail);
+            request.setAttribute("pwd", mdp);
+            request.setAttribute("Rue", rue);
+            request.setAttribute("Ville", ville);
+            request.setAttribute("Cp", cp);
+            request.setAttribute("Tel", request.getParameter("Tel"));
+
+            urlJSP = "/WEB-INF/inscription.jsp";
+
+        } catch (NullPointerException pointer) {
+            urlJSP = "/WEB-INF/inscription.jsp";
         } catch (SQLException ex) {
             Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-            request.setAttribute("msgSuccess", "Inscription reussi");
 
- 
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+        request.setAttribute("msgSuccess", "Inscription reussi");
+
+        getServletContext()
+                .getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

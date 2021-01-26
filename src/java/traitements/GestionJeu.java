@@ -7,7 +7,7 @@ package traitements;
 import dao.JeuDao;
 import entites.Categories;
 import entites.Jeu;
-import java.sql.SQLException;
+import java.sql.SQLException; 
 import java.text.ParseException;
 import java.util.List;
 
@@ -29,14 +29,13 @@ public class GestionJeu {
         return jeuDao.selectAllJeuxbyGenre(genre);
 
     }
+
     
-    
-    
-    
-     public Jeu selectJeuById(int id) throws SQLException, ParseException {
- 
-            return jeuDao.selectJeuById(id);
-         
+    public Jeu selectJeuById(int id) throws SQLException, ParseException{
+          
+              return jeuDao.selectJeuById(id);
+        
+              
     }
 
 }

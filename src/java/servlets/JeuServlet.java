@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package servlets;
 
 import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import traitements.GestionJeu;
 
-/*
-Auteur: Djouela
-Date de création: 22/01/2021
+/**
+ *
+ * @author Utilisateur
  */
-@WebServlet(name = "CategoriesServlet", urlPatterns = {"/vers-categories"})
-public class CategoriesServlet extends HttpServlet {
+@WebServlet(name = "JeuServlet", urlPatterns = {"/jeu"})
+public class JeuServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,45 +39,38 @@ public class CategoriesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.setCharacterEncoding("UTF-8");
-         HttpSession session = request.getSession();
-       
-       String urlJSP = "/WEB-INF/categories.jsp";
-       
-       
-       if(getServletContext().getAttribute("gestionJeu") == null){ 
-                
-                getServletContext().setAttribute("gestionJeu", new GestionJeu()); 
-            }
-       
-       GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
-        try{
-        List<Jeu> categories = gestionJeu.selectAllJeux();
-//        List<Jeu> categorie2 = gestionJeu.selectAllJeuxByGenre("Aventure");
-//        List<Jeu> categorie3 = gestionJeu.selectAllJeuxByGenre("Sport");
-//        List<Jeu> categorie4 = gestionJeu.selectAllJeuxByGenre("Course");
-////     List<Jeu> categories = gestionJeu.selectAllJeux();
-//        
-//        
-//       
-//        request.setAttribute("categories", categories); 
-//        } catch(SQLException ex){
-//            // to do
-//            System.out.println("erreur categories : " +ex.getMessage());
-//            ex.printStackTrace();
-//        }
+         
+             request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
         
-          request.setAttribute("categories", categories);
-//          request.setAttribute("categories", categorie2);
-//          request.setAttribute("categories", categorie3);
-//          request.setAttribute("categories", categorie4);
-        } catch(SQLException ex){
-            // to do
-            System.out.println("erreur categories : " +ex.getMessage());
-            ex.printStackTrace();
+        String urlJSP = "/WEB-INF/details-jeu.jsp";
+
+            String idParametre = request.getParameter("id");
+            int id = Integer.parseInt(idParametre);
+        
+        if (getServletContext().getAttribute("gestionJeu") == null) {
+            getServletContext().setAttribute("gestionJeu", new GestionJeu());
         }
-       
-       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+ 
+        
+            
+        try {
+          Jeu jeu = gestionJeu.selectJeuById(id);
+            request.setAttribute("jeu", jeu);
+        } catch (SQLException ex) {
+            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+
+        
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

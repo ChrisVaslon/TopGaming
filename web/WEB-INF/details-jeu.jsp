@@ -31,10 +31,10 @@
             <h1>Détails Du Jeu !</h1>
 
 
-            <c:if test="${empty requestScope.categories}">
+            <c:if test="${empty requestScope.jeu}">
                 <p> Jeu introuvable </p>
             </c:if>
-            <c:if test="${not empty requestScope.categories}">
+            <c:if test="${not empty requestScope.jeu}">
                 <img  src='images/jeux-accueil/<c:out value="${requestScope.jeu.image}" />' 
                       alt='couverture <c:out value="${requestScope.jeu.nom}" />'>
                 <br>
@@ -44,16 +44,7 @@
                 <p> PrixHT : <c:out value="${requestScope.jeu.prixHT}" /> </p>
 
                 <p> PrixTTC : <c:out value="${requestScope.jeu.prixTTC}" /> </p>
-
-
-
             </c:if>
-
-
-
-
-
-
 
 
         </div>

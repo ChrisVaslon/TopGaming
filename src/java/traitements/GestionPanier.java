@@ -5,8 +5,7 @@
  */
 package traitements;
 
-import dao.JeuDao;
-import entites.Jeu;
+import dao.JeuDao; 
 import entites.LigneCommande;
 import java.sql.SQLException;
 import java.text.ParseException;

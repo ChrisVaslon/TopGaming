@@ -51,7 +51,7 @@ public class AccueilServlet extends HttpServlet {
           
         try {
           List<Jeu> jeu = gestionJeu.selectAllJeux();
-            request.setAttribute("catalogue", jeu);
+            request.setAttribute("jeu", jeu);
         } catch (SQLException ex) {
             Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

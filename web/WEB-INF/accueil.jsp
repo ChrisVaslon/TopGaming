@@ -18,7 +18,7 @@
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
             />
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
-        <link href="css/categorie.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
         <!-- <link href="css/style.css" rel="stylesheet" type="text/css"/> -->
         <title>Accueil</title>

@@ -70,9 +70,7 @@ public class PanierServlet extends HttpServlet {
        if("enlever".equals(operation)){
            // TO DO
        }
-        
-       
-       
+         
        response.sendRedirect("accueil");
     }
 

@@ -43,8 +43,8 @@
                 <c:forEach items="${requestScope.jeu}" var="jeu">
                     <div class="swiper-slide div-slide">
                         <a href='jeu?id=<c:out value="${jeu.id}"/>'>                            
-                         <img class="d-block h-100 w-100" src='images/slide-accueil/<c:out value="${jeu.image}" />' alt='<c:out value="${jeu.nom}" />'>
-                        
+                            <img class="d-block h-100 w-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='<c:out value="${jeu.nom}" />'>
+
                         </a>                       
                     </div>
                 </c:forEach>
@@ -54,45 +54,29 @@
         </div>       
 
 
-        <div class="container ">
-            <c:forEach items="${requestScope.categories}" var="jeu">
-                <div class="card mb-4" style="min-width:18rem; max-width:18rem;">
-                    <a href='vers-jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
-                    <div class="card-body">
-                        <h1 class="h3"><a href='vers-jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
+        <div class="container">
+            <div class="row">
+        
+                <c:forEach items="${requestScope.jeu}" var="jeu">    
+                    <div class=col-lg-4>
+                    <div class="card mb-2">
+                        <a href='jeu?id=<c:out value="${jeu.id}"/>'>
+                            <img class="card-img-top w-100 h-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
+                        <div class="card-body">
+                            <h1 class="h5"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
+                            <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
+                            <a class="btn btn-primary"
+                                href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
 
-                        <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
-
-
-
-                        <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
-
-
-
-                        <p class="prixttc">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> £</p> 
-                        <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
-
-                    </div>
-                </div>
-            </c:forEach>
-
-
-
-
-
+                        </div>
+                    </div> </div>
+                </c:forEach>
+                   
+            </div>
         </div> 
-
-
-
-
-
-
         <!-- Site footer -->
         <c:import url="WEB-INF/menus/menus-footer.jsp" />
-
-
-
-
 
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 

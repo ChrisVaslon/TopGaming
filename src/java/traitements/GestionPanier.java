@@ -5,7 +5,8 @@
  */
 package traitements;
 
-import dao.JeuDao; 
+import dao.JeuDao;
+import entites.Jeu;
 import entites.LigneCommande;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -26,15 +27,23 @@ public class GestionPanier {
 
     public void addJeu(Integer id) throws SQLException, ParseException {
 
-        if (id == null ) {
+        if (id == null) {
             return;
-        }      
+        }
         if (panier.containsKey(id)) {
             LigneCommande jeu = panier.get(id);
             int newQuantite = jeu.getQuantite() + 1;
             jeu.setQuantite(newQuantite);
-        }  
+        } else {
+            // aller chercher le livre dans la BDD
+            // et inserrer une nouvelle ligne de commande dans le panier
+            Jeu jeu = this.jeuDao.selectJeuById(id);
+            if (jeu != null) {
+                LigneCommande lc = new LigneCommande(jeu);
+                panier.put(id, lc);
+            }
 
+        }
     }
 
     public void viderPanier() {
@@ -49,8 +58,8 @@ public class GestionPanier {
     public int CompteArticles() {
         int somme = 0;
         Collection<LigneCommande> lignes = this.getAllLignesPanier();
-        for (LigneCommande jeu : lignes) {
-            somme += jeu.getQuantite();
+        for (LigneCommande lc : lignes) {
+            somme += lc.getQuantite();
         }
 
         return somme;

@@ -6,13 +6,20 @@
 
 package servlets;
 
+import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import traitements.GestionJeu;
 
 @WebServlet(name = "Accueil", urlPatterns = {"/accueil"})
 public class AccueilServlet extends HttpServlet {
@@ -28,11 +35,34 @@ public class AccueilServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-         
-     
+        response.setContentType("text/html;charset=UTF-8");        
         request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+         
         String urlJSP = "/WEB-INF/accueil.jsp";
+        
+        
+        // TODO : recuperer les livres
+        if (getServletContext().getAttribute("gestionJeu") == null) {
+            getServletContext().setAttribute("gestionJeu", new GestionJeu());
+        }
+        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+
+          
+        try {
+          List<Jeu> jeu = gestionJeu.selectAllJeux();
+            request.setAttribute("jeu", jeu);
+        } catch (SQLException ex) {
+            Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+           
+           
+           
+        
+        
+        
+        
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
         

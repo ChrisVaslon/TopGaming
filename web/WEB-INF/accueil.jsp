@@ -18,9 +18,9 @@
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
             />
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
-           <link href="css/categorie.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
-       <!-- <link href="css/style.css" rel="stylesheet" type="text/css"/> -->
+        <!-- <link href="css/style.css" rel="stylesheet" type="text/css"/> -->
         <title>Accueil</title>
     </head> 
     <body>
@@ -40,113 +40,43 @@
 
         <div class="swiper-container container my-5" >
             <div class="swiper-wrapper">
-                <div class="swiper-slide div-slide">
-                    <img class="d-block h-100 w-100  " src="images/slide-accueil/amongus.jpg" alt="First slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/slide-accueil/mine.jpg" alt="Second slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/slide-accueil/mine.jpg" alt="Second slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100 " src="images/slide-accueil/amongus.jpg" alt="First slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100  " src="images/slide-accueil/acval.jpg" alt="Third slide">
-                </div>
-                <div class="swiper-slide">
-                    <img class="d-block h-100 w-100 " src="images/slide-accueil/acval.jpg" alt="Third slide">
+                <c:forEach items="${requestScope.jeu}" var="jeu">
+                    <div class="swiper-slide div-slide">
+                        <a href='jeu?id=<c:out value="${jeu.id}"/>'>                            
+                            <img class="d-block h-100 w-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='<c:out value="${jeu.nom}" />'>
 
-                </div>
+                        </a>                       
+                    </div>
+                </c:forEach>
+
             </div>
 
         </div>       
 
-        <!--
-              <div class="container ">
-                  <div class="row">
-                      <div class="col-12 col-sm-6 col-md-4 my-3">
-                          <div class="card h-100">
-                              <img class="img-fluid img-thumbnail" src="images/images.jpeg" alt="Card image cap"/>
-                              <div class="card-body">
-                                  <h5 class="card-title">Among us</h5>
-                                  <p class="card-text">3.99€</p>
-                                  <a href="#" class="btn btn-dark">Acheter</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-12 col-sm-6 col-md-4 my-3">
-                          <div class="card h-100">
-                              <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
-                              <div class="card-body">
-                                  <h5 class="card-title">Minecraft</h5>
-                                  <p class="card-text">16.99€</p>
-                                  <a href="#" class="btn btn-dark">Acheter</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-12 col-sm-6 col-md-4 my-3">
-                          <div class="card h-100">
-                              <img class=" img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
-                              <div class="card-body">
-                                  <h5 class="card-title">Assassin's reed valhalla</h5>
-                                  <p class="card-text">59.99€</p>
-                                  <a href="#" class="btn btn-dark">Acheter</a>
-                              </div>
-                          </div>   
-                      </div>
-      
-                      <div class="col-12 col-sm-6 col-md-4 my-3">
-                          <div class="card h-100">
-                              <img class="img-fluid img-thumbnail" src="images/amongus.jpg" alt="Card image cap">
-                              <div class="card-body">
-                                  <h5 class="card-title">Among us</h5>
-                                  <p class="card-text">3.99€</p>
-                                  <a href="#" class="btn btn-dark">Acheter</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-12 col-sm-6 col-md-4 my-3">
-                          <div class="card h-100">
-                              <img class="img-fluid img-thumbnail" src="images/mine.jpg" alt="Card image cap">
-                              <div class="card-body">
-                                  <h5 class="card-title">Minecraft</h5>
-                                  <p class="card-text">16.99€</p>
-                                  <a href="#" class="btn btn-dark">Acheter</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-12 col-sm-6 col-md-4 my-3">
-                          <div class="card h-100">
-                              <img class="img-fluid img-thumbnail" src="images/acval.jpg" alt="Card image cap">
-                              <div class="card-body">
-                                  <h5 class="card-title">Assassin's reed valhalla</h5>
-                                  <p class="card-text">59.99€</p>
-                                  <a href="#" class="btn btn-dark">Acheter</a>
-                              </div>
-                          </div>   
-                      </div>
-                  </div>  
-              </div> 
-        -->
 
-       
+        <div class="container">
+            <div class="row">
+        
+                <c:forEach items="${requestScope.jeu}" var="jeu">    
+                    <div class=col-lg-4>
+                    <div class="card mb-2">
+                        <a href='jeu?id=<c:out value="${jeu.id}"/>'>
+                            <img class="card-img-top w-100 h-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
+                        <div class="card-body">
+                            <h1 class="h5"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
+                            <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
+                            <a class="btn btn-primary"
+                                href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
 
-
-
+                        </div>
+                    </div> </div>
+                </c:forEach>
+                   
+            </div>
+        </div> 
         <!-- Site footer -->
         <c:import url="WEB-INF/menus/menus-footer.jsp" />
-
-
-
-
 
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 

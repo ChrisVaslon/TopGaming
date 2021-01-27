@@ -1,7 +1,6 @@
 
 package entites;
-
-import java.util.List;
+ 
 
 /*
 Auteur: Djouela
@@ -14,6 +13,7 @@ public class Jeu {
     private float prixHT;
     private String editeur;
     private String image;
+    private String description;
     
     
     private TVA tva;
@@ -27,20 +27,22 @@ public class Jeu {
     public Jeu() {
     }
 
-    public Jeu(int id, String nom, float prixHT, String editeur, String image) {
+    public Jeu(int id, String nom, float prixHT, String editeur, String image, String description) {
         this.id = id;
         this.nom = nom;
         this.prixHT = prixHT;
         this.editeur = editeur;
         this.image = image;
+        this.description = description;
     }
 
-    public Jeu(int id, String nom, float prixHT, String editeur, String image, TVA tva, Categories categorie) {
+    public Jeu(int id, String nom, float prixHT, String editeur, String image, String description, TVA tva, Categories categorie) {
         this.id = id;
         this.nom = nom;
         this.prixHT = prixHT;
         this.editeur = editeur;
         this.image = image;
+        this.description = description;
         this.tva = tva;
         this.categorie = categorie;
     }
@@ -85,6 +87,14 @@ public class Jeu {
         this.image = image;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public TVA getTva() {
         return tva;
     }
@@ -100,16 +110,17 @@ public class Jeu {
     public void setCategorie(Categories categorie) {
         this.categorie = categorie;
     }
-
+      
      public float getPrixTTC(){
         return prixHT  + prixHT*(tva.getMontant()/100);
-    }
+    } 
+
     @Override
     public String toString() {
-        return "Jeu{" + "id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + '}';
+        return "Jeu{" + "id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", editeur=" + editeur + ", image=" + image + ", description=" + description + ", tva=" + tva + ", categorie=" + categorie + '}';
     }
 
     
-    
+ 
     
 }

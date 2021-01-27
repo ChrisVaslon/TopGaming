@@ -21,14 +21,14 @@
 
 
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
-        <link href="css/categorie.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
 
 
     </head> 
     <body>
 
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
+  <c:import url="/menu-main" />
 
         <!-- content -->
         <div class="container-fluid justify-content-center mt-4">

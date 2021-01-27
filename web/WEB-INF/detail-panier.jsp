@@ -3,7 +3,7 @@
     Created on : 21 janv. 2021, 16:04:17
     Author     : Ousseynou
 --%>
- 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 
-      
+
         <link
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -26,7 +26,7 @@
     </head> 
     <body>
 
-  <c:import url="/menu-main" />
+        <c:import url="/menu-main" />
 
 
         <div class="container mt-4">
@@ -40,21 +40,19 @@
             <h1>Votre panier</h1>
             <table border='1'>
                 <thead>
-                    <tr>
-                        <th>EAN </th>
+                    <tr> 
                         <th>titre</th>
-                        <th>prix TTC / unité</th>
-                        <th>qte</th>
+                        <th>prix HT</th>
+                        <th>Quantité</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <c:forEach items="${requestScope.lignes}" var="ligne">
-                        <tr>
-                            <td><c:out value="${ligne.livre.ean}" /> </td> 
-                            <td><c:out value="${ligne.livre.titre}" /> </td> 
-                            <td><c:out value="${ligne.livre.prixTTC}" /> </td>
-                            <td><c:out value="${ligne.qte}" /> </td> 
+                        <tr>                     
+                            <td><c:out value="${ligne.jeu.nom}" /> </td> 
+                            <td><c:out value="${ligne.jeu.prixHT}" /> </td>
+                            <td><c:out value="${ligne.quantite}" /> </td> 
                         </tr>    
                     </c:forEach>
 

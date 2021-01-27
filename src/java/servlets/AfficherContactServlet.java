@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author djtew
  */
-@WebServlet(name = "ContactServlet", urlPatterns = {"/contact"})
-public class ContactServlet extends HttpServlet {
+@WebServlet(name = "AfficherContactServlet", urlPatterns = {"/vers-contact"})
+public class AfficherContactServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,8 +32,11 @@ public class ContactServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-     request.setCharacterEncoding("UTF-8");
-     
+        request.setCharacterEncoding("UTF-8");
+        
+        String urlJSP = "/WEB-INF/contact.jsp";
+        
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

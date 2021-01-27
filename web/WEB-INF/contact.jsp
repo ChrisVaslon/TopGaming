@@ -27,8 +27,7 @@
 
     </head> 
     <body>
-
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
+<c:import url="/menu-main" />
 
 
     <div class="container mt-4">

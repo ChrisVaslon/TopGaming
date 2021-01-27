@@ -27,7 +27,7 @@
                         <a class="dropdown-item" href="vers-action">Action</a>
                         <a class="dropdown-item" href="vers-aventure">Aventure</a>
                           <a class="dropdown-item" href="vers-sport">Sport</a>
-                        <a class="dropdown-item" href="vers-categories">Course</a>
+                        <a class="dropdown-item" href="#">Course</a>
                        
                         <div class="dropdown-divider"></div>                     
                     </div>

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -50,20 +51,7 @@ public class CategoriesServlet extends HttpServlet {
        
        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
         try{
-        List<Jeu> categories = gestionJeu.selectAllJeux();
-//        List<Jeu> categorie2 = gestionJeu.selectAllJeuxByGenre("Aventure");
-//        List<Jeu> categorie3 = gestionJeu.selectAllJeuxByGenre("Sport");
-//        List<Jeu> categorie4 = gestionJeu.selectAllJeuxByGenre("Course");
-////     List<Jeu> categories = gestionJeu.selectAllJeux();
-//        
-//        
-//       
-//        request.setAttribute("categories", categories); 
-//        } catch(SQLException ex){
-//            // to do
-//            System.out.println("erreur categories : " +ex.getMessage());
-//            ex.printStackTrace();
-//        }
+        List<Jeu> categories = gestionJeu.selectAllJeux(); 
         
           request.setAttribute("categories", categories);
 //          request.setAttribute("categories", categorie2);
@@ -117,4 +105,4 @@ public class CategoriesServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}
+}  

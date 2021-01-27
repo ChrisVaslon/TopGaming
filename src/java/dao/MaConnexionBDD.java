@@ -19,8 +19,9 @@ public class MaConnexionBDD {
 
     public MaConnexionBDD() {
         user = "root";
-        mdp = "root";
+        mdp = "Gappy2012";
         url = "jdbc:mysql://localhost:3306/top_gaming?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
+
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); //chargement de la classe du driver
@@ -31,6 +32,7 @@ public class MaConnexionBDD {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(MaConnexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
+         System.out.println("--------TRYCATCH DEF--------");
     }
 
     public MaConnexionBDD(String user, String mdp, String url) {
@@ -46,6 +48,7 @@ public class MaConnexionBDD {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(MaConnexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
+         System.out.println("--------TRYCATCH PAS DEF--------");
     }
 
     public String getUser() {

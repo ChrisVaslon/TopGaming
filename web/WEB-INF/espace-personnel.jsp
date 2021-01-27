@@ -40,7 +40,7 @@
                         <div class="px-4 pt-0 pb-4 cover">
                             <div class="media align-items-end profile-head">
                                 <div class="profile mr-3"><img src="images/espace-perso/mob.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
-                                    <a href="interface-admin" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                                    <a href="interface-admin" class="btn btn-outline-dark btn-sm btn-block">Modifier le profile</a>
                                 </div>
                                 <div class="media-body mb-5 text-white">
                                     <h4 class="mt-0 mb-0">Pseudo</h4>

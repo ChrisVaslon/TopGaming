@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author djtew
+ * @author Win 7
  */
-@WebServlet(name = "ContactServlet", urlPatterns = {"/contact"})
-public class ContactServlet extends HttpServlet {
+@WebServlet(name = "AfficherConnexionServlet", urlPatterns = {"/connexion"})
+public class AfficherConnexionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +31,14 @@ public class ContactServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-     request.setCharacterEncoding("UTF-8");
+         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        //HttpSession session = request.getSession();
+        
+        String urlJSP = "/WEB-INF/connexion.jsp";
+        
+  
+          getServletContext().getRequestDispatcher(urlJSP).include(request, response);
      
     }
 

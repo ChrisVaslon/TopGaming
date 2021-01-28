@@ -126,8 +126,7 @@ public class InscriptionSiteServlet extends HttpServlet {
 
         request.setAttribute("msgSuccess", "Inscription reussi");
 
-        getServletContext()
-                .getRequestDispatcher(urlJSP).include(request, response);
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

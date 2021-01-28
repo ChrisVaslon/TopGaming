@@ -37,6 +37,7 @@ public class AfficherConnexionServlet extends HttpServlet {
         
         String urlJSP = "/WEB-INF/connexion.jsp";
         
+        
   
           getServletContext().getRequestDispatcher(urlJSP).include(request, response);
      

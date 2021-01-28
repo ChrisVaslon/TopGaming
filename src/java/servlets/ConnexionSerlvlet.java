@@ -1,16 +1,16 @@
-/**
- *
- * @author Ousseynou
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package servlets;
 
-import dao.MembreDao;
-import entites.Jeu;
 import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,10 +20,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import traitements.GestionJeu;
+import traitements.GestionMembre;
 
-@WebServlet(name = "Accueil", urlPatterns = {"/accueil"})
-public class AccueilServlet extends HttpServlet {
+/**
+ *
+ * @author Win 7
+ */
+@WebServlet(name = "ConnexionSerlvlet", urlPatterns = {"/connexion-valider"})
+public class ConnexionSerlvlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,39 +44,41 @@ public class AccueilServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
 
+        String pseudo = request.getParameter("Pseudo");
+        String pwd = request.getParameter("Pwd");
+
+        String[] res = request.getParameterValues("resterCo");
+        System.out.println(res[0]);
+       
+        String on = "on";
+        if (getServletContext().getAttribute("gestionMembre") == null) {
+            getServletContext().setAttribute("gestionMembre", new GestionMembre()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
+        }
+        GestionMembre gtMembre = (GestionMembre) getServletContext().getAttribute("gestionMembre");
+
         String urlJSP = "/WEB-INF/accueil.jsp";
 
-        // TODO : recuperer les livres
-        if (getServletContext().getAttribute("gestionJeu") == null) {
-            getServletContext().setAttribute("gestionJeu", new GestionJeu());
-        }
-        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
-
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {               
-                MembreDao mbDao = new MembreDao();
-                if(cookie.getName().equals("ResterConnecte")){
-                    try {
-                        String userChaineAleatoire = cookie.getValue();
-                        Membre user = mbDao.CreerMembreAvecChaineAleatoire(userChaineAleatoire);
-                        session.setAttribute("user", user);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        }
-        
         try {
-            List<Jeu> jeu = gestionJeu.selectAllJeux();
-            request.setAttribute("jeu", jeu);
+            Membre user = gtMembre.SeConnecter(pseudo, pwd);
+            session.setAttribute("user", user);
+            session.setAttribute("connexionActive", res[0]);
+            if(res[0].equals(on)){
+                String chaineAleatoire = UUID.randomUUID().toString();
+                System.out.println("------------------");
+                System.out.println(chaineAleatoire);
+               System.out.println(user.getPseudo());
+                Cookie c01 = new Cookie("ResterConnecte", chaineAleatoire);
+                gtMembre.InsererChaineAleatoire(user.getPseudo(), chaineAleatoire);                     
+                c01.setMaxAge(60*60*24*15);
+                response.addCookie(c01);
+            }
+            System.out.println(user);
+            session.setAttribute("connecte", "Vous êtes connecté " + user.getPseudo());
         } catch (SQLException ex) {
-            Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionSerlvlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+       
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

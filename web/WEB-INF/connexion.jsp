@@ -45,9 +45,19 @@
 
                             <div class="form-group">
                                 <label for="inputPassword"> Mot de passe :</label>
-                                <input type="password" name ="pwd" required value='<c:out value ="${requestScope.pwd}"/>'class="form-control" id="inputPassword" placeholder="Password">
+                                <input type="password" name ="Pwd" required value='<c:out value ="${requestScope.pwd}"/>'class="form-control" id="inputPassword" placeholder="Password">
                             </div>
                         </div>
+                            
+                             <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" name="resterCo" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Rester Connecter
+                        </label>
+                    </div>
+                </div>
+                            
     <div class="form-group row justify-content-center mb-0">
                             <div class="col-md-12 px-3"> <input type="submit" value="Soumettre" class="btn btn-block rm-border"> </div>
                         </div>

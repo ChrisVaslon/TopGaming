@@ -30,35 +30,76 @@
 
 
         <div class="container mt-4">
-            <c:if test="${not empty requestScope.msgSuccess}">
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Félicitation!</strong>${requestScope.msgSuccess};
-                </div>
-            </c:if>
 
-            <h1>Votre panier</h1>
-            <table border='1'>
-                <thead>
-                    <tr> 
-                        <th>titre</th>
-                        <th>prix HT</th>
-                        <th>Quantité</th>
-                    </tr>
-                </thead>
-                <tbody>
 
+            <div class="col-md-12 col-lg-12 col-sm-12 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class=" "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Votre panier</font></font></span>
+                    <span class="badge bg-secondary rounded-pill"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${requestScope.qte}</font></font></span>
+                </h4>
+
+
+                <ul class="list-group mb-3">
+                    <div class="list-group-item d-flex justify-content-between bg-secondary">
+                        <div  class="col-lg-3" >
+                            <h6 class="my-0 ">Nom du produit</h6>
+                        </div>
+                        <div  class="col-lg-3 text-center" >
+                            <h6 class="my-0">Prix du produit(HT)</h6>
+                        </div>
+                        <div  class="col-lg-3 text-center" >
+
+                            <h6 class="my-0 "> Quantités  </h6>
+                        </div>
+                        <div  class="col-lg-3 text-center">
+
+                            <h6 class="my-0 "> Total  </h6>
+                        </div>
+
+
+                    </div>
                     <c:forEach items="${requestScope.lignes}" var="ligne">
-                        <tr>                     
-                            <td><c:out value="${ligne.jeu.nom}" /> </td> 
-                            <td><c:out value="${ligne.jeu.prixHT}" /> </td>
-                            <td><c:out value="${ligne.quantite}" /> </td> 
-                        </tr>    
+
+                        <li class="list-group-item d-flex justify-content-between lh-sm ">
+                            <div class="col-lg-3">
+                                <small class="text-muted"><font style="vertical-align: inherit;">
+                                    <td><c:out value="${ligne.jeu.nom}" /> </td> 
+                                    </font></font></small>
+                            </div>
+                            <div class="col-lg-3 text-center">   
+
+                                <span class="text-muted ">
+                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                    <c:out value="${ligne.jeu.prixHT}" /> € 
+                                    </font></font></span>
+                            </div>
+                            <div class="col-lg-3 text-center">   
+
+                                <span class="text-muted">
+                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                    <c:out value="${ligne.quantite}" />  
+                                    </font></font></span>
+                            </div>
+                                    <div class="col-lg-3 text-center">   
+
+                                <span class="text-muted">
+                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                    <c:out value="${ligne.quantite}" />  
+                                    </font></font></span>
+                            </div>
+                        </li>
                     </c:forEach>
+                    <li class="list-group-item d-flex justify-content-between text-dark">
+                        <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Total (EURO)</font></font></span>
+                        <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20 €</font></font></strong>
+                    </li>
+                </ul>
 
 
-                </tbody>
-            </table>
+            </div>
+
+
+
 
         </div>
 

@@ -28,32 +28,35 @@
     </head> 
     <body>
 
-       <c:import url="/menu-main" />
+        <c:import url="/menu-main" />
 
         <!-- content -->
-        <div class="container-fluid justify-content-center mt-4">
+        <div class="container ">
             <h1>Sport </h1>                            
-
-            <div class="card-deck justify-content-center mt-5">
+            <div class="row">
 
                 <c:forEach items="${requestScope.categories}" var="jeu">
-                    <div class="card mb-4" style="min-width:18rem; max-width:18rem;">
-                        <a href='vers-jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
-                        <div class="card-body">
-                            <h1 class="h3"><a href='vers-jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
+                    <div class="col-lg-4 ">
+                        <div class="card mb-3"  > 
 
-                            <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                            <a href='jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top w-100 h-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
+                            <div class="card-body">
+                                <h1 class="h6"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
-
-
-                            <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
+                                <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
 
 
 
-                            <p class="prixttc">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> £</p> 
-                            <a href='vers-panier?operation=ajouter&ean=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                                <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
-                        </div>
+
+
+                                <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
+                                <a class="btn btn-outline-primary"
+                                   href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+
+                            </div>
+                        </div> 
                     </div>
                 </c:forEach>
             </div>

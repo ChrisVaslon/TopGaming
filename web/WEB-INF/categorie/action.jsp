@@ -3,9 +3,10 @@
     Created on : 23 janv. 2021, 09:24:26
     Author     : Djouela
 --%>
- 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,36 +19,42 @@
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
             />
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
-         
+
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
         <title>Categories</title>
     </head> 
     <body>
 
-  <c:import url="/menu-main" />
-        <!-- content -->
-        <div class="container-fluid justify-content-center mt-4">
-            <h1>Action </h1>                            
+        <c:import url="/menu-main" />
 
-            <div class="card-deck justify-content-center mt-5">
+        <!-- content -->
+        <div class="container ">
+            <h1>Action </h1>                           
+            <div class="row">
 
                 <c:forEach items="${requestScope.categories}" var="jeu">
-                    <div class="card mb-4" style="min-width:18rem; max-width:18rem;">
-                        <a href='jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
-                        <div class="card-body">
-                            <h1 class="h3"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
-                            <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                    <div class="col-lg-4 ">
+                        <div class="card mb-3"  > 
 
 
+                            <a href='jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
+                            <div class="card-body">
+                                <h1 class="h5"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
-                            <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
+                                <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
 
 
 
-                            <p class="prixttc">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> £</p> 
-                            <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                                <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
+
+
+                                <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
+                                <a class="btn btn-outline-dark"
+                                   href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+
+                            </div>
                         </div>
                     </div>
                 </c:forEach>

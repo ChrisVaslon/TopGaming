@@ -44,7 +44,7 @@ public class MenuMainServlet extends HttpServlet {
                 = (GestionPanier) session.getAttribute("gestionPanier");
 
         int qte = gestionPanier.CompteArticles();
-        request.setAttribute("qte", "(" + qte + ")");
+        request.setAttribute("qte",  + qte );
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
 

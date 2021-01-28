@@ -15,34 +15,36 @@
         <link href="css/categorie.css" rel="stylesheet" type="text/css"/>   
         <link href="css/contact.css" rel="stylesheet" type="text/css"/>   
         <link href="css/inscription.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
     </head> 
 
 
     <body>
-        
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
-            
-        
+
+        <c:import url="/menu-main" />
+
+
         <div class = "container my-4">
-            
-           
+
+
             <form id = "formulaire-inscription" class = "p-4" action="inscription-valider" method="POST">
 
-                 <div class ="mx-5 my-5">
-            <h1 class ="d-flex justify-content-center"> Formulaire d'inscription :</h1>
-        </div>
-                   <c:if test="${not empty requestScope.msg}">
-                <p class ="erreur">${requestScope.msg}</p>              
-            </c:if>
-                
+                <div class ="mx-5 my-5">
+                    <h1 class ="d-flex justify-content-center"> Formulaire d'inscription :</h1>
+                </div>
+                <c:if test="${not empty requestScope.msg}">
+                    <p class ="erreur">${requestScope.msg}</p>              
+                </c:if>
+
                 <div class="form-row">
 
                     <div class="form-group">
                         <label for="inputPseudo">Pseudo</label>
                         <input type="text" name ="Pseudo" required value='<c:out value ="${requestScope.Pseudo}"/>'class="form-control" id="inputPseudo" placeholder="Pseudo">
-                    <c:if test="${not empty requestScope.errPseudo}">
-                        <p>${requestScope.errPseudo}</p>              
-                    </c:if>
+                        <c:if test="${not empty requestScope.errPseudo}">
+                            <p>${requestScope.errPseudo}</p>              
+                        </c:if>
                     </div>
 
                     <div class="form-group col-md-6">
@@ -63,12 +65,12 @@
                 <div class="form-group">
                     <label for="inputmail">Mail:</label>
                     <input type="email" name ="Mail" required value='<c:out value ="${requestScope.Mail}"/>'class="form-control" id="inputMail" placeholder="Mail">
-                <c:if test="${not empty requestScope.errMail}">
+                    <c:if test="${not empty requestScope.errMail}">
                         <p>${requestScope.errMail}</p>              
                     </c:if>
-               
+
                 </div>
-                
+
                 <div class="form-group">
                     <label for="inputPassword">Password</label>
                     <input type="password" name ="pwd" required value='<c:out value ="${requestScope.pwd}"/>'class="form-control" id="inputPassword" placeholder="Password">
@@ -92,7 +94,7 @@
                 <div class="form-group">
                     <label for="inputTel">Tel:</label>
                     <input type="text" name = "Tel" required value='<c:out value ="${requestScope.Tel}"/>' class="form-control" id="inputTel" placeholder="Apartment, studio, or floor">
-                         <c:if test="${not empty requestScope.errTel}">
+                    <c:if test="${not empty requestScope.errTel}">
                         <p>${requestScope.errTel}</p>              
                     </c:if>
                 </div>
@@ -107,10 +109,22 @@
                     </div>
                 </div>
 
-                 <div class="form-group row justify-content-center mb-0">
-                            <div class="col-md-12 px-3"> <input type="submit" value="Soumettre" class="btn btn-block rm-border"> </div>
-                        </div>
-                
+                <div class="form-group row justify-content-center mb-0">
+                    <div class="col-md-12 px-3"> <input type="submit" value="Soumettre" class="btn btn-block rm-border"> </div>
+                </div>
+
             </form>
         </div>
         <c:import url="WEB-INF/menus/menus-footer.jsp" />
+        
+        
+        
+        
+              <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="js/swipper.js" type="text/javascript"></script>
+
+    </body>
+</html>

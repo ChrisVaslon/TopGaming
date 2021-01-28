@@ -28,9 +28,10 @@
 
         <c:import url="/menu-main" />
 
-
         <div class="container mt-4">
-
+            <c:if test="${empty requestScope.lignes}">
+                <p class="alert alert-success alert-dismissible">Votre Panier est Vide </p>
+            </c:if>
 
             <div class="col-md-12 col-lg-12 col-sm-12 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -80,7 +81,7 @@
                                     <c:out value="${ligne.quantite}" />  
                                     </font></font></span>
                             </div>
-                                    <div class="col-lg-3 text-center">   
+                            <div class="col-lg-3 text-center">   
 
                                 <span class="text-muted">
                                     <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">

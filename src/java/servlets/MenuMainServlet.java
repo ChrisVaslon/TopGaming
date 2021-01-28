@@ -5,8 +5,7 @@
  */
 package servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.IOException; 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +32,7 @@ public class MenuMainServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
 
-        String urlJSP = "/WEB-INF/menus/menus-navbar.jsp";
+        String urlJSP = "/WEB-INF/menus/menu-main.jsp";
 
         if (session.getAttribute("gestionPanier") == null) {
 

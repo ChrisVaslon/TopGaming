@@ -27,8 +27,7 @@
     </head> 
     <body>
 
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
-
+          <c:import url="/menu-main" />
         <!-- content -->
         <div class="container-fluid justify-content-center mt-4">
             <h1>Toutes les Catégories </h1>                            

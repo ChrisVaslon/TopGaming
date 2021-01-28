@@ -33,38 +33,38 @@ public class AccueilServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");        
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-         
-        String urlJSP = "/WEB-INF/accueil.jsp";
+        response.setContentType("text/html;charset=UTF-8");
+         request.setCharacterEncoding("UTF-8");
+         HttpSession session = request.getSession();
+       
+       String urlJSP = "/WEB-INF/accueil.jsp";
+       
+       
+       if(getServletContext().getAttribute("gestionJeu") == null){ 
+                
+                getServletContext().setAttribute("gestionJeu", new GestionJeu()); 
+            }
+       
+       GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+        try{
+        List<Jeu> jeu = gestionJeu.selectAllJeux(); 
         
-        
-        // TODO : recuperer les livres
-        if (getServletContext().getAttribute("gestionJeu") == null) {
-            getServletContext().setAttribute("gestionJeu", new GestionJeu());
+          request.setAttribute("jeu", jeu);
+    
+        } catch(SQLException ex){
+            // to do
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
         }
-        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
-
-          
-        try {
-          List<Jeu> jeu = gestionJeu.selectAllJeux();
-            request.setAttribute("jeu", jeu);
-        } catch (SQLException ex) {
-            Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         
-           
-           
-           
-        
-        
-        
-        
-
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+       
+       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+    
+    
+    
+ 
         
         
     }

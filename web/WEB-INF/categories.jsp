@@ -42,7 +42,7 @@
              <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
                             <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
-
+                       
                         </div>
                     </div>
                 </c:forEach>

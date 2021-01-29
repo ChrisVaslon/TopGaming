@@ -26,7 +26,6 @@ public class GestionPanier {
     }
 
     public void addJeu(Integer id) throws SQLException, ParseException {
-
         if (id == null) {
             return;
         }
@@ -42,11 +41,10 @@ public class GestionPanier {
                 LigneCommande lc = new LigneCommande(jeu);
                 panier.put(id, lc);
             }
-
         }
     }
 
-    public void viderPanier() {
+    public void viderPanier(Integer id) {
         this.panier.clear();
     }
 

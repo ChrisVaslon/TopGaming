@@ -114,6 +114,9 @@ public class Jeu {
      public float getPrixTTC(){
         return prixHT  + prixHT*(tva.getMontant()/100);
     } 
+      public float getTotalJeu(){
+        return prixHT  + prixHT*(tva.getMontant()/100);
+    } 
 
     @Override
     public String toString() {

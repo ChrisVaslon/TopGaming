@@ -35,7 +35,7 @@
             </c:if>
 
             <div class="col-md-12 col-lg-12 col-sm-12 order-md-last">
-                <c:forEach items="${requestScope.lignes}" var="ligne">
+        
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class=" "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Votre panier</font></font></span>
                         <span class="badge bg-secondary rounded-pill"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${requestScope.qte}</font></font></span>
@@ -63,7 +63,7 @@
 
                         </div>
 
-
+        <c:forEach items="${requestScope.lignes}" var="ligne">
                         <li class="list-group-item d-flex justify-content-between lh-sm ">
                             <div class="col-lg-3">
                                 <small class="text-muted"><font style="vertical-align: inherit;">
@@ -100,13 +100,14 @@
 
 
                         </li>
+        </c:forEach>
                         <li class="list-group-item d-flex justify-content-between text-dark">
                             <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Total (EURO)</font></font></span>
                             <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20 €</font></font></strong>
                         </li>
 
                     </ul>
-                </c:forEach>
+            
 
             </div>
 

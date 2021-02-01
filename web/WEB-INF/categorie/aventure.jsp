@@ -42,16 +42,16 @@
                         <div class="card-body">
                             <h1 class="h3"><a href='vers-jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
-                            <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                            <p class="text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
 
 
 
-                            <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
+                            <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
 
 
-                            <p class="prixttc">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> £</p> 
-                            <a href='vers-panier?operation=ajouter&ean=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                            <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
+                            <a class="btn btn-primary btn-dark" href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
 
                         </div>
                     </div>

@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Win 7
  */
 public class Membre {
+    //nouvel essai
     private int id;
     private String pseudo;
     private String nom;

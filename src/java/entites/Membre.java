@@ -2,11 +2,12 @@ package entites;
 
 import java.util.Date;
 
-/**
- *
- * @author Win 7
- */
+
+
+
 public class Membre {
+
+
     private int id;
     private String pseudo;
     private String nom;
@@ -19,9 +20,7 @@ public class Membre {
     private String ville;
     private String cp;
     private int tel;
-    private int points;
-    
-    
+
     private Grade grade;
     private Role role;
 

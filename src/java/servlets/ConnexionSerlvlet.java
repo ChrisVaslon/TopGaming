@@ -5,17 +5,18 @@
  */
 package servlets;
 
+import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,8 +28,8 @@ import traitements.GestionMembre;
  *
  * @author Win 7
  */
-@WebServlet(name = "InscriptionServlet", urlPatterns = {"/inscription-valider"})
-public class InscriptionSiteServlet extends HttpServlet {
+@WebServlet(name = "ConnexionSerlvlet", urlPatterns = {"/connexion-valider"})
+public class ConnexionSerlvlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,87 +46,55 @@ public class InscriptionSiteServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
 
-        String urlJSP = "/WEB-INF/accueil.jsp";
-
         String pseudo = request.getParameter("Pseudo");
-        //pseudo = pseudo.trim();
-        String nom = request.getParameter("Nom");
-        //nom = nom.trim();
-        String prenom = request.getParameter("Prenom");
-        //prenom = prenom.trim();
-
-        String mail = request.getParameter("Mail");
-        //mail = mail.trim();
-        String mdp = request.getParameter("pwd");
-
-        String rue = request.getParameter("Rue");
-        //rue = rue.trim();
-
-        String ville = request.getParameter("Ville");
-        //ville = ville.trim();
-
-        String cp = request.getParameter("Cp");
-        //cp = cp.trim();
-
-        int tel =0;
-        try {
-            tel = Integer.parseInt(request.getParameter("Tel"));
-        } catch (NumberFormatException e) {
-            System.out.println("Erreur tel console");
-            e.printStackTrace();
-            
-            urlJSP = "/WEB-INF/inscription.jsp";
+        String pwd = request.getParameter("Pwd");
+        
+        String[] res = {"off"};
+        if(request.getParameterValues("resterCo") != null){
+        res = request.getParameterValues("resterCo");
         }
-
-        String dateNaissance = request.getParameter("dateNaissance");
-        Date dateNaissance2 = null;
-        try {
-            dateNaissance2 = new SimpleDateFormat("yyyy-MM-dd").parse(dateNaissance);
-        } catch (ParseException ex) {
-            Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+       
+        String on = "on";
         if (getServletContext().getAttribute("gestionMembre") == null) {
             getServletContext().setAttribute("gestionMembre", new GestionMembre()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
         }
         GestionMembre gtMembre = (GestionMembre) getServletContext().getAttribute("gestionMembre");
 
+        String urlJSP = "/WEB-INF/accueil.jsp";
+        System.out.println(res[0]);
         try {
-            Date date = new Date();
-            System.out.println("------ TEST 1 ------");
-            System.out.println(date);
-            gtMembre.creerNouveauMembre(pseudo, nom, prenom, new Date(), dateNaissance2, mail, mdp, rue, ville, cp, tel);
-            System.out.println(date);
+            Membre user = gtMembre.SeConnecter(pseudo, pwd);
+            session.setAttribute("user", user);
+            
+            if(res[0].equals(on)){
+                session.setAttribute("connexionActive", res[0]);
+                String chaineAleatoire = UUID.randomUUID().toString();
+                System.out.println("------------------");
+                System.out.println(chaineAleatoire);
+               System.out.println(user.getPseudo());
+                Cookie c01 = new Cookie("ResterConnecte", chaineAleatoire);
+                gtMembre.InsererChaineAleatoire(user.getPseudo(), chaineAleatoire);                     
+                c01.setMaxAge(60*60*24*15);
+                response.addCookie(c01);
+            }
+            System.out.println(user);
+            session.setAttribute("connecte", "Vous êtes connecté " + user.getPseudo());
+      
         } catch (CustomedException ex) {
-            //message erreur
-            HashMap<String, String> erreurs = ex.getErreurs();
-            String message = ex.getMessage();
-            request.setAttribute("errMail", erreurs.get("errMail"));
-            request.setAttribute("errPseudo", erreurs.get("errPseudo"));
-            request.setAttribute("errTel", erreurs.get("errTel"));
-            request.setAttribute("msg", message);
-
-            request.setAttribute("Pseudo", pseudo);
-            request.setAttribute("Nom", nom);
-            request.setAttribute("Prenom", prenom);
-            request.setAttribute("dateNaissance2", dateNaissance2);
-            request.setAttribute("Mail", mail); 
-            request.setAttribute("pwd", mdp);
-            request.setAttribute("Rue", rue);
-            request.setAttribute("Ville", ville);
-            request.setAttribute("Cp", cp);
-            request.setAttribute("Tel", request.getParameter("Tel"));
-
-            urlJSP = "/WEB-INF/inscription.jsp";
-
-        } catch (NullPointerException pointer) {
-            urlJSP = "/WEB-INF/inscription.jsp";
+           request.setAttribute("errLogin", ex.getMessage());
+    
+           HashMap<String, String> erreurs = ex.getErreurs();
+           request.setAttribute("errPseudo", erreurs.get("errPseudo"));
+           
+           request.setAttribute("errPassword", erreurs.get("errPassword"));
+        
+           urlJSP = "/WEB-INF/connexion.jsp";
+           
         } catch (SQLException ex) {
-            Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
+              System.out.println("erreur 02 sql :" + ex.getMessage());
         }
-
-        request.setAttribute("msgSuccess", "Inscription reussi");
-
+        
+       
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 

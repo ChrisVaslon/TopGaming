@@ -44,10 +44,32 @@ public class GestionMembre {
 
     }
 
-    public Membre SeConnecter(String pseudo, String mdp) throws SQLException {
-        Membre user = membreDao.Connexion(pseudo, mdp);
-
+    public Membre SeConnecter(String pseudo, String mdp) throws SQLException, CustomedException {
+      
+        Membre user = null;
+        HashMap<String, String> erreurs = new HashMap<>();
+        if(pseudo == null || pseudo.trim().isEmpty()){
+            erreurs.put("errPseudo", "pseudo obligatoire !");
+        } else {
+            pseudo = pseudo.trim();
+        }
+        
+        if(mdp == null || mdp.isEmpty()){
+            erreurs.put("errPassword", "Mot de passe obligatoire");
+        }
+        
+        if(!erreurs.isEmpty()){
+            CustomedException ex = new CustomedException(erreurs, "echec de la connexion");
+            throw ex;
+        }
+        user = membreDao.Connexion(pseudo, mdp);
+        if(user == null){
+            CustomedException ex02 = new CustomedException(erreurs, "Compte inexistant");
+            throw ex02;
+        }
+        
         return user;
+        
     }
     
     public void InsererChaineAleatoire(String Pseudo, String chaineAleatoire) throws SQLException{

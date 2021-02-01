@@ -9,6 +9,7 @@ import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import outils.CustomedException;
 import traitements.GestionMembre;
 
 /**
@@ -46,9 +48,11 @@ public class ConnexionSerlvlet extends HttpServlet {
 
         String pseudo = request.getParameter("Pseudo");
         String pwd = request.getParameter("Pwd");
-
-        String[] res = request.getParameterValues("resterCo");
-        System.out.println(res[0]);
+        
+        String[] res = {"off"};
+        if(request.getParameterValues("resterCo") != null){
+        res = request.getParameterValues("resterCo");
+        }
        
         String on = "on";
         if (getServletContext().getAttribute("gestionMembre") == null) {
@@ -57,12 +61,13 @@ public class ConnexionSerlvlet extends HttpServlet {
         GestionMembre gtMembre = (GestionMembre) getServletContext().getAttribute("gestionMembre");
 
         String urlJSP = "/WEB-INF/accueil.jsp";
-
+        System.out.println(res[0]);
         try {
             Membre user = gtMembre.SeConnecter(pseudo, pwd);
             session.setAttribute("user", user);
-            session.setAttribute("connexionActive", res[0]);
+            
             if(res[0].equals(on)){
+                session.setAttribute("connexionActive", res[0]);
                 String chaineAleatoire = UUID.randomUUID().toString();
                 System.out.println("------------------");
                 System.out.println(chaineAleatoire);
@@ -74,9 +79,21 @@ public class ConnexionSerlvlet extends HttpServlet {
             }
             System.out.println(user);
             session.setAttribute("connecte", "Vous êtes connecté " + user.getPseudo());
+      
+        } catch (CustomedException ex) {
+           request.setAttribute("errLogin", ex.getMessage());
+    
+           HashMap<String, String> erreurs = ex.getErreurs();
+           request.setAttribute("errPseudo", erreurs.get("errPseudo"));
+           
+           request.setAttribute("errPassword", erreurs.get("errPassword"));
+        
+           urlJSP = "/WEB-INF/connexion.jsp";
+           
         } catch (SQLException ex) {
-            Logger.getLogger(ConnexionSerlvlet.class.getName()).log(Level.SEVERE, null, ex);
+              System.out.println("erreur 02 sql :" + ex.getMessage());
         }
+        
        
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }

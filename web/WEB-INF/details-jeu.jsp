@@ -48,23 +48,59 @@
             </c:if>
 
 
-            <div class="media">
-                <img src="..." class="mr-3" alt="...">
-                <div class="media-body">
-                    <h5 class="mt-0">Media heading</h5>
-                    <p>Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
+            
+  
+
+    <div class="row">
+
+        <div class="col-12"> 
+            <div class="col-md-6">
+
+                <ul class="nav nav-tabs " id="mytab" role="tablist">
+                    <li role="presentation" class="nav-item">
+                        <a href="#commentaires" aria-controls="commentaires" role="tab" data-toggle="tab" class="nav-link active text-dark ">Laisser un avis </a>
+
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a href="#liste-cmtaires" aria-controls="liste-cmtaires" role="tab" data-toggle="tab" class="nav-link text-dark ">Voir les avis</a>
+                    </li>
+                </ul>   
+            </div>
+            <div class="col-md-6 " >
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane  active py-3 mh-100" id="commentaires">
+                        <h6>Laisser un commentaire</h6>
+                        <form action="form-floating ">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="1" id="comment" placeholder="Ecrire un commentaire" name="text"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-dark">Soumettre</button>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane py-3 mh-100" id="liste-cmtaires">
+                        <h6>Voir les commentaires</h6>
+                        <ul class="list-group" id="liste-commentaires"></ul>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+
+
+
+
 
 
 
             <div class="row">       
                 <div class="col-md-4">   
                     <form>
-                        <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Votre commentaire</label>
-                    </div> 
+                        
+                        
+                        
+                        
+                        
                     </form>                   
                 </div>       
             </div>
@@ -74,5 +110,44 @@
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    
+    
+    
+    
+    
+    
+     
+ 
+    <script>
+
+        function listCommentaires() {
+
+            document.querySelector("#liste-commentaires").innerHTML = '';
+
+            axios.get('http://localhost:8080/topGaming/jeu?id=18').then(function (results) {
+
+                results.data.comments.reverse().map(function (commentaire, id) {
+
+                    document.querySelector("#liste-commentaires").innerHTML += ` < li class = "list-group-item" >
+        ${commentaire.commentaire}
+
+                    < /li>`;
+
+                            return commentaire;
+
+                })
+
+            });
+
+        }
+
+        listCommentaires();
+
+    </script>
+    
+        
+        
+        
+    
     </body>
 </html>

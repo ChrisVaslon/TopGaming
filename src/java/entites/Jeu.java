@@ -18,6 +18,7 @@ public class Jeu {
     
     private TVA tva;
     private Categories categorie;
+    private LigneCommande ligneCommande;
     
     /*
     private List<Commentaire> commentaires;
@@ -111,11 +112,11 @@ public class Jeu {
         this.categorie = categorie;
     }
       
-     public float getPrixTTC(){
+    public float getPrixTTC(){
         return prixHT  + prixHT*(tva.getMontant()/100);
     } 
-      public float getTotalJeu(){
-        return prixHT  + prixHT*(tva.getMontant()/100);
+    public float getTotalJeu(){
+        return  prixHT*ligneCommande.getQuantite();
     } 
 
     @Override

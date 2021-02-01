@@ -3,12 +3,23 @@ package entites;
 
 public class Membre {
 
+    //nouvel essai
+    private int id;
+    private String pseudo;
+    private String nom;
+    private String prenom;
+    private Date dateCreationProfil;
+    private Date dateNaissance;
+    private String mail;
+    private String mdp;
+    private String rue;
+    private String ville;
+    private String cp;
+    private int tel;
+    private int points;
+    
     private Grade grade;
     private Role role;
-
-    public Membre(int idMemebre, String pseudoMemebre, String nomMemebre, String prenomMemebre, Date dateCreationProfilMemebre, String dateNaissanceMemebre, String mailMemebre, String mdpMemebre, String rueMemebre, String villeMemebre, String cpMemebre, int telMemebre, int pointsMemebre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public int getId() {
         return id;

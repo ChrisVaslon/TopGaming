@@ -1,9 +1,10 @@
-
 package entites;
+
+import java.util.Date;
+
 
 public class Membre {
 
-    //nouvel essai
     private int id;
     private String pseudo;
     private String nom;
@@ -17,7 +18,7 @@ public class Membre {
     private String cp;
     private int tel;
     private int points;
-    
+
     private Grade grade;
     private Role role;
 
@@ -182,6 +183,5 @@ public class Membre {
     public String toString() {
         return "Membre{" + "id=" + id + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom=" + prenom + ", dateCreationProfil=" + dateCreationProfil + ", dateNaissance=" + dateNaissance + ", mail=" + mail + ", mdp=" + mdp + ", rue=" + rue + ", ville=" + ville + ", cp=" + cp + ", tel=" + tel + ", points=" + points + ", grade=" + grade + ", role=" + role + '}';
     }
-
 
 }

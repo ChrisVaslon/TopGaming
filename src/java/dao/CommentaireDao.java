@@ -1,3 +1,6 @@
+
+
+                    
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,6 +26,7 @@ import java.util.List;
  *
  * @author thula
  */
+
 public class CommentaireDao {
         private MaConnexionBDD McBDD;
     private int c;
@@ -126,5 +130,6 @@ public class CommentaireDao {
 
         return comm;
     }
+
     
-}
+

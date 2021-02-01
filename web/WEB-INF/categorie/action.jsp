@@ -27,7 +27,7 @@
 
   <c:import url="/menu-main" />
         <!-- content -->
-        <div class="container-fluid justify-content-center mt-4">
+        <div class="container">
             <h1>Action </h1>                            
 
             <div class="card-deck justify-content-center mt-5">

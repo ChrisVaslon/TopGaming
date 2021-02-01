@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Auteur: Djouela
+Date de création: 28/01/2021
  */
 package servlets;
 
@@ -12,13 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author djtew
- */
-@WebServlet(name = "AfficherContactServlet", urlPatterns = {"/vers-contact"})
-public class AfficherContactServlet extends HttpServlet {
+
+@WebServlet(name = "AfficherContactFormServlet", urlPatterns = {"/vers-contact"})
+public class AfficherContactFormServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,11 +29,12 @@ public class AfficherContactServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+     request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
         
-        String urlJSP = "/WEB-INF/contact.jsp";
+        String urlJSp = "/WEB-INF/contact.jsp";
         
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+     getServletContext().getRequestDispatcher(urlJSp).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

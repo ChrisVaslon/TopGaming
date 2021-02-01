@@ -1,22 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Auteur: Djouela
+ Date de création: 29/01/2021
  */
 package servlets;
 
+import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import traitements.GestionContact;
 
-/**
- *
- * @author djtew
- */
 @WebServlet(name = "ContactServlet", urlPatterns = {"/contact"})
 public class ContactServlet extends HttpServlet {
 
@@ -32,8 +34,55 @@ public class ContactServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-     request.setCharacterEncoding("UTF-8");
-     
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+
+        String urlJSP = "/WEB-INF/page-confirmation.jsp";
+
+        String nom = request.getParameter("nom");
+        nom = nom.trim();
+        String prenom = request.getParameter("prenom");
+        prenom = prenom.trim();
+        String mail = request.getParameter("mail");
+        mail = mail.trim();
+      
+        String message = request.getParameter("message");
+        message = message.trim();
+
+        if (getServletContext().getAttribute("gestionContact") == null) {
+            getServletContext().setAttribute("gestionContact", new GestionContact());
+        }
+        GestionContact gtContact = (GestionContact) getServletContext().getAttribute("gestionContact");
+
+//        try {
+//            gestionContact.ajouterContact(nom, prenom, mail, message);
+//            request.setAttribute("msgSucces", " Nous vous répondrons dans les plus brefs délais");
+//
+//        } catch (SQLException ex) {
+//
+//            request.setAttribute("nom", nom);
+//            request.setAttribute("prenom", prenom);
+//            request.setAttribute("mail", mail);
+//            urlJSP = "/WEB-INF/contact.jsp";
+//
+//           
+//            System.out.println(">>>>>>>>>> message error: " + ex.getMessage());
+//            ex.printStackTrace();
+//        }
+        
+        try {
+            gtContact.ajouterContact(nom, prenom, mail, message);
+
+            request.setAttribute("msgSucces", " Nous vous répondrons dans les plus brefs délais");
+
+        } catch (SQLException ex) {
+
+            System.out.println("erreur categories : " + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

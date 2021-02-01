@@ -49,10 +49,24 @@ public class AccueilServlet extends HttpServlet {
             }
        
        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+       
+       
+       
+       
+       try{
+        List<Jeu> jeu = gestionJeu.selectAllJeuxByGenre("Dernières Sorties"); 
+        
+          request.setAttribute("jeu", jeu);
+    
+        } catch(SQLException ex){
+            // to do
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
+        }
         try{
         List<Jeu> jeu = gestionJeu.selectAllJeux(); 
         
-          request.setAttribute("jeu", jeu);
+          request.setAttribute("jeu0", jeu);
     
         } catch(SQLException ex){
             // to do

@@ -1,14 +1,29 @@
-
 package entites;
 
-public class Membre {
+import java.util.Date;
 
+/**
+ *
+ * @author Win 7
+ */
+public class Membre {
+    private int id;
+    private String pseudo;
+    private String nom;
+    private String prenom;
+    private Date dateCreationProfil;
+    private Date dateNaissance;
+    private String mail;
+    private String mdp;
+    private String rue;
+    private String ville;
+    private String cp;
+    private int tel;
+    private int points;
+    
+    
     private Grade grade;
     private Role role;
-
-    public Membre(int idMemebre, String pseudoMemebre, String nomMemebre, String prenomMemebre, Date dateCreationProfilMemebre, String dateNaissanceMemebre, String mailMemebre, String mdpMemebre, String rueMemebre, String villeMemebre, String cpMemebre, int telMemebre, int pointsMemebre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public int getId() {
         return id;
@@ -171,6 +186,5 @@ public class Membre {
     public String toString() {
         return "Membre{" + "id=" + id + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom=" + prenom + ", dateCreationProfil=" + dateCreationProfil + ", dateNaissance=" + dateNaissance + ", mail=" + mail + ", mdp=" + mdp + ", rue=" + rue + ", ville=" + ville + ", cp=" + cp + ", tel=" + tel + ", points=" + points + ", grade=" + grade + ", role=" + role + '}';
     }
-
 
 }

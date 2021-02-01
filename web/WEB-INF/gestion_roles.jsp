@@ -28,7 +28,7 @@
             <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -53,13 +53,7 @@
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Gestion Administrateur</span>
                     </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Components:</h6>
-                            <a class="collapse-item" href="buttons.html">Buttons</a>
-                            <a class="collapse-item" href="cards.html">Cards</a>
-                        </div>
-                    </div>
+
                 </li>
 
                 <!-- Nav Item - Utilities Collapse Menu -->
@@ -68,6 +62,16 @@
                         <i class="fas fa-fw fa-wrench"></i>
                         <span>Gestion des roles</span>
                     </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom Utilities:</h6>
+                            <a class="collapse-item" href="utilities-color.html">Colors</a>
+                            <a class="collapse-item" href="utilities-border.html">Borders</a>
+                            <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                            <a class="collapse-item" href="utilities-other.html">Other</a>
+                        </div>
+                    </div>
                 </li>
 
                 <!-- Divider -->
@@ -202,22 +206,16 @@
                                         <thead>
                                             <tr>
                                                 <th>Utilisateurs</th>
-                                                <th>Commentaires</th>
-                                                <th>jeu</th>
-                                                <th>Date de poste</th>
+                                                <th>Roles</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td>${requestScope.commentaire}</td>
-                                                <td>2011/04/25</td>
-                                               <th><button>edit</button></th>
-                                            </tr>           
-                                          
+                                                <td><select><option value="">--Veuillez choisir un utilisateur--</option></select></td>
+                                                <td><select><option value="">--choisir un roles--</option></select></td>
+                                               <th><button>Submit</button></th>
+                                            </tr>             
                                         </tbody>
                                     </table>
                                 </div>

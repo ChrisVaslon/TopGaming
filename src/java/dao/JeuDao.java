@@ -115,7 +115,8 @@ public class JeuDao {
                 float montantTva = rs.getFloat("TVA_montant");
 
                 TVA Tva = new TVA(idTva, nomTva, montantTva);
-                jeu.setTva(Tva);
+                jeu.setTva(Tva);                 
+
 
             }
 

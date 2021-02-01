@@ -30,6 +30,10 @@ public class Membre {
     private Grade grade;
     private Role role;
 
+    public Membre(int idMemebre, String pseudoMemebre, String nomMemebre, String prenomMemebre, Date dateCreationProfilMemebre, String dateNaissanceMemebre, String mailMemebre, String mdpMemebre, String rueMemebre, String villeMemebre, String cpMemebre, int telMemebre, int pointsMemebre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId() {
         return id;
     }

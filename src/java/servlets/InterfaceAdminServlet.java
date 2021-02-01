@@ -5,20 +5,28 @@
  */
 package servlets;
 
+import entites.Commentaire;
+import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import traitements.GestionCommentaire;
+import traitements.GestionJeu;
 
 /**
  *
  * @author thula
  */
-@WebServlet(name = "EspacePersonnel", urlPatterns = {"/espace-personnel"})
-public class EspacePersonnel extends HttpServlet {
+@WebServlet(name = "InterfaceAdmin", urlPatterns = {"/interface-admin"})
+public class InterfaceAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +41,7 @@ public class EspacePersonnel extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String urlJSP = "/WEB-INF/espace-personnel.jsp";
+        String urlJSP = "/WEB-INF/interface_admin.jsp";
         
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }

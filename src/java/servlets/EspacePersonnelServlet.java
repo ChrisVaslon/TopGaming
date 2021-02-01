@@ -5,27 +5,20 @@
  */
 package servlets;
 
-import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import traitements.GestionJeu;
 
 /**
  *
- * @author Utilisateur
+ * @author thula
  */
-@WebServlet(name = "JeuServlet", urlPatterns = {"/jeu"})
-public class JeuServlet extends HttpServlet {
+@WebServlet(name = "EspacePersonnel", urlPatterns = {"/espace-personnel"})
+public class EspacePersonnelServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,36 +32,10 @@ public class JeuServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         
-             request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        
-        String urlJSP = "/WEB-INF/details-jeu.jsp";
-
-            String idParametre = request.getParameter("id");
-            int id = Integer.parseInt(idParametre);
-        
-        if (getServletContext().getAttribute("gestionJeu") == null) {
-            getServletContext().setAttribute("gestionJeu", new GestionJeu());
-        }
-        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");    
-            
-        try {
-          Jeu jeu = gestionJeu.selectJeuById(id);
-            request.setAttribute("jeu", jeu);
-        } catch (SQLException ex) {
-            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
+        request.setCharacterEncoding("UTF-8");
+        String urlJSP = "/WEB-INF/espace-personnel.jsp";
         
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-
-        
-        
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

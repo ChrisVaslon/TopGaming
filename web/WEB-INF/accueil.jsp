@@ -41,7 +41,7 @@
 
         <div class="swiper-container container my-5" >
             <div class="swiper-wrapper">
-                <c:forEach items="${requestScope.jeu}" var="jeu">
+                <c:forEach items="${requestScope.jeu0}" var="jeu">
                     <div class="swiper-slide div-slide">
                         <a href='jeu?id=<c:out value="${jeu.id}"/>'>                            
                             <img class="d-block h-100 w-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='<c:out value="${jeu.nom}" />'>
@@ -56,13 +56,14 @@
 
 
         <div class="container">
+            <h1 class="text-center">Dernières Sorties</h1>
             <div class="row">
 
                 <c:forEach items="${requestScope.jeu}" var="jeu">    
                     <div class=col-lg-4>
                         <div class="card mb-2">
                             <a href='jeu?id=<c:out value="${jeu.id}"/>'>
-                                <img class="card-img-top w-100 h-100" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
+                                <img class="card-img-top w-100 h-100 " src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
                             <div class="card-body">
                                 <h1 class="h5"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
                                 <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>

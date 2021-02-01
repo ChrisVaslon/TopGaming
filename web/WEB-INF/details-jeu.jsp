@@ -48,6 +48,68 @@
 
 
         </div>
+        <div class="container mt-3 mb-3">
+            <div class="row">
+                <div class="col-12">
+
+
+                    <div class="col-md-6">
+                        
+                    <ul class="nav nav-tabs" role="tablist">
+
+                        </li>
+                        <li role="presentation" class="nav-item"><a href="#commentaires" aria-controls="commentaires" role="tab" data-toggle="tab" class="nav-link active text-dark ">Laisser un avis </a>
+                        </li>
+                        <li role="presentation" class="nav-item"><a href="#liste-cmtaires" aria-controls="liste-cmtaires" role="tab" data-toggle="tab" class="nav-link text-dark ">Voir les avis</a>
+                        </li>
+
+                    </ul>     
+                    </div>
+                   
+                    <div class="col-md-6  tab-content">
+
+                        <div role="tabpanel" class="tab-pane  active py-3 mh-100" id="commentaires">
+                            <h6>Laisser un commentaire</h6>
+                        </div>
+
+                        <form action="form-floating ">
+                            <div class="form-group">
+
+
+
+                                <textarea class="form-control" rows="1" id="comment" placeholder="Ecrire un commentaire" name="text"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-dark">Soumettre</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6 tab-content">
+
+
+
+                        <div role="tabpanel" class="tab-pane py-3 mh-100" id="liste-cmtaires">
+                            <h6>Voir les commentaires</h6>
+                        </div>
+                        <ul class="list-group" id="liste-commentaires"></ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        
+        
+
+
+
+
+
+
+
+
+
+
         <!-- Site footer -->
         <c:import url="WEB-INF/menus/menus-footer.jsp" />
 

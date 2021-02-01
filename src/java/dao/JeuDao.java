@@ -90,6 +90,18 @@ public class JeuDao {
             return jeux;
         }
     }
+    
+//    public Jeu selectJeuByNom(String nom) throws SQLException{
+//        Jeu jeu = null;
+//        
+//        try(Connection cnn = mcBDD.getConnection();){
+//            String sql = "SELECT (*) FROM jeu WHERE jeu_nom = ?";
+//            PreparedStatement pstm = cnn.prepareStatement(sql);
+//            pstm.setString(1, nom);
+//            
+//            return jeu;
+//        }
+//    }
 
     public Jeu selectJeuById(int id) throws SQLException {
 

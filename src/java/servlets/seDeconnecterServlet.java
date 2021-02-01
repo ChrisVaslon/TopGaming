@@ -9,16 +9,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Win 7
  */
-@WebServlet(name = "AfficherConnexionServlet", urlPatterns = {"/connexion"})
-public class AfficherConnexionServlet extends HttpServlet {
+@WebServlet(name = "seDeconnecterServlet", urlPatterns = {"/se-deconnecter"})
+public class seDeconnecterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,16 +33,19 @@ public class AfficherConnexionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        //HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
+        String urlJSP = "/WEB-INF/accueil.jsp";
         
-        String urlJSP = "/WEB-INF/connexion.jsp";
+        session.setAttribute("user", null);
+        session.setAttribute("connecte", null);
+       Cookie c01 = new Cookie("ResterConnecte", "suppression");
+       c01.setMaxAge(0);
+       
+       response.addCookie(c01);
         
-        
-  
-          getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-     
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

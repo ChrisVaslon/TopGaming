@@ -9,7 +9,7 @@ import entites.TVA;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException; 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +29,8 @@ public class JeuDao {
         List<Jeu> jeux = new ArrayList<>();
 
         try (Connection cnn = mcBDD.getConnection();) {
-            String sql = "SELECT * FROM jeu ";
-            //  + "JOIN TVA t ON t.TVA_id = j.TVA_id ";
+            String sql = "SELECT * FROM jeu j "
+                    + "JOIN TVA t ON t.TVA_id = j.TVA_id ";
             PreparedStatement pstm = cnn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
@@ -42,12 +42,12 @@ public class JeuDao {
                 jeu.setPrixHT(rs.getFloat("jeu_prixHT"));
 
                 //tva
-//                int idTva = rs.getInt("TVA_id");
-//                String nomTva = rs.getString("TVA_nom");
-//                float montantTva = rs.getFloat("TVA_montant");
-//
-//                TVA tva = new TVA(idTva, nomTva, montantTva);
-//                jeu.setTva(tva);
+                int idTva = rs.getInt("TVA_id");
+                String nomTva = rs.getString("TVA_nom");
+                float montantTva = rs.getFloat("TVA_montant");
+
+                TVA tva = new TVA(idTva, nomTva, montantTva);
+                jeu.setTva(tva);
                 jeux.add(jeu);
 
             }
@@ -90,6 +90,18 @@ public class JeuDao {
             return jeux;
         }
     }
+    
+//    public Jeu selectJeuByNom(String nom) throws SQLException{
+//        Jeu jeu = null;
+//        
+//        try(Connection cnn = mcBDD.getConnection();){
+//            String sql = "SELECT (*) FROM jeu WHERE jeu_nom = ?";
+//            PreparedStatement pstm = cnn.prepareStatement(sql);
+//            pstm.setString(1, nom);
+//            
+//            return jeu;
+//        }
+//    }
 
     public Jeu selectJeuById(int id) throws SQLException {
 
@@ -103,20 +115,21 @@ public class JeuDao {
             pstm.setInt(1, id);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
-                jeu = new Jeu(); 
+                jeu = new Jeu();
                 jeu.setNom(rs.getString("jeu_nom"));
                 jeu.setId(rs.getInt("jeux_id"));
                 jeu.setImage(rs.getString("jeu_image"));
-                jeu.setDescription(rs.getString("jeu_description")); 
-                jeu.setPrixHT(rs.getFloat("jeu_prixHT")); 
-                
-                 int idTva = rs.getInt("TVA_id");
+                jeu.setDescription(rs.getString("jeu_description"));
+                jeu.setPrixHT(rs.getFloat("jeu_prixHT"));
+
+                int idTva = rs.getInt("TVA_id");
                 String nomTva = rs.getString("TVA_nom");
                 float montantTva = rs.getFloat("TVA_montant");
 
                 TVA Tva = new TVA(idTva, nomTva, montantTva);
-                jeu.setTva(Tva);
-                 
+                jeu.setTva(Tva);                 
+
+
             }
 
         }
@@ -124,4 +137,3 @@ public class JeuDao {
         return jeu;
     }
 }
-

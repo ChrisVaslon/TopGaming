@@ -20,7 +20,6 @@ public class MembreDao {
         this.McBDD = new MaConnexionBDD();
     }
 
-
     public void InsertMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel) throws SQLException {
         try (Connection cnn = McBDD.getConnection();) {
             String sql = "INSERT INTO membre(membre_pseudo, membre_nom, membre_prenom, membre_dateCreationProfil, membre_dateNaissance, membre_mail, membre_mdp, membre_rue, membre_ville, membre_cp, membre_tel, membre_points, grade_id, role_id) VALUES(?, ?, ?, ?, ?, ?, md5 (?), ?, ?, ?, ?, 10, 1, 1) ";
@@ -71,22 +70,21 @@ public class MembreDao {
         }
 
     }
-    
-    
-        
-        public Membre Connexion(String mail, String password) throws SQLException {
+
+    public Membre Connexion(String pseudo, String password) throws SQLException {
         Membre user = null;
 
         try (Connection cnn = McBDD.getConnection();) {
             String sql = "SELECT * FROM membre "
-                    + "WHERE membre_mail = ?  AND membre_mdp = md5(?)";
+                    + "WHERE membre_pseudo = ?  AND membre_mdp = md5(?)";
             PreparedStatement pstm = cnn.prepareStatement(sql);
-            pstm.setString(1, mail);
+            pstm.setString(1, pseudo);
             pstm.setString(2, password);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 user = new Membre();
                 
+                 user.setPseudo(rs.getString("membre_pseudo"));
                 user.setNom(rs.getString("membre_nom"));
                 user.setPrenom(rs.getString("membre_prenom"));
                 user.setMail(rs.getString("membre_mail"));
@@ -97,5 +95,58 @@ public class MembreDao {
         return user;
     }
 
-    
+    public Membre CreerMembreAvecPseudo(String pseudo) throws SQLException {
+        Membre user = null;
+
+        try (Connection cnn = McBDD.getConnection();) {
+            String sql = "SELECT * FROM membre "
+                    + "WHERE membre_pseudo = ?";
+            PreparedStatement pstm = cnn.prepareStatement(sql);
+            pstm.setString(1, pseudo);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                user = new Membre();
+                user.setNom(rs.getString("membre_nom"));
+                user.setPrenom(rs.getString("membre_prenom"));
+                user.setMail(rs.getString("membre_mail"));
+                user.setId(rs.getInt("membre_id"));
+            }
+
+        }
+        return user;
+    }
+
+    public void CreerChaineAleatoire(String Pseudo, String chaineAleatoire) throws SQLException {
+        try (Connection cnn = McBDD.getConnection();) {
+            String sql = "UPDATE membre "
+                    + "SET membre_chaineAleatoire = ? "       
+                    + " WHERE membre_pseudo = '" + Pseudo + "'";
+            
+            PreparedStatement pstm = cnn.prepareStatement(sql);
+            pstm.setString(1, chaineAleatoire);
+            pstm.executeUpdate();         
+            System.out.println("Insert OK");
+        }
+    }
+
+    public Membre CreerMembreAvecChaineAleatoire(String chaineAleatoire) throws SQLException {
+        Membre user = null;
+
+        try (Connection cnn = McBDD.getConnection();) {
+            String sql = "SELECT * FROM membre "
+                    + "WHERE membre_chaineAleatoire = ?";
+            PreparedStatement pstm = cnn.prepareStatement(sql);
+            pstm.setString(1, chaineAleatoire);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                user = new Membre();
+                user.setNom(rs.getString("membre_nom"));
+                user.setPrenom(rs.getString("membre_prenom"));
+                user.setMail(rs.getString("membre_mail"));
+                user.setId(rs.getInt("membre_id"));
+            }
+
+        }
+        return user;
+    }
 }

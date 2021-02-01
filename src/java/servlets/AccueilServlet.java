@@ -34,20 +34,25 @@ public class AccueilServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
+       
 
-        String urlJSP = "/WEB-INF/accueil.jsp";
-
-        // TODO : recuperer les livres
-        if (getServletContext().getAttribute("gestionJeu") == null) {
-            getServletContext().setAttribute("gestionJeu", new GestionJeu());
-        }
-        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
-
+         request.setCharacterEncoding("UTF-8");
+         HttpSession session = request.getSession();
+       
+       String urlJSP = "/WEB-INF/accueil.jsp";
+       
+       
+       if(getServletContext().getAttribute("gestionJeu") == null){ 
+                
+                getServletContext().setAttribute("gestionJeu", new GestionJeu()); 
+            }
+       
+       GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+       
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {               
@@ -63,16 +68,36 @@ public class AccueilServlet extends HttpServlet {
                 }
             }
         }
+       
+       
+       try{
+        List<Jeu> jeu = gestionJeu.selectAllJeuxByGenre("Dernières Sorties"); 
         
-        try {
-            List<Jeu> jeu = gestionJeu.selectAllJeux();
-            request.setAttribute("jeu", jeu);
-        } catch (SQLException ex) {
-            Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
+          request.setAttribute("jeu", jeu);
+    
+        } catch(SQLException ex){
+            // to do
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
         }
-
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-
+        try{
+        List<Jeu> jeu = gestionJeu.selectAllJeux(); 
+        
+          request.setAttribute("jeu0", jeu);
+    
+        } catch(SQLException ex){
+            // to do
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
+        }
+       
+       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+    
+    
+    
+ 
+        
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

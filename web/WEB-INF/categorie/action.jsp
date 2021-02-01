@@ -6,6 +6,7 @@
  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +27,7 @@
 
   <c:import url="/menu-main" />
         <!-- content -->
-        <div class="container-fluid justify-content-center mt-4">
+        <div class="container">
             <h1>Action </h1>                            
 
             <div class="card-deck justify-content-center mt-5">
@@ -37,16 +38,18 @@
                         <div class="card-body">
                             <h1 class="h3"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
-                            <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                            <p class="text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
 
 
 
-                            <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
+                            <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
 
 
-                            <p class="prixttc">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> £</p> 
-                            <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                            <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
+                           <a class="btn btn-primary btn-dark" href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                           
+                       
 
                         </div>
                     </div>

@@ -7,10 +7,6 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thula
  */
-@WebServlet(name = "InterfaceAdmin", urlPatterns = {"/interface-admin"})
-public class InterfaceAdmin extends HttpServlet {
+@WebServlet(name = "GestionRoles", urlPatterns = {"/gestion-roles"})
+public class GestionRolesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +33,7 @@ public class InterfaceAdmin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String urlJSP = "/WEB-INF/interface_admin.jsp";
+        String urlJSP = "/WEB-INF/gestion_roles.jsp";
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }

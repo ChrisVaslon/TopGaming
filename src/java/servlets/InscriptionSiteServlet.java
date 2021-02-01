@@ -109,7 +109,7 @@ public class InscriptionSiteServlet extends HttpServlet {
             request.setAttribute("Nom", nom);
             request.setAttribute("Prenom", prenom);
             request.setAttribute("dateNaissance2", dateNaissance2);
-            request.setAttribute("Mail", mail);
+            request.setAttribute("Mail", mail); 
             request.setAttribute("pwd", mdp);
             request.setAttribute("Rue", rue);
             request.setAttribute("Ville", ville);

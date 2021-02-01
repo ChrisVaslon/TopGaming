@@ -1,30 +1,21 @@
-
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Auteur: Djouela
+Date de création: 28/01/2021
  */
+package servlets;
 
-
-import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import traitements.GestionJeu;
 
-/*
-Auteur: Djouela
-Date de création: 22/01/2021
- */
-@WebServlet(name = "CategoriesServlet", urlPatterns = {"/vers-categories"})
-public class CategoriesServlet extends HttpServlet {
+
+@WebServlet(name = "AfficherContactFormServlet", urlPatterns = {"/vers-contact"})
+public class AfficherContactFormServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,32 +29,12 @@ public class CategoriesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.setCharacterEncoding("UTF-8");
-         HttpSession session = request.getSession();
-       
-       String urlJSP = "/WEB-INF/categories.jsp";
-       
-       
-       if(getServletContext().getAttribute("gestionJeu") == null){ 
-                
-                getServletContext().setAttribute("gestionJeu", new GestionJeu()); 
-            }
-       
-       GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
-        try{
-        List<Jeu> categories = gestionJeu.selectAllJeux(); 
+     request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
         
-          request.setAttribute("categories", categories);
-//          request.setAttribute("categories", categorie2);
-//          request.setAttribute("categories", categorie3);
-//          request.setAttribute("categories", categorie4);
-        } catch(SQLException ex){
-            // to do
-            System.out.println("erreur categories : " +ex.getMessage());
-            ex.printStackTrace();
-        }
-       
-       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+        String urlJSp = "/WEB-INF/contact.jsp";
+        
+     getServletContext().getRequestDispatcher(urlJSp).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -105,4 +76,4 @@ public class CategoriesServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}  
+}

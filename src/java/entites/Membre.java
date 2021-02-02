@@ -1,13 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entites;
 
 import java.util.Date;
 
-
-
-
+/**
+ *
+ * @author Win 7
+ */
 public class Membre {
-
-
+    //nouvel essai
     private int id;
     private String pseudo;
     private String nom;
@@ -20,7 +25,9 @@ public class Membre {
     private String ville;
     private String cp;
     private int tel;
-
+    private int points;
+    
+    
     private Grade grade;
     private Role role;
 

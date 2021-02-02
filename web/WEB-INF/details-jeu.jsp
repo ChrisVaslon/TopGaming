@@ -38,6 +38,13 @@
                 <img  src='images/jeux-accueil/<c:out value="${requestScope.jeu.image}" />' 
                       alt='couverture <c:out value="${requestScope.jeu.nom}" />'>
                 <br>
+                <c:if test="${not empty sessionScope.user}" >
+                <p> Noter le jeu :<c:import url="WEB-INF/evaluations/evaluation-affichage.jsp" /></p>
+                </c:if>
+                <c:if test ="${not empty requestScope.errEvaluation}">
+                    <p><c:out value="${requestScope.errEvaluation}" /></p>
+                </c:if>
+                
                 <p> titre : <c:out value="${requestScope.jeu.nom}" /> </p>
                 <p> Resumé : <c:out value="${requestScope.jeu.description}" /> </p>
 
@@ -51,7 +58,7 @@
         <div class="container mt-3 mb-3">
             <div class="row">
                 <div class="col-12">
-                    
+
 
 
                     <div class="col-md-6">
@@ -128,18 +135,18 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
             <script src="js/swipper.js" type="text/javascript"></script>
             <script>
-                function listCommentaires() {
-            document.querySelector("#liste-commentaires").innerHTML = '';
-            axios.get('http://localhost:8080/topGaming/jeu?id=18').then(function(results) {
-                results.data.comments.reverse().map(function(commentaire, id) {
-                    document.querySelector("#liste-commentaires").innerHTML += `<li class="list-group-item">
-                    ${commentaire.commentaire}
-                </li>`;
-                    return commentaire;
-                })
-            });
-        }
-        listCommentaires();
+                        function listCommentaires() {
+                        document.querySelector("#liste-commentaires").innerHTML = '';
+                                axios.get('http://localhost:8080/topGaming/jeu?id=18').then(function(results) {
+                        results.data.comments.reverse().map(function(commentaire, id) {
+                        document.querySelector("#liste-commentaires").innerHTML += ` < li class = "list-group-item" >
+                ${commentaire.commentaire}
+                        < /li>`;
+                                return commentaire;
+                        })
+                        });
+                        }
+                listCommentaires();
             </script>
 
     </body>

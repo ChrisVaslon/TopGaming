@@ -113,9 +113,9 @@ public class CommentaireDao {
                 String dateNaissanceMemebre  = rs.getString("membre_dateNaissance");
                 
 
-                Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
-                Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre
-                comm.setMembre(membre);
+         //       Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
+           //     Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre
+           //     comm.setMembre(membre);
                 
                 int idJeux = rs.getInt("Jeux_id");
                 String nomJeux = rs.getString("Jeux_nom");

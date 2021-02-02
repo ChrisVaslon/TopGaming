@@ -1,6 +1,8 @@
 
 package entites;
 
+import java.util.Date;
+
 public class Membre {
 
     //nouvel essai

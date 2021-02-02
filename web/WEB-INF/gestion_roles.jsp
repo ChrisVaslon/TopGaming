@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
         <!-- Custom styles for this template -->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     </head> 

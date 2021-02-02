@@ -110,9 +110,9 @@ public class CommentaireDao {
                 int telMemebre  = rs.getInt("membre_tel");
                 int pointsMemebre  = rs.getInt("membre_points");
                 Date dateCreationProfilMemebre  = rs.getDate("membre_dateCreationProfil");
-                String dateNaissanceMemebre  = rs.getString("membre_dateNaissance");
+                Date dateNaissance  = rs.getDate("membre_dateNaissance");
                 
-                Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
+                Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissance, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
                 comm.setMembre(membre);
                 
                 int idJeux = rs.getInt("Jeux_id");
@@ -131,5 +131,5 @@ public class CommentaireDao {
         return comm;
     }
 
-    
+}  
 

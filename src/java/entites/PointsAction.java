@@ -13,6 +13,10 @@ public class PointsAction {
     private int id;
     private String nom;
     private int valeur;
+    
+    public static final String  COMMENTAIRE = "commentaire";
+   // public static final String  EVALUATION = "evaluation";
+    
 
     public PointsAction() {
     }
@@ -22,6 +26,14 @@ public class PointsAction {
         this.nom = nom;
         this.valeur = valeur;
     }
+
+    public PointsAction(int id) {
+        this.id = id;
+    }
+    
+
+
+    
 
     public int getId() {
         return id;

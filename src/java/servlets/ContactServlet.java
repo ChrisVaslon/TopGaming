@@ -8,6 +8,7 @@ import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import outils.CustomedException;
 import traitements.GestionContact;
 
 @WebServlet(name = "ContactServlet", urlPatterns = {"/contact"})
@@ -54,28 +56,29 @@ public class ContactServlet extends HttpServlet {
         }
         GestionContact gtContact = (GestionContact) getServletContext().getAttribute("gestionContact");
 
-//        try {
-//            gestionContact.ajouterContact(nom, prenom, mail, message);
-//            request.setAttribute("msgSucces", " Nous vous répondrons dans les plus brefs délais");
-//
-//        } catch (SQLException ex) {
-//
-//            request.setAttribute("nom", nom);
-//            request.setAttribute("prenom", prenom);
-//            request.setAttribute("mail", mail);
-//            urlJSP = "/WEB-INF/contact.jsp";
-//
-//           
-//            System.out.println(">>>>>>>>>> message error: " + ex.getMessage());
-//            ex.printStackTrace();
-//        }
-        
         try {
             gtContact.ajouterContact(nom, prenom, mail, message);
 
             request.setAttribute("msgSucces", " Nous vous répondrons dans les plus brefs délais");
 
-        } catch (SQLException ex) {
+        } catch(CustomedException ex){
+            
+            HashMap<String, String> erreurs = ex.getErreurs();
+            String msg = ex.getMessage();
+            
+            request.setAttribute("msg", msg);
+            
+            request.setAttribute("errMail", erreurs.get("errMail"));
+            
+            
+            
+            request.setAttribute("nom", nom);
+            request.setAttribute("prenom", prenom);
+            request.setAttribute("message", message); 
+            
+            
+            urlJSP = "/WEB-INF/contact.jsp";
+        }catch (SQLException ex) {
 
             System.out.println("erreur categories : " + ex.getMessage());
             ex.printStackTrace();

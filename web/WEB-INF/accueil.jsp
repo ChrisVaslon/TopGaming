@@ -63,7 +63,7 @@
 
 
         <div class="container">
-            <h1 class="text-center">Dernières Sorties</h1>
+            <h1 class="text-center" style="color: palegoldenrod"><b>Dernières Sorties</b></h1>
             <div class="row">
 
                 <c:forEach items="${requestScope.jeu}" var="jeu">    

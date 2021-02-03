@@ -33,7 +33,7 @@
             <div class="alert alert-success">
     <strong>Message envoyé!.</strong>  ${requestScope.msgSucces}
   </div>   
-           <p> Cliquez <a href="/topGaming/inscription">ici</a> pour accéder au formulaire d'inscription </p> 
+  <p> Cliquez <a href="/topGaming/inscription"><b>ici</b></a> pour accéder au formulaire d'inscription </p> 
             
         </div>
   

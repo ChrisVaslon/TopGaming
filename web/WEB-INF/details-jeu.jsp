@@ -20,7 +20,7 @@
     <body>
         <c:import url="/menu-main" />
         <div class="container">
-            <h1>Détails Du Jeu !</h1>
+            <h1> <c:out value="${requestScope.jeu.nom}" /> </h1>
             <c:if test="${empty requestScope.jeu}">
                 <p> Jeu introuvable </p>
             </c:if>
@@ -30,14 +30,14 @@
                         <img  src='images/jeux-accueil/<c:out value="${requestScope.jeu.image}" />' 
                               alt='couverture <c:out value="${requestScope.jeu.nom}" />'>
                         <div class="col-lg-6">
-                            <p> titre : <c:out value="${requestScope.jeu.nom}" /> </p>
+                            
                             <p> PrixHT : <c:out value="${requestScope.jeu.prixHT}" /> </p>
                             <p> PrixTTC : <c:out value="${requestScope.jeu.prixTTC}" /> </p>
                             <a class="btn btn-outline-primary"
                                href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row pt-5">
                         <div class="col-lg-12">
                             <p> Resumé : <c:out value="${requestScope.jeu.description}" /> </p>
                         </div>

@@ -1,16 +1,16 @@
-package dao;
+/*
+ Auteur: Djouela
+ Date de création: 20/01/2021
+ 
+ */
 
+package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- Auteur: Djouela
- Date de création: 20/01/2021
- 
- */
 public class MaConnexionBDD {
 
     private String user;

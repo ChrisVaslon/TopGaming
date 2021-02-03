@@ -70,6 +70,7 @@ public class EvaluationServlet extends HttpServlet {
             System.out.println(jeux_id);
             
             gtEvaluation.InsertEvaluation(membre_id, stars, new Date(), jeux_id);
+            request.setAttribute("msgSuccess", "Merci pour votre vote !");
         } catch (SQLException ex) {
             Logger.getLogger(EvaluationServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (CustomedException ex) {

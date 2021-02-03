@@ -44,6 +44,13 @@
                 <c:if test ="${not empty requestScope.errEvaluation}">
                     <p><c:out value="${requestScope.errEvaluation}" /></p>
                 </c:if>
+                <c:if test ="${not empty requestScope.msgSuccess}">
+                    <p><c:out value="${requestScope.msgSuccess}" /></p>
+                </c:if>
+                <c:if test ="${not empty requestScope.moyenneEvaluation}">
+                    <p>La note moyenne de ce jeu est de <c:out value="${requestScope.moyenneEvaluation}" /></p>
+                </c:if>
+                    
                 
                 <p> titre : <c:out value="${requestScope.jeu.nom}" /> </p>
                 <p> Resumé : <c:out value="${requestScope.jeu.description}" /> </p>
@@ -148,6 +155,7 @@
                         }
                 listCommentaires();
             </script>
+            <script src="js/evaluation.js" type="text/javascript"></script>
 
     </body>
 </html>

@@ -39,8 +39,14 @@ public class GestionEvaluation {
         } else {
             evaluationDao.InsertEvaluation(membre_id, stars, date, jeux_id);
             evaluationDao.gainPoints(membre_id);
+            
         }
 
+    }
+    
+    public Double MoyenneEvaluation(int jeux_id) throws SQLException{
+        System.out.println(">>>>>>>>> into Traitement ");
+        return evaluationDao.AfficherMoyenneEvaluation(jeux_id);
     }
 
 }

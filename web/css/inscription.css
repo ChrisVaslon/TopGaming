@@ -12,3 +12,8 @@ and open the template in the editor.
     color: #ffffff;
     background-color: #343a40;
 }
+
+.connexionContainer {
+    margin-top: 7% !important;
+    margin-bottom: 7% !important;
+}

@@ -15,9 +15,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-
-
         <link
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -25,7 +22,7 @@
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
 
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <title>Accueil</title>
+        <title>Detail-Panier</title>
     </head> 
     <body>
 
@@ -37,69 +34,77 @@
             </c:if>
 
             <div class="col-md-12 col-lg-12 col-sm-12 order-md-last">
+                <div class="w-25 text-center d-flex justify-content-end">
+                             <a class="btn btn-outline-danger"
+                       href='panier?operation=enlever&id=<c:out value="${jeu.id}"/>'>
+                        Vider le panier
+                    </a>
 
+                </div>
+                
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class=" "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Votre panier</font></font></span>
                     <span class="badge bg-secondary rounded-pill"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${requestScope.qte}</font></font></span>
                 </h4>
 
 
-                <ul class="list-group mb-3">
 
-                    <div class="list-group-item d-flex justify-content-between bg-secondary">
-                        <div  class="col-lg-3" >
-                            <h6 class="my-0 ">Nom du produit</h6>
-                        </div>
-                        <div  class="col-lg-3 text-center" >
-                            <h6 class="my-0">Prix du produit(HT)</h6>
-                        </div>
-                        <div  class="col-lg-3 text-center" >
+                <div class="table-responsive-lg">
 
-                            <h6 class="my-0 "> Quantités  </h6>
-                        </div>
-                        <div  class="col-lg-3 text-center">
+                    <table class="table table-hover table-bordered table-dark text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nom du produit</th>
+                                <th scope="col">Prix du produit(HT)</th>
+                                <th scope="col">Quantités </th>
+                                <th scope="col">Total </th>  
+                                <th scope="col">Supprimer</th>
 
-                            <h6 class="my-0 "> Total  </h6>
-                        </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${requestScope.lignes}" var="ligne">
+                                <tr class="table-active">
+                                    <th scope="row"><c:out value="${ligne.jeu.id}"/></th>
+                                    <td><c:out value="${ligne.jeu.nom}" /> </td>
+                                    <td> <c:out value="${ligne.jeu.prixHT}" /> € </td>
+                                    <td> <c:out value="${ligne.quantite}" /> </td>
+                                    <td> <fmt:formatNumber value="${ligne.totalLigne}" minFractionDigits="2" maxFractionDigits="2"/> €</td>
+                                    <td>
+                                        <a  href='panier?operation=supprimer&id=<c:out value="${ligne.jeu.id}"/>' class="btn btn-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg>
+                                        </a>
+                                    </td> 
+                                </tr>   
+                                
+                                
+                       
+                            </c:forEach>                    
+                        </tbody> 
+                        <tfoot>
+                            <c:if test="${not empty requestScope.lignes}">
+                                <tr>
+                                    <th scope="row">
+                                        Total (EURO)
+                                    </th>
+                                    <td colspan="4" style="text-align: right">
+                                        <fmt:formatNumber value="${total}" minFractionDigits="2" maxFractionDigits="2"/> €
+                                    </td>
+                                    <td >
+                                       <a  href='#' class="btn btn-success">
+                                             Payer
+                                        </a>
+                                    </td>
+                                </tr>
+                            </c:if>
 
+                        </tfoot>
+                    </table>              
 
-                    </div>
-
-                    <c:forEach items="${requestScope.lignes}" var="ligne">
-                        <li class="list-group-item d-flex justify-content-between lh-sm ">
-                            <div class="col-lg-3">
-                                <small class="text-muted"><font style="vertical-align: inherit;">
-                                    <td><c:out value="${ligne.jeu.nom}" /> </td> 
-                                    </font></font></small>
-                            </div>
-                            <div class="col-lg-3 text-center">   
-
-                                <span class="text-muted ">
-                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                    <c:out value="${ligne.jeu.prixHT}" /> € 
-                                    </font></font></span>
-                            </div>
-                            <div class="col-lg-3 text-center">   
-
-                                <span class="text-muted">
-                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                    <c:out value="${ligne.quantite}" />  
-                                    </font></font></span>
-                            </div>
-                            <div class="col-lg-3 text-center">  
-                                <span class="text-muted">
-                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                                   
-                                    <fmt:formatNumber value="${ligne.getTotalJeu}" minFractionDigits="2" maxFractionDigits="2"/> €</p>                              
-                                    </font></font></span>
-
-                            </div>
-                        </li>
-                    </c:forEach>
-                    <li class="list-group-item d-flex justify-content-between text-dark">
-                        <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Total (EURO)</font></font></span>
-                        <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20 €</font></font></strong>
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
 

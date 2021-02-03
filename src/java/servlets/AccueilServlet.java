@@ -55,11 +55,7 @@ public class AccueilServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-           
-           
-           
-        
+          
         
         
         

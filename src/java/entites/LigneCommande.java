@@ -83,11 +83,19 @@ public class LigneCommande {
 
     public void setCommande(Commande commande) {
         this.commande = commande;
-    }
+    } 
+    
+   public float getTotalLigne(){
+        return  prixHT*getQuantite();
+    }  
+     
 
+   
     @Override
     public String toString() {
         return "Ligne_Commande{" + "id=" + id + ", prixHT=" + prixHT + ", TVA=" + tva + ", quantite=" + quantite + ", jeu=" + jeu + ", commande=" + commande + '}';
     }
+
+   
     
 }

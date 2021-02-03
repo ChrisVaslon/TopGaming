@@ -90,11 +90,9 @@ public class JeuDao {
             return jeux;
         }
     }
-
+  
     public Jeu selectJeuById(int id) throws SQLException {
-
         Jeu jeu = null;
-
         try (Connection cnn = mcBDD.getConnection()) {
             String sql = "SELECT * FROM jeu j "
                     + " JOIN tva t ON t.TVA_id = j.TVA_id "
@@ -110,7 +108,7 @@ public class JeuDao {
                 jeu.setDescription(rs.getString("jeu_description")); 
                 jeu.setPrixHT(rs.getFloat("jeu_prixHT")); 
                 
-                 int idTva = rs.getInt("TVA_id");
+                int idTva = rs.getInt("TVA_id");
                 String nomTva = rs.getString("TVA_nom");
                 float montantTva = rs.getFloat("TVA_montant");
 

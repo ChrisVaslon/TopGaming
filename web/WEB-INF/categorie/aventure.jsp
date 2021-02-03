@@ -54,7 +54,7 @@
 
                                 <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
                                 <a class="btn btn-outline-primary"
-                                   href='panier?operation=ajouter&ean=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                                   href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
 
                             </div>
                         </div>

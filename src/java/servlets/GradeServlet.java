@@ -1,23 +1,25 @@
 /*
- Auteur: Djouela
- Date de création: 23/01/2021
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package servlets;
 
-import entites.Jeu;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import traitements.GestionJeu;
 
-@WebServlet(name = "ActionServlet", urlPatterns = {"/vers-action"})
-public class ActionServlet extends HttpServlet {
+/**
+ *
+ * @author Utilisateur
+ */
+@WebServlet(name = "GradeServlet", urlPatterns = {"/grade"})
+public class GradeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,29 +35,14 @@ public class ActionServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-
-        String urlJSP = "/WEB-INF/categorie/action.jsp";
-
-        if (getServletContext().getAttribute("gestionJeu") == null) {
-
-            getServletContext().setAttribute("gestionJeu", new GestionJeu());
-        }
-
-        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
-        try {
-            List<Jeu> categorie1 = gestionJeu.selectAllJeuxByGenre("Action");
-
-            request.setAttribute("categories", categorie1);
-
-        } catch (SQLException ex) {
-
-            System.out.println("erreur categories : " + ex.getMessage());
-            ex.printStackTrace();
-        }
- 
+        
+        
+         String urlJSP = "/WEB-INF/grade.jsp";
+        
+        
         
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

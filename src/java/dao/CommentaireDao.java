@@ -113,9 +113,11 @@ public class CommentaireDao {
                 Date dateNaissance  = rs.getDate("membre_dateNaissance");
                 
 
+
                 Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissance, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
 
                 comm.setMembre(membre);
+
                 
                 int idJeux = rs.getInt("Jeux_id");
                 String nomJeux = rs.getString("Jeux_nom");

@@ -92,21 +92,28 @@ public class CommentaireDao {
 
                 int idMemebre = rs.getInt("membreid");
                 String nomMemebre = rs.getString("membrenom");
-                String pseudoMemebre = rs.getString("membre_pseudo");
-                String prenomMemebre = rs.getString("membre_prenom");
-                String mailMemebre = rs.getString("membre_mail");
-                String mdpMemebre = rs.getString("membre_mdp");
-                String rueMemebre = rs.getString("membre_rue");
-                String villeMemebre = rs.getString("membre_ville");
-                String cpMemebre = rs.getString("membre_cp");
-                int telMemebre = rs.getInt("membre_tel");
-                int pointsMemebre = rs.getInt("membre_points");
-                Date dateCreationProfilMemebre = rs.getDate("membre_dateCreationProfil");
-                String dateNaissanceMemebre = rs.getString("membre_dateNaissance");
 
-              //  Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
-                //Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissanceMemebre, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre
-                //comm.setMembre(membre);
+
+                String pseudoMemebre  = rs.getString("membre_pseudo");
+                String prenomMemebre  = rs.getString("membre_prenom");
+                String mailMemebre  = rs.getString("membre_mail");
+                String mdpMemebre  = rs.getString("membre_mdp");
+                String rueMemebre  = rs.getString("membre_rue");
+                String villeMemebre  = rs.getString("membre_ville");
+                String cpMemebre  = rs.getString("membre_cp");
+                int telMemebre  = rs.getInt("membre_tel");
+                int pointsMemebre  = rs.getInt("membre_points");
+                Date dateCreationProfilMemebre  = rs.getDate("membre_dateCreationProfil");
+                Date dateNaissance  = rs.getDate("membre_dateNaissance");
+                
+
+
+                Membre membre = new Membre(idMemebre, pseudoMemebre, nomMemebre, prenomMemebre, dateCreationProfilMemebre, dateNaissance, mailMemebre, mdpMemebre, rueMemebre, villeMemebre, cpMemebre, telMemebre, pointsMemebre);
+
+                comm.setMembre(membre);
+
+                
+
                 int idJeux = rs.getInt("Jeux_id");
                 String nomJeux = rs.getString("Jeux_nom");
                 float prixHTJeux = rs.getFloat("Jeux_prixHT");
@@ -122,6 +129,7 @@ public class CommentaireDao {
 
         return comm;
     }
+
 
     
     public int selectionnerPointsAction( String pointsActionNom) throws SQLException {

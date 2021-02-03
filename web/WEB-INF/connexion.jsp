@@ -15,6 +15,7 @@
         <link href="css/categorie.css" rel="stylesheet" type="text/css"/>   
         <link href="css/contact.css" rel="stylesheet" type="text/css"/>   
         <link href="css/inscription.css" rel="stylesheet" type="text/css"/>
+         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
     </head> 
 
 
@@ -24,7 +25,7 @@
 
 
 
-        <div class = "container my-5">
+        <div class = "container my-5 connexionContainer">
             <div class= "row justify justify-content-center">
                 <div class="col-11 col-md-8 col-lg-6 col-xl-5">
                     <form id = "formulaire-inscription" class = "p-4" action="connexion-valider" method="POST">

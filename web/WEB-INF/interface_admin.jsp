@@ -17,6 +17,7 @@
 
         <!-- Custom styles for this template -->
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="css/sb-admin-2.css" rel="stylesheet">
 
     </head> 
     <body>
@@ -213,8 +214,8 @@
                                             <tr>
                                                 <td></td>
                                                 <td></td>
-                                                <td>${requestScope.commentaire}</td>
-                                                <td>2011/04/25</td>
+                                                <td><c:out value="${jeu.nom}" /></td>
+                                                <td></td>
                                                <th><button>edit</button></th>
                                             </tr>           
                                           

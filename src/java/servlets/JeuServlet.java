@@ -20,7 +20,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import traitements.GestionCommentaire;
+
+import traitements.GestionEvaluation;
+
 import traitements.GestionJeu;
 
 /**
@@ -73,7 +77,30 @@ public class JeuServlet extends HttpServlet {
             Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
+
         }
+
+        } 
+        
+        int jeux_id = Integer.parseInt(request.getParameter("id"));   
+  
+        if (getServletContext().getAttribute("gestionEvaluation") == null) {
+            getServletContext().setAttribute("gestionEvaluation", new GestionEvaluation());
+        }
+        GestionEvaluation gtEvaluation = (GestionEvaluation) getServletContext().getAttribute("gestionEvaluation");
+        
+        try {
+            Double moyenne = 0.0;
+            System.out.println(jeux_id);
+            System.out.println(moyenne);
+            moyenne = gtEvaluation.MoyenneEvaluation(jeux_id);
+            request.setAttribute("moyenneEvaluation", moyenne);
+        } catch (SQLException ex) {
+            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(NullPointerException ex02) {
+            System.out.println("Null moyenne pointer");
+        }
+            
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
 

@@ -48,34 +48,27 @@ public class InscriptionSiteServlet extends HttpServlet {
         String urlJSP = "/WEB-INF/accueil.jsp";
 
         String pseudo = request.getParameter("Pseudo");
-        //pseudo = pseudo.trim();
+        pseudo = pseudo.trim();
         String nom = request.getParameter("Nom");
-        //nom = nom.trim();
+        nom = nom.trim();
         String prenom = request.getParameter("Prenom");
-        //prenom = prenom.trim();
+        prenom = prenom.trim();
 
         String mail = request.getParameter("Mail");
-        //mail = mail.trim();
+        mail = mail.trim();
         String mdp = request.getParameter("pwd");
 
         String rue = request.getParameter("Rue");
-        //rue = rue.trim();
+        rue = rue.trim();
 
         String ville = request.getParameter("Ville");
-        //ville = ville.trim();
+        ville = ville.trim();
 
         String cp = request.getParameter("Cp");
-        //cp = cp.trim();
-
-        int tel =0;
-        try {
-            tel = Integer.parseInt(request.getParameter("Tel"));
-        } catch (NumberFormatException e) {
-            System.out.println("Erreur tel console");
-            e.printStackTrace();
-            
-            urlJSP = "/WEB-INF/inscription.jsp";
-        }
+        cp = cp.trim();
+        String tel = request.getParameter("Tel");    
+       
+       
 
         String dateNaissance = request.getParameter("dateNaissance");
         Date dateNaissance2 = null;

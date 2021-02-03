@@ -5,19 +5,29 @@
  */
 package servlets;
 
+import entites.Jeu;
+import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import outils.CustomedException;
+import traitements.GestionEvaluation;
 
 /**
  *
  * @author Win 7
  */
-@WebServlet(name = "EvaluationServlet", urlPatterns = {"/Evaluation"})
+@WebServlet(name = "EvaluationServlet", urlPatterns = {"/evaluation"})
 public class EvaluationServlet extends HttpServlet {
 
     /**
@@ -32,19 +42,50 @@ public class EvaluationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EvaluationServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EvaluationServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        
+            String urlJSP = "/WEB-INF/detail-jeu.jsp";
+            
+            String evaluer = request.getParameter("evaluer");
+            Membre user = (Membre) session.getAttribute("user");
+            System.out.println(session.getAttribute("user"));  // ATTENTION, si COOKIE, sessionscope est vide !
+            System.out.println("user = " + user);
+            int membre_id = user.getId();
+            int stars = Integer.parseInt(request.getParameter("valeur"));
+            int jeux_id = Integer.parseInt(request.getParameter("id"));
+            System.out.println("id = " + request.getParameter("id"));
+ 
+        if (getServletContext().getAttribute("gestionEvaluation") == null) {
+            getServletContext().setAttribute("gestionEvaluation", new GestionEvaluation()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
         }
+        GestionEvaluation gtEvaluation = (GestionEvaluation) getServletContext().getAttribute("gestionEvaluation");
+        
+        try {
+            Date date = new Date();
+            System.out.println("----------------");
+            System.out.println(membre_id);
+            System.out.println(stars);
+            System.out.println(new Date());
+            System.out.println(jeux_id);
+            
+            gtEvaluation.InsertEvaluation(membre_id, stars, new Date(), jeux_id);
+            request.setAttribute("msgSuccess", "Merci pour votre vote !");
+        } catch (SQLException ex) {
+            Logger.getLogger(EvaluationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (CustomedException ex) {
+            HashMap<String, String> erreurs = ex.getErreurs();
+           request.setAttribute("errEvaluation", erreurs.get("errEvaluation"));
+            System.out.println("erreur deja evalue");
+        }
+        
+        //getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+         // response.sendRedirect("jeu");
+        
+        System.out.println(request.getParameter("id"));
+        request.getRequestDispatcher("jeu").include(request,response);
     }
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

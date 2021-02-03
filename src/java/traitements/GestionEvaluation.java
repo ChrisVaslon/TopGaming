@@ -7,20 +7,46 @@ package traitements;
 
 import dao.EvaluationDao;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import outils.CustomedException;
 
 /**
  *
  * @author Win 7
  */
 public class GestionEvaluation {
+
     private EvaluationDao evaluationDao;
 
     public GestionEvaluation() {
-        this.evaluationDao = evaluationDao;
+        evaluationDao = new EvaluationDao();
+    }
+
+    public void InsertEvaluation(int membre_id, int stars, Date date, int jeux_id) throws SQLException, CustomedException {
+
+        HashMap<String, String> erreurs = new HashMap<>();
+
+        Boolean dejaEvalue = evaluationDao.verifierEvaluation(membre_id, jeux_id);
+        if (dejaEvalue) {
+            erreurs.put("errEvaluation", "Vous avez déjà évalué le jeu !");
+        }
+
+        if (!erreurs.isEmpty()) {
+            CustomedException ex = new CustomedException(erreurs, "Echec de l'évaluation");
+            throw ex;
+
+        } else {
+            evaluationDao.InsertEvaluation(membre_id, stars, date, jeux_id);
+            evaluationDao.gainPoints(membre_id);
+            
+        }
+
     }
     
-    public void InsertEvaluation() throws SQLException{
-        evaluationDao.InsertEvaluation();
+    public Double MoyenneEvaluation(int jeux_id) throws SQLException{
+        System.out.println(">>>>>>>>> into Traitement ");
+        return evaluationDao.AfficherMoyenneEvaluation(jeux_id);
     }
-            
+
 }

@@ -1,12 +1,12 @@
-
 /**
  *
  * @author Ousseynou
  */
-
 package servlets;
 
+import dao.MembreDao;
 import entites.Jeu;
+import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,36 +34,70 @@ public class AccueilServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");        
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-         
-        String urlJSP = "/WEB-INF/accueil.jsp";
-        
-        
-        // TODO : recuperer les livres
-        if (getServletContext().getAttribute("gestionJeu") == null) {
-            getServletContext().setAttribute("gestionJeu", new GestionJeu());
-        }
-        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+        response.setContentType("text/html;charset=UTF-8");
+       
 
-          
-        try {
-          List<Jeu> jeu = gestionJeu.selectAllJeux();
-            request.setAttribute("jeu", jeu);
-        } catch (SQLException ex) {
-            Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
+         request.setCharacterEncoding("UTF-8");
+         HttpSession session = request.getSession();
+       
+       String urlJSP = "/WEB-INF/accueil.jsp";
+       
+       
+       if(getServletContext().getAttribute("gestionJeu") == null){ 
+                
+                getServletContext().setAttribute("gestionJeu", new GestionJeu()); 
+            }
+       
+       GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+       
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {               
+                MembreDao mbDao = new MembreDao();
+                if(cookie.getName().equals("ResterConnecte")){
+                    try {
+                        String userChaineAleatoire = cookie.getValue();
+                        Membre user = mbDao.CreerMembreAvecChaineAleatoire(userChaineAleatoire);
+                        session.setAttribute("user", user);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AccueilServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
         }
-          
+       
+       
+       try{
+        List<Jeu> jeu = gestionJeu.selectAllJeuxByGenre("Dernières Sorties"); 
         
+          request.setAttribute("jeu", jeu);
+    
+        } catch(SQLException ex){
+            // to do
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
+        }
+        try{
+        List<Jeu> jeu = gestionJeu.selectAllJeux(); 
         
+          request.setAttribute("jeu0", jeu);
+    
+        } catch(SQLException ex){
+            // to do
+            System.out.println("erreur categories : " +ex.getMessage());
+            ex.printStackTrace();
+        }
+       
+       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+    
+    
+    
+ 
         
-
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-        
-        
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

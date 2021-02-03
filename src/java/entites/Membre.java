@@ -24,12 +24,29 @@ public class Membre {
     private String rue;
     private String ville;
     private String cp;
+
+
     private String tel;
     private int points;
     
     
+
     private Grade grade;
     private Role role;
+
+    public Membre(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    public Membre(int id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+    
+    
+    
 
     public int getId() {
         return id;

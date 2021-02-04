@@ -27,17 +27,16 @@
     <body>
 
         <c:import url="/menu-main" />
-<<<<<<< HEAD
+
         <c:out value= "${sessionScope.connecte}" /> 
         <c:out value= "${sessionScope.user}" />
         <c:out value ="${requestScope.connexionActive}"/>
-        
-=======
-        <c:out value= "${sessionScope.connecte}" /> <p><<< état connexion</p>
-        <c:out value= "${sessionScope.user}" /><p><<< session scope user</p>
-        <c:out value ="${requestScope.connexionActive}"/><p><<< resterCo</p>
+
+        <c:out value= "${sessionScope.connecte}" /> 
+        <c:out value= "${sessionScope.user}" />
+        <c:out value ="${requestScope.connexionActive}"/>
  
->>>>>>> defe8480080503cf51d53f0d24777d9c03d53ea0
+
         <c:if test="${cookie.containsKey('ResterConnecte')}">
             <c:out value= "${sessionScope.connecte}" />
         </c:if>

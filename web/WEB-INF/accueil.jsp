@@ -28,14 +28,13 @@
 
         <c:import url="/menu-main" />
 
-        <c:out value= "${sessionScope.connecte}" /> 
+     <c:out value= "${sessionScope.connecte}" /> 
         <c:out value= "${sessionScope.user}" />
         <c:out value ="${requestScope.connexionActive}"/>
 
         <c:out value= "${sessionScope.connecte}" /> 
         <c:out value= "${sessionScope.user}" />
-        <c:out value ="${requestScope.connexionActive}"/>
- 
+       <c:out value ="${requestScope.connexionActive}"/>
 
         <c:if test="${cookie.containsKey('ResterConnecte')}">
             <c:out value= "${sessionScope.connecte}" />
@@ -78,7 +77,7 @@
                                 <img class="card-img-top w-100 h-100 " src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
                             <div class="card-body">
                                 <h1 class="h5"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
-                                <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                                <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
                                 <p class="text-dark">Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
                                 <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
                                 <a class="btn btn-primary btn-dark"

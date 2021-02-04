@@ -107,7 +107,7 @@ public class JeuServlet extends HttpServlet {
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
-    
+
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

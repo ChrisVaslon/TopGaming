@@ -1,28 +1,37 @@
 <%-- 
-    Document   : contact
+    Document   : contact-form
     Created on : 24 janv. 2021, 07:25:29
     Author     : Djouela
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Categories</title>
+        <title>Contact</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
               integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
+            />
+        <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/contact.css" rel="stylesheet" type="text/css"/>  
 
 
-
+<!--
 
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/categorie.css" rel="stylesheet" type="text/css"/>   
         <link href="css/contact.css" rel="stylesheet" type="text/css"/>   
+-->
 
 
     </head> 
@@ -33,34 +42,41 @@
     <div class="container mt-4">
         <div class="row justify justify-content-center">
             <div class="col-11 col-md-8 col-lg-6 col-xl-5">
-                <form class="">
+                <form  id="contacter" action="contact" method="POST">
                     <div class="card bg-dark">
                         <div class="row mt-0">
                             <div class="col-md-12 ">
                                 <h4 class="">Contactez-nous</h4>
                                 <p>Besoin d'information? Laissez-nous un message:</p>
                             </div>
+                             <c:if test="${not empty requestScope.msg}">
+                                 <p class ="erreur" style="color: red">${requestScope.msg}</p>              
+            </c:if>
+                
                         </div>
                         
                          <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Nom</p> <input id="nom-id" type="text" placeholder="Saisissez votre nom" name="nom" class="form-control input-box rm-border">
+                                <p class="mb-1">Nom</p> <input id="nom-id" type="text" value='<c:out value="${requestScope.nom}" />' placeholder="Saisissez votre nom" name="nom" class="form-control input-box rm-border">
                             </div>
                         </div>
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Prénom</p> <input id="prenom-id" type="text" placeholder="Saisissez votre prénom" name="prenom" class="form-control input-box rm-border">
+                                <p class="mb-1">Prénom</p> <input id="prenom-id" type="text" value='<c:out value="${requestScope.prenom}" />' placeholder="Saisissez votre prénom" name="prenom" class="form-control input-box rm-border">
                             </div>
                         </div>
                         
                         <div class="form-group row mb-3">
                             <div class="col-md-12 mb-0">
-                                <p class="mb-1">Email</p> <input id="e-mail-id" type="text" placeholder="Saisissez votre adresse e-mail" name="email" class="form-control input-box rm-border">
+                                <p class="mb-1">Email</p> <input id="e-mail-id" type="email" value='<c:out value="${requestScope.mail}" />' placeholder="Saisissez votre adresse e-mail" name="mail" class="form-control input-box rm-border">
+                                <c:if test="${not empty requestScope.errMail}">
+                        <p style="color: red">${requestScope.errMail}</p>              
+                    </c:if>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 mb-2">
-                                <p class="mb-1">Message</p> <textarea id="message" type="text" placeholder="Ecrivez votre message..." name="message" class="form-control input-box rm-border"></textarea>
+                                <p class="mb-1">Message</p> <textarea id="message" type="text"  value='<c:out value="${requestScope.message}" />' placeholder="Ecrivez votre message..." name="message" class="form-control input-box rm-border"></textarea>
                             </div>
                         </div>
                         <div class="form-group row justify-content-center mb-0">

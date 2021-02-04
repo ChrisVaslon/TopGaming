@@ -54,7 +54,9 @@ public class AccueilServlet extends HttpServlet {
        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
        
         Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
+ 
+        if (cookies != null && session.getAttribute("user")== null) {
+ 
             for (Cookie cookie : cookies) {               
                 MembreDao mbDao = new MembreDao();
                 if(cookie.getName().equals("ResterConnecte")){

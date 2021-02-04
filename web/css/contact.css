@@ -13,11 +13,22 @@ body {
     margin: auto
 }
 
+#contacter{
+    background-color: #343a40 !important
+}
+.card{
+    background-color: #343a40 !important
+        
+}
+
 .card {
     padding: 8%;
     padding-top: 35px;
     margin-top: 60px;
     margin-bottom: 80px
+        
+   
+        
 }
 
 textarea[name="message"] {
@@ -57,7 +68,7 @@ form{
 form .form-control::-webkit-input-placeholder {
     background-color: #FFFFFF;
     background: #ffffff;
-    color: #9E9E9E;
+    color: #ffffff;
 }
 
 ::-moz-placeholder {

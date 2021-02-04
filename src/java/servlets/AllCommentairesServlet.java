@@ -5,13 +5,14 @@
  */
 package servlets;
 
+import entites.Commentaire;
 import entites.Jeu;
-import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,15 +21,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import outils.CustomedException;
-import traitements.GestionEvaluation;
+import traitements.GestionCommentaire;
 
 /**
  *
- * @author Win 7
+ * @author djtew
  */
-@WebServlet(name = "EvaluationServlet", urlPatterns = {"/evaluation"})
-public class EvaluationServlet extends HttpServlet {
+@WebServlet(name = "AllCommentairesServlet", urlPatterns = {"/all-commentaires"})
+public class AllCommentairesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,50 +42,36 @@ public class EvaluationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+
+        String urlJSP = "/WEB-INF/details-jeu.jsp";
+
+         int id = Integer.parseInt(request.getParameter("id"));
+
         
-            String urlJSP = "/WEB-INF/detail-jeu.jsp";
-            
-            String evaluer = request.getParameter("evaluer");
-            Membre user = (Membre) session.getAttribute("user");
-            System.out.println(session.getAttribute("user"));  // ATTENTION, si COOKIE, sessionscope est vide !
-            System.out.println("user = " + user);
-            int membre_id = user.getId();
-            int stars = Integer.parseInt(request.getParameter("valeur"));
-            int jeux_id = Integer.parseInt(request.getParameter("id"));
-            System.out.println("id = " + request.getParameter("id"));
- 
-        if (getServletContext().getAttribute("gestionEvaluation") == null) {
-            getServletContext().setAttribute("gestionEvaluation", new GestionEvaluation()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
+        System.out.println(" dans servlet AllCommentaires");
+        if (getServletContext().getAttribute("gestionCommentaire") == null) {
+            getServletContext().setAttribute("gestionCommentaire", new GestionCommentaire());
         }
-        GestionEvaluation gtEvaluation = (GestionEvaluation) getServletContext().getAttribute("gestionEvaluation");
-        
+        GestionCommentaire gtCommentaire = (GestionCommentaire) getServletContext().getAttribute("gestionCommentaire");
+
         try {
-            Date date = new Date();
-            System.out.println("----------------");
-            System.out.println(membre_id);
-            System.out.println(stars);
-            System.out.println(new Date());
-            System.out.println(jeux_id);
-            
-            gtEvaluation.InsertEvaluation(membre_id, stars, new Date(), jeux_id);
-            request.setAttribute("msgSuccess", "Merci pour votre vote !");
+          List<Commentaire> commentaires = gtCommentaire.selectAllCommentairesbyJeuId(id);
+          request.setAttribute("commentaires", commentaires);
+            System.out.println("liste commentaires: "+commentaires);
+          
         } catch (SQLException ex) {
-            Logger.getLogger(EvaluationServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (CustomedException ex) {
-            HashMap<String, String> erreurs = ex.getErreurs();
-           request.setAttribute("errEvaluation", erreurs.get("errEvaluation"));
-            System.out.println("erreur deja evalue");
-        }
+            Logger.getLogger(CommentaireCarineServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(CommentaireCarineServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } 
         
-        //getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-         // response.sendRedirect("jeu");
-        
-        System.out.println(request.getParameter("id"));
-        request.getRequestDispatcher("jeu").include(request,response);
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+         
     }
-   
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

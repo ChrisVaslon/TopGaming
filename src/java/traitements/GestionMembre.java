@@ -16,8 +16,9 @@ public class GestionMembre {
     public GestionMembre() {
         membreDao = new MembreDao();
     }
-
-    public void creerNouveauMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel) throws SQLException, CustomedException {
+ 
+    public void creerNouveauMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, String tel) throws SQLException, CustomedException {
+ 
 
         HashMap<String, String> erreurs = new HashMap<>();
 
@@ -31,9 +32,16 @@ public class GestionMembre {
             erreurs.put("errPseudo", "Pseudo déjà utilisé !");
         }
 
-        if (tel == 0) {
+     
+
+  
+        String regex = "^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$";
+        boolean ok = tel.matches(regex);
+        if (ok == false){
             erreurs.put("errTel", "Le format n'est pas bon !");
         }
+        
+
 
         if (!erreurs.isEmpty()) {
             CustomedException ex = new CustomedException(erreurs, "Echec de l'inscription");

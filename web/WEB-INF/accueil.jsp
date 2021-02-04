@@ -30,7 +30,7 @@
         <c:out value= "${sessionScope.connecte}" /> <p><<< état connexion</p>
         <c:out value= "${sessionScope.user}" /><p><<< session scope user</p>
         <c:out value ="${requestScope.connexionActive}"/><p><<< resterCo</p>
-
+ 
         <c:if test="${cookie.containsKey('ResterConnecte')}">
             <c:out value= "${sessionScope.connecte}" />
         </c:if>
@@ -56,14 +56,13 @@
                         </a>                       
                     </div>
                 </c:forEach>
-
             </div>
 
         </div>       
 
 
         <div class="container">
-            <h1 class="text-center">Dernières Sorties</h1>
+            <h1 class="text-center" style="color: palegoldenrod"><b>Dernières Sorties</b></h1> 
             <div class="row">
 
                 <c:forEach items="${requestScope.jeu}" var="jeu">    

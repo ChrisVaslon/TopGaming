@@ -5,30 +5,31 @@
  */
 package servlets;
 
-import entites.Jeu;
 import entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import outils.CustomedException;
-import traitements.GestionEvaluation;
+import traitements.GestionMembre;
 
 /**
  *
  * @author Win 7
  */
-@WebServlet(name = "EvaluationServlet", urlPatterns = {"/evaluation"})
-public class EvaluationServlet extends HttpServlet {
+@WebServlet(name = "ConnexionSerlvlet", urlPatterns = {"/connexion-valider"})
+public class ConnexionSerlvlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,48 +45,58 @@ public class EvaluationServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+
+        String pseudo = request.getParameter("Pseudo");
+        String pwd = request.getParameter("Pwd");
         
-            String urlJSP = "/WEB-INF/detail-jeu.jsp";
-            
-            String evaluer = request.getParameter("evaluer");
-            Membre user = (Membre) session.getAttribute("user");
-            System.out.println(session.getAttribute("user"));  // ATTENTION, si COOKIE, sessionscope est vide !
-            System.out.println("user = " + user);
-            int membre_id = user.getId();
-            int stars = Integer.parseInt(request.getParameter("valeur"));
-            int jeux_id = Integer.parseInt(request.getParameter("id"));
-            System.out.println("id = " + request.getParameter("id"));
- 
-        if (getServletContext().getAttribute("gestionEvaluation") == null) {
-            getServletContext().setAttribute("gestionEvaluation", new GestionEvaluation()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
+        String[] res = {"off"};
+        if(request.getParameterValues("resterCo") != null){
+        res = request.getParameterValues("resterCo");
         }
-        GestionEvaluation gtEvaluation = (GestionEvaluation) getServletContext().getAttribute("gestionEvaluation");
-        
+       
+        String on = "on";
+        if (getServletContext().getAttribute("gestionMembre") == null) {
+            getServletContext().setAttribute("gestionMembre", new GestionMembre()); // " new GestionClient()" => GestionClient GC = new GestionClient()"
+        }
+        GestionMembre gtMembre = (GestionMembre) getServletContext().getAttribute("gestionMembre");
+
+        String urlJSP = "/WEB-INF/accueil.jsp";
+        System.out.println(res[0]);
         try {
-            Date date = new Date();
-            System.out.println("----------------");
-            System.out.println(membre_id);
-            System.out.println(stars);
-            System.out.println(new Date());
-            System.out.println(jeux_id);
+            Membre user = gtMembre.SeConnecter(pseudo, pwd);
+            session.setAttribute("user", user);
             
-            gtEvaluation.InsertEvaluation(membre_id, stars, new Date(), jeux_id);
-            request.setAttribute("msgSuccess", "Merci pour votre vote !");
-        } catch (SQLException ex) {
-            Logger.getLogger(EvaluationServlet.class.getName()).log(Level.SEVERE, null, ex);
+            if(res[0].equals(on)){
+                session.setAttribute("connexionActive", res[0]);
+                String chaineAleatoire = UUID.randomUUID().toString();
+                System.out.println("------------------");
+                System.out.println(chaineAleatoire);
+               System.out.println(user.getPseudo());
+                Cookie c01 = new Cookie("ResterConnecte", chaineAleatoire);
+                gtMembre.InsererChaineAleatoire(user.getPseudo(), chaineAleatoire);                     
+                c01.setMaxAge(60*60*24*15);
+                response.addCookie(c01);
+            }
+            System.out.println(user);
+            session.setAttribute("connecte", "Vous êtes connecté " + user.getPseudo());
+      
         } catch (CustomedException ex) {
-            HashMap<String, String> erreurs = ex.getErreurs();
-           request.setAttribute("errEvaluation", erreurs.get("errEvaluation"));
-            System.out.println("erreur deja evalue");
+           request.setAttribute("errLogin", ex.getMessage());
+    
+           HashMap<String, String> erreurs = ex.getErreurs();
+           request.setAttribute("errPseudo", erreurs.get("errPseudo"));
+           
+           request.setAttribute("errPassword", erreurs.get("errPassword"));
+        
+           urlJSP = "/WEB-INF/connexion.jsp";
+           
+        } catch (SQLException ex) {
+              System.out.println("erreur 02 sql :" + ex.getMessage());
         }
         
-        //getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-         // response.sendRedirect("jeu");
-        
-        System.out.println(request.getParameter("id"));
-        request.getRequestDispatcher("jeu").include(request,response);
+       
+        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
-   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

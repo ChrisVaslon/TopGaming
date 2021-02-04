@@ -98,6 +98,10 @@ public class Commentaire {
         return "Commentaire{" + "id=" + id + ", valeur=" + valeur + ", date=" + date + ", modifDate=" + modifDate + ", jeu=" + jeu + ", membre=" + membre + '}';
     }
 
+    public void add(Commentaire commentaire) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
   
     
 

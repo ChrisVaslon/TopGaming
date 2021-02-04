@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,24 +15,30 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+        <link href="css/allCommentaires.css" rel="stylesheet" type="text/css"/>
+
         <title>Détails Du Jeu</title>
     </head> 
     <body>
         <c:import url="/menu-main" />
         <div class="container">
             <h1> <c:out value="${requestScope.jeu.nom}" /> </h1>
+
+
+
             <c:if test="${empty requestScope.jeu}">
-                <p> Jeu introuvable </p>
-            </c:if>
-            <c:if test="${not empty requestScope.jeu}">
+                <p> Jeu introuvable!<br> Echec envoi commentaire. </p>
+                </c:if>
+                <c:if test="${not empty requestScope.jeu}">
                 <div class="row">
                     <div class="col-lg-6 d-flex justify-content-between">
                         <img  src='images/jeux-accueil/<c:out value="${requestScope.jeu.image}" />' 
                               alt='couverture <c:out value="${requestScope.jeu.nom}" />'>
                         <div class="col-lg-6">
-                            
-                            <p> PrixHT : <c:out value="${requestScope.jeu.prixHT}" /> </p>
-                            <p> PrixTTC : <c:out value="${requestScope.jeu.prixTTC}" /> </p>
+
+                            <p> PrixHT : <c:out value="${requestScope.jeu.prixHT}" /> €</p>
+                            <p> PrixTTC :  <fmt:formatNumber value="${requestScope.jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
                             <a class="btn btn-outline-primary"
                                href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
                         </div>
@@ -41,114 +47,107 @@
                         <div class="col-lg-12">
                             <p> Resumé : <c:out value="${requestScope.jeu.description}" /> </p>
                         </div>
-                        <div class="col-lg-12">
-                            <p>Evaluation du jeu</p> 
-                        </div>
+
                     </div>
                 </div>
             </c:if>
 
 
-            
-  
+            <c:if test="${not empty sessionScope.user}" >
+                <p> Noter le jeu :<c:import url="WEB-INF/evaluations/evaluation-affichage.jsp" /></p>
+            </c:if>
+            <c:if test ="${not empty requestScope.errEvaluation}">
+                <p><c:out value="${requestScope.errEvaluation}" /></p>
+            </c:if>
+            <c:if test ="${not empty requestScope.msgSuccess}">
+                <p><c:out value="${requestScope.msgSuccess}" /></p>
+            </c:if>
+            <c:if test ="${not empty requestScope.moyenneEvaluation}">
+                <p>La note moyenne de ce jeu est de <c:out value="${requestScope.moyenneEvaluation}" /></p>
+            </c:if>
 
-    <div class="row">
 
-        <div class="col-12"> 
-            <div class="col-md-6">
 
-                <ul class="nav nav-tabs " id="mytab" role="tablist">
-                    <li role="presentation" class="nav-item">
-                        <a href="#commentaires" aria-controls="commentaires" role="tab" data-toggle="tab" class="nav-link active text-dark ">Laisser un avis </a>
 
-                    </li>
-                    <li role="presentation" class="nav-item">
-                        <a href="#liste-cmtaires" aria-controls="liste-cmtaires" role="tab" data-toggle="tab" class="nav-link text-dark ">Voir les avis</a>
-                    </li>
-                </ul>   
-            </div>
-            <div class="col-md-6 " >
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane  active py-3 mh-100" id="commentaires">
-                        <h6>Laisser un commentaire</h6>
-                        <form action="form-floating ">
-                            <div class="form-group">
-                                <textarea class="form-control" rows="1" id="comment" placeholder="Ecrire un commentaire" name="text"></textarea>
+
+
+
+
+
+        <c:forEach items="${requestScope.commentaires}" var="commentaire">
+
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-white post">
+                            <div class="post-heading">
+                                <div class="float-left image">
+                                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+
+
+                                </div>
+
+
+
+                                <div class="float-left meta">
+                                    <div class="title h5">
+                                        <a href="#"><b><c:out value ="${commentaire.membre.nom}" /> <c:out value ="${commentaire.membre.prenom}" /></b></a>
+
+                                    </div>
+
+                                </div>
                             </div>
+
+                                <div class="post-description"> 
+                                    <p><c:out value ="${commentaire.valeur}" /> </p>
+
+                                </div>
+
+                            </div>  
+                                     </div>
+                                     </div>
+
+
+                        </c:forEach> 
+
+
+                        <form action="vers-commentaire" method ="POST">
+                            <input type="hidden" name="idJeu" value="${requestScope.jeu.id}" >
+                            <input type="hidden" name="idMembre" value="${requestScope.user.id}" >
+
+                            <div class="form-group">
+                                <label for ="comment" style="color: palegoldenrod" > <b> Visiteur?</b> Inscrivez vous <a href="/topGaming/inscription"><b>ici</b></a> pour commenter les jeux<br><b>Adhérant?</b> entrez un commentaire </label>
+                                <textarea  name="valeur"    class="form-control" placeholder="Ecrire un commentaire" id="comment"><c:out value= "${requestScope.valeur}" /></textarea>
+                            </div> 
                             <button type="submit" class="btn btn-primary btn-dark">Soumettre</button>
-                        </form>
+                        </form>  
+
+
                     </div>
-                    <div role="tabpanel" class="tab-pane py-3 mh-100" id="liste-cmtaires">
-                        <h6>Voir les commentaires</h6>
-                        <ul class="list-group" id="liste-commentaires"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
 
 
 
+                    <!-- Site footer -->
+                    <c:import url="WEB-INF/menus/menus-footer.jsp" />
 
+                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-            <div class="row">       
-                <div class="col-md-4">   
-                    <form>
-                        
-                        
-                        
-                        
-                        
-                    </form>                   
-                </div>       
-            </div>
-        </div>
-        <!-- Site footer -->
-        <c:import url="WEB-INF/menus/menus-footer.jsp" />
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    
-    
-    
-    
-    
-    
-     
  
-    <script>
 
-        function listCommentaires() {
 
-            document.querySelector("#liste-commentaires").innerHTML = '';
+                    <script src = "https://unpkg.com/swiper/swiper-bundle.min.js" ></script>
+                    
+                    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ 
 
-            axios.get('http://localhost:8080/topGaming/jeu?id=18').then(function (results) {
+                     <script src="js/swipper.js" type="text/javascript"></script>
 
-                results.data.comments.reverse().map(function (commentaire, id) {
+                    <script src="js/evaluation.js" type="text/javascript"></script>
 
-                    document.querySelector("#liste-commentaires").innerHTML += ` < li class = "list-group-item" >
-        ${commentaire.commentaire}
-
-                    < /li>`;
-
-                            return commentaire;
-
-                })
-
-            });
-
-        }
-
-        listCommentaires();
-
-    </script>
-    
-        
-        
-        
-    
-    </body>
-</html>
+                    </body>
+                    </html>

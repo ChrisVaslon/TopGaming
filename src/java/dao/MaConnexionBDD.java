@@ -22,6 +22,7 @@ public class MaConnexionBDD {
         mdp = "root";
         url = "jdbc:mysql://localhost:3306/top_gaming?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
 
+ 
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); //chargement de la classe du driver

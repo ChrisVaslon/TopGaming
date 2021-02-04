@@ -34,13 +34,15 @@
 
                 <c:forEach items="${requestScope.categories}" var="jeu">
 
+
                     <div class="col-lg-4 ">
                         <div class="card mb-3"  > 
                             <a href='jeu?id=<c:out value="${jeu.id}"/>'> <img class="card-img-top" src='images/jeux-accueil/<c:out value="${jeu.image}" />' alt='couverture <c:out value="${jeu.nom}" />'></a>
                             <div class="card-body">
                                 <h6 class="card-title"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h6>
 
-                                <p class="card-text text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
+
+                                <p class="text-dark">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> €</p>
 
 
 
@@ -49,8 +51,9 @@
 
 
                                 <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
-                                <a class="btn btn-outline-dark"
-                                   href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+                                <a class="btn btn-primary btn-dark" href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+
+
 
                             </div>
                         </div>

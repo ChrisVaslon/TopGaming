@@ -16,21 +16,20 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
         <!-- Custom styles for this template -->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
         <link href="css/sb-admin-2.css" rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     </head> 
     <body>
 
-           <c:import url="/menu-main" />
-        
+        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
         <div id="wrapper">
 
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -55,13 +54,7 @@
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Gestion Administrateur</span>
                     </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Components:</h6>
-                            <a class="collapse-item" href="buttons.html">Buttons</a>
-                            <a class="collapse-item" href="cards.html">Cards</a>
-                        </div>
-                    </div>
+
                 </li>
 
                 <!-- Nav Item - Utilities Collapse Menu -->
@@ -70,6 +63,16 @@
                         <i class="fas fa-fw fa-wrench"></i>
                         <span>Gestion des roles</span>
                     </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom Utilities:</h6>
+                            <a class="collapse-item" href="utilities-color.html">Colors</a>
+                            <a class="collapse-item" href="utilities-border.html">Borders</a>
+                            <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                            <a class="collapse-item" href="utilities-other.html">Other</a>
+                        </div>
+                    </div>
                 </li>
 
                 <!-- Divider -->
@@ -204,22 +207,16 @@
                                         <thead>
                                             <tr>
                                                 <th>Utilisateurs</th>
-                                                <th>Commentaires</th>
-                                                <th>jeu</th>
-                                                <th>Date de poste</th>
+                                                <th>Roles</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><c:out value="${jeu.nom}" /></td>
-                                                <td></td>
-                                               <th><button>edit</button></th>
-                                            </tr>           
-                                          
+                                                <td><select><option value="">--Veuillez choisir un utilisateur--</option></select></td>
+                                                <td><select><option value="">--choisir un roles--</option></select></td>
+                                               <th><button>Submit</button></th>
+                                            </tr>             
                                         </tbody>
                                     </table>
                                 </div>

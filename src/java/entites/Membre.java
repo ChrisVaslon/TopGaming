@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Win 7
  */
 public class Membre {
+    //nouvel essai
     private int id;
     private String pseudo;
     private String nom;
@@ -23,12 +24,29 @@ public class Membre {
     private String rue;
     private String ville;
     private String cp;
-    private int tel;
+
+
+    private String tel;
     private int points;
     
     
+
     private Grade grade;
     private Role role;
+
+    public Membre(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    public Membre(int id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+    
+    
+    
 
     public int getId() {
         return id;
@@ -118,11 +136,11 @@ public class Membre {
         this.cp = cp;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
@@ -153,7 +171,7 @@ public class Membre {
     public Membre() {
     }
 
-    public Membre(int id, String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel, int points) {
+    public Membre(int id, String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, String tel, int points) {
         this.id = id;
         this.pseudo = pseudo;
         this.nom = nom;
@@ -169,7 +187,7 @@ public class Membre {
         this.points = points;
     }
 
-    public Membre(int id, String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel, int points, Grade grade, Role role) {
+    public Membre(int id, String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, String tel, int points, Grade grade, Role role) {
         this.id = id;
         this.pseudo = pseudo;
         this.nom = nom;

@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <h1 class="h3"><a href='jeu?id=<c:out value="${jeu.id}"/>'><c:out value="${jeu.nom}" /></a></h1>
 
-                            <p class="card-text">Prix HT : <fmt:formatNumber value="${jeu.prixHT}" minFractionDigits="2" maxFractionDigits="2"/> £</p>
+                            
              <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
                             <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>

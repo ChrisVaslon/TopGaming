@@ -5,8 +5,7 @@
  */
 package servlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.IOException; 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author djtew
+ * @author thula
  */
-@WebServlet(name = "AfficherContactServlet", urlPatterns = {"/vers-contact"})
-public class AfficherContactServlet extends HttpServlet {
+@WebServlet(name = "GestionRoles", urlPatterns = {"/gestion-roles"})
+public class GestionRolesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,9 +32,8 @@ public class AfficherContactServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
-        String urlJSP = "/WEB-INF/contact.jsp";
-        
+        String urlJSP = "/WEB-INF/gestion_roles.jsp";
+
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 

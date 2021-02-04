@@ -16,26 +16,24 @@
         <title>Categories</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
               integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-
-
-
+ 
         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
-
-
+ 
     </head> 
     <body>
 
         <c:import url="/menu-main" />
 
         <!-- content -->
-        <div class="container ">
+ 
+        <div class="container">
+ 
             <h1>Sport </h1>                            
             <div class="row">
 
                 <c:forEach items="${requestScope.categories}" var="jeu">
+ 
                     <div class="col-lg-4 ">
                         <div class="card mb-3"  > 
 
@@ -54,6 +52,7 @@
                                 <p class="text-dark">Prix TTC : <fmt:formatNumber value="${jeu.prixTTC}" minFractionDigits="2" maxFractionDigits="2"/> €</p> 
                                 <a class="btn btn-outline-primary"
                                    href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
+ 
 
                             </div>
                         </div> 

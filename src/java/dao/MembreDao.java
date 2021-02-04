@@ -20,7 +20,9 @@ public class MembreDao {
         this.McBDD = new MaConnexionBDD();
     }
 
-    public void InsertMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, int tel) throws SQLException {
+ 
+    public void InsertMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, String tel) throws SQLException {
+  
         try (Connection cnn = McBDD.getConnection();) {
             String sql = "INSERT INTO membre(membre_pseudo, membre_nom, membre_prenom, membre_dateCreationProfil, membre_dateNaissance, membre_mail, membre_mdp, membre_rue, membre_ville, membre_cp, membre_tel, membre_points, grade_id, role_id) VALUES(?, ?, ?, ?, ?, ?, md5 (?), ?, ?, ?, ?, 10, 1, 1) ";
 
@@ -40,7 +42,7 @@ public class MembreDao {
             pstm.setString(8, rue);
             pstm.setString(9, ville);
             pstm.setString(10, cp);
-            pstm.setInt(11, tel);
+            pstm.setString(11, tel);
 
             pstm.executeUpdate();
         }
@@ -85,6 +87,7 @@ public class MembreDao {
                 user = new Membre();
                 
                  user.setPseudo(rs.getString("membre_pseudo"));
+ 
                 user.setNom(rs.getString("membre_nom"));
                 user.setPrenom(rs.getString("membre_prenom"));
                 user.setMail(rs.getString("membre_mail"));
@@ -106,6 +109,7 @@ public class MembreDao {
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 user = new Membre();
+ 
                 user.setNom(rs.getString("membre_nom"));
                 user.setPrenom(rs.getString("membre_prenom"));
                 user.setMail(rs.getString("membre_mail"));
@@ -116,6 +120,9 @@ public class MembreDao {
         return user;
     }
 
+ 
+  
+ 
     public void CreerChaineAleatoire(String Pseudo, String chaineAleatoire) throws SQLException {
         try (Connection cnn = McBDD.getConnection();) {
             String sql = "UPDATE membre "
@@ -149,4 +156,24 @@ public class MembreDao {
         }
         return user;
     }
+ 
+    
+     public Membre TrouverIdMembreAvecPseudo(String pseudo) throws SQLException {
+        Membre user = null;
+
+        try (Connection cnn = McBDD.getConnection();) {
+            String sql = "SELECT membre_id FROM membre "
+                    + "WHERE membre_pseudo = ?";
+            PreparedStatement pstm = cnn.prepareStatement(sql);
+            pstm.setString(1, pseudo);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                user = new Membre();
+                user.setId(rs.getInt("membre_id"));
+            }
+
+        }
+        return user;
+    }
+
 }

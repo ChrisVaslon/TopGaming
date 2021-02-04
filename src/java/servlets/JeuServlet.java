@@ -80,7 +80,7 @@ public class JeuServlet extends HttpServlet {
 
         }
 
-        } 
+        
         
         int jeux_id = Integer.parseInt(request.getParameter("id"));   
   

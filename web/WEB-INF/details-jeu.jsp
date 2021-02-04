@@ -68,10 +68,6 @@
 
 
 
-
-
-
-
         <c:forEach items="${requestScope.commentaires}" var="commentaire">
 
 

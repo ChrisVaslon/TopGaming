@@ -1,21 +1,25 @@
-/**
- * date : 21/01/2021
- *
- * @author Utilisateur
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package servlets;
 
-import java.io.IOException; 
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import traitements.GestionPanier;
 
-@WebServlet(name = "MenuMainServlet", urlPatterns = {"/menu-main"})
-public class MenuMainServlet extends HttpServlet {
+/**
+ *
+ * @author Utilisateur
+ */
+@WebServlet(name = "GradeServlet", urlPatterns = {"/grade"})
+public class GradeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,22 +35,14 @@ public class MenuMainServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-
-        String urlJSP = "/WEB-INF/menus/menu-main.jsp";
-
-        if (session.getAttribute("gestionPanier") == null) {
-
-            session.setAttribute("gestionPanier", new GestionPanier());
-        }
-
-        GestionPanier gestionPanier
-                = (GestionPanier) session.getAttribute("gestionPanier");
-
-        int qte = gestionPanier.CompteArticles();
-        request.setAttribute("qte",  + qte );
-
+        
+        
+         String urlJSP = "/WEB-INF/grade.jsp";
+        
+        
+        
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

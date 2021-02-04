@@ -1,16 +1,16 @@
-package dao;
+/*
+ Auteur: Djouela
+ Date de création: 20/01/2021
+ 
+ */
 
+package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- Auteur: Djouela
- Date de création: 20/01/2021
- 
- */
 public class MaConnexionBDD {
 
     private String user;
@@ -19,8 +19,8 @@ public class MaConnexionBDD {
 
     public MaConnexionBDD() {
         user = "root";
-        mdp = "Gappy2012";
-        url = "jdbc:mysql://localhost:3306/topgaming?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
+        mdp = "root";
+        url = "jdbc:mysql://localhost:3306/top_gaming?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=false";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); //chargement de la classe du driver

@@ -116,10 +116,11 @@ public class InscriptionSiteServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(InscriptionSiteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        request.setAttribute("msgSuccess", "Inscription reussi");
-
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+       
+        request.setAttribute("inscrit", pseudo);
+        
+        request.getRequestDispatcher("accueil").include(request,response);
+        //getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

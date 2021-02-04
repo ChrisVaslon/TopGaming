@@ -94,8 +94,8 @@ public class ConnexionSerlvlet extends HttpServlet {
               System.out.println("erreur 02 sql :" + ex.getMessage());
         }
         
-       
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+         request.getRequestDispatcher("accueil").include(request,response);
+        //getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

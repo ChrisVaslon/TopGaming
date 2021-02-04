@@ -101,7 +101,7 @@ public class CommentaireDao {
                 String rueMemebre  = rs.getString("membre_rue");
                 String villeMemebre  = rs.getString("membre_ville");
                 String cpMemebre  = rs.getString("membre_cp");
-                int telMemebre  = rs.getInt("membre_tel");
+                String telMemebre  = rs.getString("membre_tel");
                 int pointsMemebre  = rs.getInt("membre_points");
                 Date dateCreationProfilMemebre  = rs.getDate("membre_dateCreationProfil");
                 Date dateNaissance  = rs.getDate("membre_dateNaissance");

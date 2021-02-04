@@ -36,8 +36,8 @@
 
     </head> 
     <body>
-<c:import url="/menu-main" />
-
+        
+           <c:import url="/menu-main" />
 
     <div class="container mt-4">
         <div class="row justify justify-content-center">
@@ -93,6 +93,7 @@
 
 
         <!-- Site footer -->
+        
         <c:import url="WEB-INF/menus/menus-footer.jsp" />
 
 

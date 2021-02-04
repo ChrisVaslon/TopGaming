@@ -27,8 +27,7 @@
     </head> 
     <body>
 
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
-
+          <c:import url="/menu-main" />
         <!-- content -->
         <div class="container-fluid justify-content-center mt-4">
             <h1>Toutes les Catégories </h1>                            
@@ -43,7 +42,7 @@
              <p>Taux TVA : <c:out value="${jeu.tva.montant}"/> </p>
 
                             <a href='panier?operation=ajouter&id=<c:out value="${jeu.id}"/>'>Ajouter au panier</a>
-
+                       
                         </div>
                     </div>
                 </c:forEach>

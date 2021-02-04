@@ -14,14 +14,14 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/categorie.css" rel="stylesheet" type="text/css"/>   
         <link href="css/contact.css" rel="stylesheet" type="text/css"/>   
-        <link href="css/inscription.css" rel="stylesheet" type="text/css"/>
-         <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="css/inscription.css" rel="stylesheet" type="text/css"/>  
+       <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
     </head> 
 
 
     <body>
 
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
+        <c:import url="/menu-main" />
 
 
 
@@ -33,11 +33,11 @@
                         <div class ="mx-5 my-5">
                             <h1 class ="d-flex justify-content-center"> Connexion :</h1>
                         </div>
-                        
+
                         <c:if test ="${not empty requestScope.errLogin}">
                             <p class="text-danger"><c:out value="${requestScope.errLogin}" /></p>
                         </c:if>
-                        
+
 
                         <div class="form">
                             <c:if test ="${not empty requestScope.errPseudo}">

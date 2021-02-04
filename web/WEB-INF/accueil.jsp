@@ -27,13 +27,13 @@
     <body>
 
         <c:import url="/menu-main" />
-        <c:out value= "${sessionScope.connecte}" /> <p><<< état connexion</p>
-        <c:out value= "${sessionScope.user}" /><p><<< session scope user</p>
-        <c:out value ="${requestScope.connexionActive}"/><p><<< resterCo</p>
- 
-        <c:if test="${cookie.containsKey('ResterConnecte')}">
-            <c:out value= "${sessionScope.connecte}" />
-        </c:if>
+
+        
+        <c:if test ="${not empty requestScope.inscrit}">
+        <p> Merci pour votre inscription <c:out value="${requestScope.inscrit}"  /> !</p>
+          </c:if>
+        
+  
 
         <div class="input-group w-50 m-auto pt-5">
             <input type="search" placeholder="Recherche" aria-describedby="button-addon5" class="form-control">

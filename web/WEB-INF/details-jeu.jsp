@@ -41,6 +41,7 @@
                 <img  src='images/jeux-accueil/<c:out value="${requestScope.jeu.image}" />' 
                       alt='couverture <c:out value="${requestScope.jeu.nom}" />'>
                 <br>
+                 
                 <c:if test="${not empty sessionScope.user}" >
                 <p> Noter le jeu :<c:import url="WEB-INF/evaluations/evaluation-affichage.jsp" /></p>
                 </c:if>
@@ -78,7 +79,7 @@
                     <div class="float-left image">
                         <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
 
-            </c:if>
+            
 
 
         </div>

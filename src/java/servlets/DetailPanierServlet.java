@@ -42,7 +42,7 @@ public class DetailPanierServlet extends HttpServlet {
 
         request.setAttribute("lignes", gestionPanier.getAllLignesPanier());
         
-        
+         
         
         float total = gestionPanier.getTotal();
         request.setAttribute("total", total);

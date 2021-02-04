@@ -35,10 +35,13 @@
 
             <div class="col-md-12 col-lg-12 col-sm-12 order-md-last">
                 <div class="w-25 text-center d-flex justify-content-end">
-                    <a class="btn btn-outline-danger"
+                    <c:if test="${empty requestScope.jeu}">
+                         <a class="btn btn-outline-danger"
                        href='panier?operation=enlever&id=<c:out value="${jeu.id}"/>'>
                         Vider le panier
                     </a>
+                    </c:if>
+                   
 
                 </div>                
                 <h4 class="d-flex justify-content-between align-items-center mb-3">

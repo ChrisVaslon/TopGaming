@@ -176,4 +176,28 @@ public class MembreDao {
         return user;
     }
 
+     
+     public Membre AfficherMembreByCommentaireId(int commId) throws SQLException {
+        Membre user = null;
+
+        try (Connection cnn = McBDD.getConnection();) {
+            String sql = "SELECT * FROM membre "
+                    + " JOIN commentaire on membre.membre_id = commentaire.commentaire_id"
+                    + " WHERE commentaire.commentaire_id = ?";
+            PreparedStatement pstm = cnn.prepareStatement(sql);
+            pstm.setInt(1, commId);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                user = new Membre();
+                user.setPseudo(rs.getString("membre_pseudo"));
+                user.setNom(rs.getString("membre_nom"));
+                user.setPrenom(rs.getString("membre_prenom"));
+                user.setMail(rs.getString("membre_mail"));
+                user.setId(rs.getInt("membre_id"));
+            }
+        }
+        return user;
+    }
+
+
 }

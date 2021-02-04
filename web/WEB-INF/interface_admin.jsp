@@ -18,7 +18,7 @@
         <!-- Custom styles for this template -->
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
         <link href="css/sb-admin-2.css" rel="stylesheet">
-
+        <script src="./js/editText.js" type="text/javascript"></script>
     </head> 
     <body>
 
@@ -211,15 +211,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><c:out value="${jeu.nom}" /></td>
-                                                <td></td>
-                                               <th><button>edit</button></th>
-                                            </tr>           
-                                          
+                                            <c:forEach items="${requestScope.jeux}" var="jeu">
+                                                <c:forEach items="${requestScope.commentaires}" var="com">
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><c:out value="${com.valeur}" /></td>
+                                                        <td><c:out value="${jeu.nom}" /></td>
+                                                        <td><c:out value="${com.date}" /></td>
+                                                        <td><button>edit</button></td>
+                                                    </tr> 
+                                                </c:forEach>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

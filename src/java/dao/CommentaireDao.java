@@ -45,7 +45,7 @@ public class CommentaireDao {
                 comm.setDate(rs.getDate("commentaire_date"));
                 comm.setModifDate(rs.getDate("commentaire_modif_date"));
 
-                comm.add(comm);
+                comms.add(comm);
 
             }
 

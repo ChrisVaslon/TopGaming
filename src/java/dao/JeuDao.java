@@ -90,23 +90,9 @@ public class JeuDao {
             return jeux;
         }
     }
-    
-//    public Jeu selectJeuByNom(String nom) throws SQLException{
-//        Jeu jeu = null;
-//        
-//        try(Connection cnn = mcBDD.getConnection();){
-//            String sql = "SELECT (*) FROM jeu WHERE jeu_nom = ?";
-//            PreparedStatement pstm = cnn.prepareStatement(sql);
-//            pstm.setString(1, nom);
-//            
-//            return jeu;
-//        }
-//    }
 
     public Jeu selectJeuById(int id) throws SQLException {
-
         Jeu jeu = null;
-
         try (Connection cnn = mcBDD.getConnection()) {
             String sql = "SELECT * FROM jeu j "
                     + " JOIN tva t ON t.TVA_id = j.TVA_id "
@@ -127,8 +113,7 @@ public class JeuDao {
                 float montantTva = rs.getFloat("TVA_montant");
 
                 TVA Tva = new TVA(idTva, nomTva, montantTva);
-                jeu.setTva(Tva);                 
-
+                jeu.setTva(Tva);
 
             }
 

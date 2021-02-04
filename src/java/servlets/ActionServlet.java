@@ -5,7 +5,7 @@
 package servlets;
 
 import entites.Jeu;
-import java.io.IOException; 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -52,7 +52,8 @@ public class ActionServlet extends HttpServlet {
             System.out.println("erreur categories : " + ex.getMessage());
             ex.printStackTrace();
         }
-
+ 
+        
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
 
     }

@@ -17,7 +17,7 @@ public class Jeu {
     
     
     private TVA tva;
-    private Categories categorie;
+    private Categories categorie; 
     
     /*
     private List<Commentaire> commentaires;
@@ -111,14 +111,17 @@ public class Jeu {
         this.categorie = categorie;
     }
       
-     public float getPrixTTC(){
+    public float getPrixTTC(){
         return prixHT  + prixHT*(tva.getMontant()/100);
     } 
+    
 
     @Override
     public String toString() {
         return "Jeu{" + "id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", editeur=" + editeur + ", image=" + image + ", description=" + description + ", tva=" + tva + ", categorie=" + categorie + '}';
     }
+
+   
 
     
  

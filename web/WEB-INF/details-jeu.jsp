@@ -24,9 +24,6 @@
         <c:import url="/menu-main" />
         <div class="container mb-3">
             <h1> <c:out value="${requestScope.jeu.nom}" /> </h1>
-
-
-
             <c:if test="${empty requestScope.jeu}">
                 <p> Jeu introuvable!<br> Echec envoi commentaire. </p>
                 </c:if>
@@ -52,7 +49,6 @@
                 </div>
             </c:if>
 
-
             <c:if test="${not empty sessionScope.user}" >
                 <p> Noter le jeu :<c:import url="WEB-INF/evaluations/evaluation-affichage.jsp" /></p>
             </c:if>
@@ -66,17 +62,7 @@
                 <p>La note moyenne de ce jeu est de <c:out value="${requestScope.moyenneEvaluation}" /></p>
             </c:if>
 
-
-
-
-
-
-
-
-
         <c:forEach items="${requestScope.commentaires}" var="commentaire">
-
-
 
                 <div class="row">
                     <div class="col-12">

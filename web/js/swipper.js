@@ -38,6 +38,5 @@ var mySwiper = new Swiper('.swiper-container', {
             slidesPerColumn: 1
         }
     }
-
 });
 mySwiper.init();

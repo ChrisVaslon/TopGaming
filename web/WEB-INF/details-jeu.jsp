@@ -27,6 +27,7 @@
 
             <c:if test="${empty requestScope.jeu}">
                 <p> Jeu introuvable!<br> Echec envoi commentaire. </p>
+
                 </c:if>
                 <c:if test="${not empty requestScope.jeu}">
                 <div class="row">
@@ -63,6 +64,7 @@
             <c:if test ="${not empty requestScope.moyenneEvaluation}">
                 <p>La note moyenne de ce jeu est de <c:out value="${requestScope.moyenneEvaluation}" /></p>
             </c:if>
+
 
 
 

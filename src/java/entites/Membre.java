@@ -25,7 +25,6 @@ public class Membre {
     private String ville;
     private String cp;
 
-
     private String tel;
     private int points;
     

@@ -10,14 +10,13 @@ import entites.Jeu;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import traitements.GestionCommentaire;
 import traitements.GestionJeu;
 
@@ -25,7 +24,7 @@ import traitements.GestionJeu;
  *
  * @author thula
  */
-@WebServlet(name = "InterfaceAdmin", urlPatterns = {"/interface-admin"})
+@WebServlet(name = "InterfaceAdminServlet", urlPatterns = {"/interface-admin"})
 public class InterfaceAdminServlet extends HttpServlet {
 
     /**
@@ -41,9 +40,38 @@ public class InterfaceAdminServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+
         String urlJSP = "/WEB-INF/interface_admin.jsp";
-        
-        getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+
+        if (getServletContext().getAttribute("gestionJeu") == null) {
+            getServletContext().setAttribute("gestionJeu", new GestionJeu());
+        }
+
+        GestionJeu gestionJeu = (GestionJeu) getServletContext().getAttribute("gestionJeu");
+        try {
+            List<Jeu> jeu1 = gestionJeu.selectAllJeux();
+            request.setAttribute("jeux", jeu1);
+        } catch (SQLException ex) {
+            System.out.println("erreur jeu : " + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        if (getServletContext().getAttribute("gestionCommentaire") == null) {
+            getServletContext().setAttribute("gestionCommentaire", new GestionCommentaire());
+        }
+
+        GestionCommentaire gestionCommentaire = (GestionCommentaire) getServletContext().getAttribute("gestionCommentaire");
+        try {
+            List<Commentaire> comm = gestionCommentaire.selectAllCommentaire();
+            System.out.println(comm);
+            request.setAttribute("commentaires", comm);
+        } catch (SQLException ex) {
+            System.out.println("erreur Commentaire : " + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -33,13 +33,14 @@ public class CommentaireDao {
         List<Commentaire> comms = new ArrayList<>();
 
         try (Connection cnn = McBDD.getConnection();) {
-            String sql = "SELECT * FROM commentaire";
+            String sql = "SELECT * FROM commentaire"
+                    + " join membre on membre.membre_id = commentaire.membre_id";
 
             PreparedStatement pstm = cnn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 Commentaire comm = new Commentaire();
-
+                comm.setMembrePseudo(rs.getString("membre.membre_pseudo"));
                 comm.setId(rs.getInt("commentaire_id"));
                 comm.setValeur(rs.getString("commentaire_valeur"));
                 comm.setDate(rs.getDate("commentaire_date"));
@@ -60,7 +61,7 @@ public class CommentaireDao {
             String sql = "SELECT * FROM commentaire c "
                     + " JOIN jeu As j ON c.jeu_id = j.jeuxid "
                     + " JOIN pointsAction AS p ON c.Jeux_id = p.pointsAction_id "
-                    + " JOIN memebre AS m ON c.membre_id = m.membre_id "
+                    + " JOIN membre AS m ON c.membre_id = m.membre_id "
                     + " WHERE c.commentaire_id = ?";
             PreparedStatement pstm = cnn.prepareStatement(sql);
             pstm.setInt(c, id);

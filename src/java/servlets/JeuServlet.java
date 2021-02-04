@@ -94,8 +94,8 @@ public class JeuServlet extends HttpServlet {
             System.out.println(moyenne);
             moyenne = gtEvaluation.MoyenneEvaluation(jeux_id);
             request.setAttribute("moyenneEvaluation", moyenne);
-        } catch (SQLException ex) {
-            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex01) {
+            Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex01);
         } catch(NullPointerException ex02) {
             System.out.println("Null moyenne pointer");
         }
@@ -103,7 +103,7 @@ public class JeuServlet extends HttpServlet {
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
-
+    }
 
 
 

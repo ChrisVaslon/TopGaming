@@ -54,6 +54,8 @@ public class JeuServlet extends HttpServlet {
 
         String idParametre = request.getParameter("id");
         int id = Integer.parseInt(idParametre);
+        
+        
 
         if (getServletContext().getAttribute("gestionJeu") == null) {
             getServletContext().setAttribute("gestionJeu", new GestionJeu());
@@ -78,7 +80,8 @@ public class JeuServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
 
-        } 
+
+        }
         
         int jeux_id = Integer.parseInt(request.getParameter("id"));   
   
@@ -101,8 +104,10 @@ public class JeuServlet extends HttpServlet {
             
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-
     }
+
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

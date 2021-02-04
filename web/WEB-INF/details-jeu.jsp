@@ -22,14 +22,11 @@
     </head> 
     <body>
         <c:import url="/menu-main" />
-        <div class="container">
+        <div class="container mb-3">
             <h1> <c:out value="${requestScope.jeu.nom}" /> </h1>
-
-
 
             <c:if test="${empty requestScope.jeu}">
                 <p> Jeu introuvable!<br> Echec envoi commentaire. </p>
-
                 </c:if>
                 <c:if test="${not empty requestScope.jeu}">
                 <div class="row">
@@ -48,34 +45,6 @@
                         <div class="col-lg-12">
                             <p> Resumé : <c:out value="${requestScope.jeu.description}" /> </p>
                         </div>
-                </c:if>
-                <c:if test="${not empty requestScope.jeu}">
-                <img  src='images/jeux-accueil/<c:out value="${requestScope.jeu.image}" />' 
-                      alt='couverture <c:out value="${requestScope.jeu.nom}" />'>
-                <br>
-                <c:if test="${not empty sessionScope.user}" >
-                    <p> Noter le jeu :<c:import url="WEB-INF/evaluations/evaluation-affichage.jsp" /></p>
-                </c:if>
-                <c:if test ="${not empty requestScope.errEvaluation}">
-                    <p><c:out value="${requestScope.errEvaluation}" /></p>
-                </c:if>
-                <c:if test ="${not empty requestScope.msgSuccess}">
-                    <p><c:out value="${requestScope.msgSuccess}" /></p>
-                </c:if>
-                <c:if test ="${not empty requestScope.moyenneEvaluation}">
-                    <p>La note moyenne de ce jeu est de <c:out value="${requestScope.moyenneEvaluation}" /></p>
-                </c:if>
-
-
-                <p> titre : <c:out value="${requestScope.jeu.nom}" /> </p>
-                <p> Resumé : <c:out value="${requestScope.jeu.description}" /> </p>
-
-                <p> PrixHT : <c:out value="${requestScope.jeu.prixHT}" /> </p>
-
-                <p> PrixTTC : <c:out value="${requestScope.jeu.prixTTC}" /> </p>
-
-
-
 
                     </div>
                 </div>
@@ -96,20 +65,10 @@
             </c:if>
 
 
- 
-            <c:forEach items="${requestScope.commentaires}" var="commentaire">
 
 
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-white post">
-                            <div class="post-heading">
-                                <div class="float-left image">
-                                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
 
-
-                                </div>
 
 
 
@@ -133,11 +92,6 @@
                                     <div class="title h5">
                                         <a href="#"><b><c:out value ="${commentaire.membre.nom}" /> <c:out value ="${commentaire.membre.prenom}" /></b></a>
 
-
-                                <div class="float-left meta">
-                                    <div class="title h5">
-                                        <a href="#"><b><c:out value ="${commentaire.membre.nom}" /> <c:out value ="${commentaire.membre.prenom}" /></b></a>
-
                                     </div>
 
                                 </div>
@@ -172,52 +126,6 @@
 
 
 
-                                    </div>
-
-                                </div>
-                            </div>
-
-                                <div class="post-description"> 
-                                    <p><c:out value ="${commentaire.valeur}" /> </p>
-
-                                </div>
-
-
-                            </div>  
-                                     </div>
-                                     </div>
-
-                    <!-- Site footer -->
-                    <c:import url="WEB-INF/menus/menus-footer.jsp" />
-
-
-
-                        </c:forEach> 
-
-
-                        <form action="vers-commentaire" method ="POST">
-                            <input type="hidden" name="idJeu" value="${requestScope.jeu.id}" >
-                            <input type="hidden" name="idMembre" value="${requestScope.user.id}" >
-
-                            <div class="form-group">
-                                <label for ="comment" style="color: palegoldenrod" > <b> Visiteur?</b> Inscrivez vous <a href="/topGaming/inscription"><b>ici</b></a> pour commenter les jeux<br><b>Adhérant?</b> entrez un commentaire </label>
-                                <textarea  name="valeur"    class="form-control" placeholder="Ecrire un commentaire" id="comment"><c:out value= "${requestScope.valeur}" /></textarea>
-                            </div> 
-                            <button type="submit" class="btn btn-primary btn-dark">Soumettre</button>
-                        </form>  
-
-
-                    </div>
-
-
-
-
-                    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-                    <script src="js/swipper.js" type="text/javascript"></script>
 
 
 
@@ -235,27 +143,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
  
 
-
                      <script src="js/swipper.js" type="text/javascript"></script>
-
-                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-                    <script src="js/swipper.js" type="text/javascript"></script>
-                    <script>
-                                function listCommentaires() {
-                                document.querySelector("#liste-commentaires").innerHTML = '';
-                                        axios.get('http://localhost:8080/topGaming/jeu?id=18').then(function(results) {
-                                results.data.comments.reverse().map(function(commentaire, id) {
-                                document.querySelector("#liste-commentaires").innerHTML += ` < li class = "list-group-item" >
-                        ${commentaire.commentaire}
-                                < /li>`;
-                                        return commentaire;
-                                })
-                                });
-                                }
-                        listCommentaires();</script>
-                    <script src="js/evaluation.js" type="text/javascript"></script>
-
 
                     <script src="js/evaluation.js" type="text/javascript"></script>
 

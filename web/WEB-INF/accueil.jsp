@@ -29,7 +29,7 @@
         <c:import url="/menu-main" />
         
         <c:if test ="${not empty requestScope.inscrit}">
-        <p>Merci pour votre inscription <c:out value="${requestScope.inscrit}"  /> !</p>
+        <p> Merci pour votre inscription <c:out value="${requestScope.inscrit}"  /> !</p>
           </c:if>
         
   

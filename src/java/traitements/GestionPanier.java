@@ -1,6 +1,5 @@
-/**
- * date : 21/01/2021
- *
+ /*
+ * date : 21:/01/2021
  * @author Ousseynou
  */
 package traitements;
@@ -19,6 +18,7 @@ public class GestionPanier {
     private HashMap<Integer, LigneCommande> panier;
 
     private JeuDao jeuDao;
+    private LigneCommande ligneCommande;
 
     public GestionPanier() {
         this.panier = new HashMap<>();
@@ -27,9 +27,6 @@ public class GestionPanier {
 
     public void addJeu(Integer id) throws SQLException, ParseException {
 
-        if (id == null) {
-            return;
-        }
         if (panier.containsKey(id)) {
             LigneCommande jeu = panier.get(id);
             int newQuantite = jeu.getQuantite() + 1;
@@ -42,8 +39,11 @@ public class GestionPanier {
                 LigneCommande lc = new LigneCommande(jeu);
                 panier.put(id, lc);
             }
-
         }
+    }
+
+    public void supprimerArticle(int idDuJeu) {
+        this.panier.remove(idDuJeu);
     }
 
     public void viderPanier() {
@@ -51,8 +51,17 @@ public class GestionPanier {
     }
 
     public Collection<LigneCommande> getAllLignesPanier() {
-
         return this.panier.values();
+    }
+
+    public float getTotal() {
+        float somme = 0;
+        Collection<LigneCommande> mesLignes = getAllLignesPanier();
+        for (LigneCommande c : mesLignes) {
+            somme += c.getTotalLigne();
+        }
+        return somme;
+
     }
 
     public int CompteArticles() {

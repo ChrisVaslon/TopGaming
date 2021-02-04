@@ -80,9 +80,8 @@ public class JeuServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
 
-        
+        }
         
         int jeux_id = Integer.parseInt(request.getParameter("id"));   
   

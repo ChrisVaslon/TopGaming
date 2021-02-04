@@ -23,8 +23,7 @@
         <title>Détails Catalogue</title>
     </head> 
     <body>
-
-        <c:import url="WEB-INF/menus/menus-navbar.jsp" />
+   <c:import url="/menu-main" />
         <div class="container">
 
             <div class="row py-5 px-4">

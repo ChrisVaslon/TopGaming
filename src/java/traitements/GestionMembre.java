@@ -90,4 +90,7 @@ public class GestionMembre {
     }
     
     
+     public void RecupererMembreByCommentaireId(int commId) throws SQLException{
+        membreDao.AfficherMembreByCommentaireId(commId);
+    }
 }

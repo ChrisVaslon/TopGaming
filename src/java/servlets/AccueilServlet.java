@@ -93,11 +93,7 @@ public class AccueilServlet extends HttpServlet {
             ex.printStackTrace();
         }
        
-       getServletContext().getRequestDispatcher(urlJSP).include(request, response);
-    
-    
-    
- 
+       getServletContext().getRequestDispatcher(urlJSP).include(request, response); 
         
     
     }

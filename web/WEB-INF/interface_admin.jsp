@@ -214,7 +214,7 @@
                                             <c:forEach items="${requestScope.jeux}" var="jeu">
                                                 <c:forEach items="${requestScope.commentaires}" var="com">
                                                     <tr>
-                                                        <td></td>
+                                                        <td><c:out value="${com.getMembrePseudo()}" /></td>
                                                         <td><c:out value="${com.valeur}" /></td>
                                                         <td><c:out value="${jeu.nom}" /></td>
                                                         <td><c:out value="${com.date}" /></td>

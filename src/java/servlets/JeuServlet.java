@@ -99,7 +99,7 @@ public class JeuServlet extends HttpServlet {
         } catch(NullPointerException ex02) {
             System.out.println("Null moyenne pointer");
         }
-            
+        }
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }

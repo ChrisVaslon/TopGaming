@@ -16,18 +16,39 @@ public class Commentaire {
     private PointsAction pointsAction;
     private Jeu jeu;
     private Membre membre;
+    private int MembreId;
+    private String MembrePseudo;
 
+    public String getMembrePseudo() {
+        return MembrePseudo;
+    }
+
+    public void setMembrePseudo(String MembrePseudo) {
+        this.MembrePseudo = MembrePseudo;
+    }
+    
+    
+    
     public Commentaire() {
     }
 
-    public Commentaire(int id, String valeur, Date date, Date modifDate) {
+    public int getMembreId() {
+        return MembreId;
+    }
+
+    public void setMembreId(int MembreId) {
+        this.MembreId = MembreId;
+    }
+
+    public Commentaire(int id, String valeur, Date date, Date modifDate, int MembreId) {
         this.id = id;
         this.valeur = valeur;
         this.date = date;
         this.modifDate = modifDate;
+        this.MembreId = MembreId;
     }
 
-    public Commentaire(int id, String valeur, Date date, Date modifDate, PointsAction pointsAction, Jeu jeu, Membre membre) {
+    public Commentaire(int id, String valeur, Date date, Date modifDate, PointsAction pointsAction, Jeu jeu, Membre membre, int MembreId) {
         this.id = id;
         this.valeur = valeur;
         this.date = date;
@@ -35,6 +56,7 @@ public class Commentaire {
         this.pointsAction = pointsAction;
         this.jeu = jeu;
         this.membre = membre;
+        
     }
 
     public int getId() {
@@ -101,6 +123,7 @@ public class Commentaire {
     public void add(Commentaire commentaire) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
   
     

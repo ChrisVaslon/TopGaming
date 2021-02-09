@@ -16,8 +16,9 @@ public class GestionMembre {
     public GestionMembre() {
         membreDao = new MembreDao();
     }
-
+ 
     public void creerNouveauMembre(String pseudo, String nom, String prenom, Date dateCreationProfil, Date dateNaissance, String mail, String mdp, String rue, String ville, String cp, String tel) throws SQLException, CustomedException {
+ 
 
         HashMap<String, String> erreurs = new HashMap<>();
 
@@ -30,6 +31,9 @@ public class GestionMembre {
         if (qtePseudo > 0) {
             erreurs.put("errPseudo", "Pseudo déjà utilisé !");
         }
+
+     
+
   
         String regex = "^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$";
         boolean ok = tel.matches(regex);
@@ -37,6 +41,7 @@ public class GestionMembre {
             erreurs.put("errTel", "Le format n'est pas bon !");
         }
         
+
 
         if (!erreurs.isEmpty()) {
             CustomedException ex = new CustomedException(erreurs, "Echec de l'inscription");
@@ -85,4 +90,7 @@ public class GestionMembre {
     }
     
     
+     public void RecupererMembreByCommentaireId(int commId) throws SQLException{
+        membreDao.AfficherMembreByCommentaireId(commId);
+    }
 }

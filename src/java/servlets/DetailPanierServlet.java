@@ -4,7 +4,7 @@
  */
 package servlets;
 
-import java.io.IOException; 
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import traitements.GestionPanier;
-
 
 @WebServlet(name = "DetailPanierServlet", urlPatterns = {"/detail-panier"})
 public class DetailPanierServlet extends HttpServlet {
@@ -31,20 +30,25 @@ public class DetailPanierServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        
+
         String urlJSP = "/WEB-INF/detail-panier.jsp";
-        
+
         if (session.getAttribute("gestionPanier") == null) {
-            
             session.setAttribute("gestionPanier", new GestionPanier());
         }
-        
+
         GestionPanier gestionPanier
                 = (GestionPanier) session.getAttribute("gestionPanier");
-        
+
         request.setAttribute("lignes", gestionPanier.getAllLignesPanier());
         
+         
+        
+        float total = gestionPanier.getTotal();
+        request.setAttribute("total", total);
+
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

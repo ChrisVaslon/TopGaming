@@ -79,13 +79,14 @@ public class JeuServlet extends HttpServlet {
             Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(JeuServlet.class.getName()).log(Level.SEVERE, null, ex);
-
+        }
         
         int jeux_id = Integer.parseInt(request.getParameter("id"));   
   
         if (getServletContext().getAttribute("gestionEvaluation") == null) {
             getServletContext().setAttribute("gestionEvaluation", new GestionEvaluation());
         }
+            
         GestionEvaluation gtEvaluation = (GestionEvaluation) getServletContext().getAttribute("gestionEvaluation");
         
         try {
@@ -99,11 +100,11 @@ public class JeuServlet extends HttpServlet {
         } catch(NullPointerException ex02) {
             System.out.println("Null moyenne pointer");
         }
-        }
+        
 
         getServletContext().getRequestDispatcher(urlJSP).include(request, response);
     }
-    }
+    
 
 
 
